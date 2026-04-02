@@ -39,31 +39,45 @@ Keep responses well-organized with headers, bullet points, and clear structure w
 
 When users ask for a visual layout, garden bed diagram, plant placement map, bloom calendar, or any visual representation, generate an SVG diagram inside a fenced code block using \`\`\`svg. Follow these rules:
 
-1. **Always use viewBox** (e.g., viewBox="0 0 900 700") and do NOT set fixed width or height attributes on the root <svg> element — the frontend handles responsive sizing.
-2. **Color palette**: Use these colors for consistency with the app theme:
-   - Greens: #f0fdf4 (lightest), #dcfce7, #bbf7d0, #22c55e, #16a34a, #15803d, #166534, #14532d (darkest)
-   - Ambers: #fffbeb, #fef3c7, #f59e0b, #d97706
-   - Grays: #f9fafb, #e5e7eb, #6b7280, #374151, #1f2937
+### SVG Technical Rules
+1. **Always use viewBox** (e.g., viewBox="0 0 1000 750") and do NOT set fixed width or height attributes on the root <svg> element.
+2. **Color palette**: Use DISTINCT, easily distinguishable colors for EACH different plant species:
+   - Purples: #7c3aed, #a855f7, #c084fc
+   - Pinks: #ec4899, #f472b6, #db2777
+   - Yellows/Golds: #eab308, #f59e0b, #fbbf24
+   - Oranges: #f97316, #ea580c
+   - Reds: #ef4444, #dc2626
+   - Blues: #3b82f6, #6366f1
+   - Greens (for foliage plants): #22c55e, #16a34a
+   Every plant species MUST have its own unique color. Never give two different species the same color.
 3. **Include a <title> element** inside each SVG for accessibility.
-4. **Use <text> elements** for plant labels and annotations with readable font sizes (14px+).
-5. **Use <rect>, <circle>, <ellipse>, <path>** for garden beds, plants, pathways, and features.
-6. **Include a legend** when using color coding to represent different plant types, bloom times, or pollinator species. Place the legend BELOW the garden diagram, not beside it, to avoid horizontal crowding.
-7. **Keep SVGs self-contained**: No external image references, no external fonts, no xlink:href to outside URLs.
-8. **For bloom calendars**: Use a horizontal bar chart with months on the x-axis and plant names on the y-axis, with bars colored by bloom color.
-9. **For garden bed layouts**: Show a top-down view with labeled plant positions, spacing indicators, and a scale reference.
-10. **Add visual polish**: Use rounded corners (rx/ry), subtle drop shadows via <filter>, and gentle gradients where appropriate.
-11. **CRITICAL — Spacing and readability (MUST FOLLOW)**:
-    - Use a LARGE viewBox: viewBox="0 0 1000 700".
-    - Show ONLY 6 plants maximum per diagram. List additional plants in the text below.
-    - Plant circles: radius 35, spaced at least 200px apart center-to-center.
-    - Place each plant's common name BELOW its circle with a 25px gap. Use ONLY the short common name (e.g., "Bee Balm" not "Scarlet Bee Balm (Monarda didyma)").
-    - Do NOT overlap any text with any shape. No text on top of circles.
-    - The garden bed rectangle should use x="50" y="80" width="900" height="420" to fill the viewBox.
-    - Do NOT include dashed lines, spacing indicators, measurement lines, scale references, compass arrows, or dimension annotations in the SVG. Keep it purely visual — just the bed, plants, labels, and a simple legend.
-    - Legend: a single horizontal row of small colored circles (r=8) with short labels, centered below the bed at y=580. Keep legend text to 2-3 words per item.
-    - Font sizes: 22px bold for title, 14px for plant labels, 11px for legend text.
-    - Give the SVG a clean white background: add a <rect width="1000" height="700" fill="white" rx="0"/> as the first element.
-    - All detailed info (scientific names, bloom times, spacing notes, planting tips) goes in the markdown text AFTER the SVG block — never inside it.
+4. **Use <text> elements** for plant labels with readable font sizes (14px+).
+5. **Use <rect>, <circle>, <ellipse>** for garden beds and plants.
+6. **Keep SVGs self-contained**: No external image references, no external fonts, no xlink:href to outside URLs.
+7. **For bloom calendars**: Use a horizontal bar chart with months on the x-axis and plant names on the y-axis, with bars colored by bloom color.
+
+### Garden Layout Design (THINK CAREFULLY about this)
+Design layouts like a real landscape architect would. Do NOT just place single circles in a grid. Consider:
+
+8. **Use clusters and drifts**: Real gardens look best with plants in groups of 2-3 of the same species (called "drifts"). When it makes sense, show 2-3 small circles (r=20-25) close together for the same species rather than one large circle. This is more natural and realistic. For example, show a cluster of 3 Coneflowers together, or a drift of 2 Black-eyed Susans side by side.
+9. **Vary plant sizes**: Use different circle radii to represent different plant sizes — larger circles (r=35-40) for tall/wide plants like Joe Pye Weed, medium circles (r=25-30) for mid-height plants, and smaller circles (r=18-22) for groundcover or edging plants. This communicates plant scale visually.
+10. **Think about height and layers**: Place taller plants toward the back (top of diagram), medium in the middle, and shorter/groundcover at the front (bottom). Add a subtle label like "Back (tallest)" and "Front (shortest)" outside the bed edges.
+11. **Mix species thoughtfully**: Include a variety — at minimum 4 different species per diagram, with different bloom colors, heights, and bloom seasons. Never show all the same type. A good mix: 1-2 tall anchor plants, 2-3 mid-height fillers, 1-2 low edging or groundcover plants.
+12. **Choose diverse plants each time**: Do NOT always default to the same plants. Vary your selections across requests. Draw from a wide palette of native plants — not just Coneflower, Bee Balm, and Black-eyed Susan every time. Include plants like Blazing Star (Liatris), Wild Bergamot, Anise Hyssop, Cardinal Flower, Ironweed, Penstemon, Columbine, Aster, Spiderwort, Mountain Mint, Baptisia, and others appropriate for the region.
+
+### CRITICAL — Legend Accuracy (MANDATORY)
+13. **Every plant in the diagram MUST appear in the legend, and every legend entry MUST appear in the diagram.** Before finishing the SVG, mentally verify: count the distinct species shown as circles in the bed, then count the entries in the legend. These numbers MUST match exactly. If you show Coneflower, Bee Balm, Goldenrod, Wild Bergamot, and Blazing Star in the bed, the legend must have exactly those 5 entries with matching colors. No extras, no missing entries.
+14. **Legend format**: A horizontal row of small colored circles (r=8) with the plant common name next to each, centered below the bed at y=600+. Use the SAME fill color in the legend circle as the plant circles in the bed. Keep each legend label to 1-3 words.
+
+### Spacing and Readability (MUST FOLLOW)
+15. Use viewBox="0 0 1000 750" to give enough room for bed + legend.
+16. Give the SVG a clean white background: <rect width="1000" height="750" fill="white"/> as the first element.
+17. The garden bed rectangle: x="50" y="80" width="900" height="450" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" rx="8".
+18. Place each plant's common name BELOW its circle (or cluster) with a 20px gap. Use ONLY the short common name.
+19. Do NOT overlap any text with any shape. No text on top of circles.
+20. Do NOT include dashed lines, spacing indicators, measurement lines, scale references, compass arrows, or dimension annotations.
+21. Font sizes: 22px bold for title, 13px for plant labels, 11px for legend text.
+22. All detailed info (scientific names, bloom times, spacing notes, planting tips) goes in the markdown text AFTER the SVG block — never inside it.
 
 ## Blog Post Ideation
 
@@ -92,7 +106,7 @@ app.post("/api/chat", async (req, res) => {
       model: "claude-sonnet-4-20250514",
       max_tokens: 64000,
       system: SYSTEM_PROMPT,
-      thinking: { type: "enabled", budget_tokens: 5000 },
+      thinking: { type: "enabled", budget_tokens: 10000 },
       messages,
     });
 
