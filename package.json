@@ -1,0 +1,15 @@
+{
+  "name": "pollinator-garden-chat",
+  "version": "1.0.0",
+  "description": "Chat interface for pollinator gardening research and brainstorming powered by Claude",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.82.0",
+    "dotenv": "^17.4.0",
+    "express": "^4.21.0"
+  }
+}
