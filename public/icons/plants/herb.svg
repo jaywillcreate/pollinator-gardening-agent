@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Small leaf clusters -->
+  <ellipse cx="50" cy="36" rx="8" ry="12" fill="#3a8a32" transform="rotate(-10 50 36)"/>
+  <ellipse cx="40" cy="44" rx="7" ry="11" fill="#4a9a3e" transform="rotate(-40 40 44)"/>
+  <ellipse cx="60" cy="42" rx="7" ry="11" fill="#4a9a3e" transform="rotate(35 60 42)"/>
+  <ellipse cx="44" cy="58" rx="7" ry="10" fill="#3a8a32" transform="rotate(-25 44 58)"/>
+  <ellipse cx="58" cy="56" rx="7" ry="10" fill="#3a8a32" transform="rotate(20 58 56)"/>
+  <ellipse cx="34" cy="52" rx="6" ry="9" fill="#5aaa4e" transform="rotate(-50 34 52)"/>
+  <ellipse cx="66" cy="50" rx="6" ry="9" fill="#5aaa4e" transform="rotate(45 66 50)"/>
+  <ellipse cx="50" cy="64" rx="7" ry="10" fill="#4a9a3e" transform="rotate(5 50 64)"/>
+  <ellipse cx="38" cy="36" rx="5" ry="8" fill="#5aaa4e" transform="rotate(-60 38 36)"/>
+  <ellipse cx="62" cy="34" rx="5" ry="8" fill="#5aaa4e" transform="rotate(55 62 34)"/>
+  <!-- Center -->
+  <circle cx="50" cy="50" r="5" fill="#2a7a24"/>
+  <circle cx="50" cy="50" r="2.5" fill="#3a8a32"/>
+</svg>
