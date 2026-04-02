@@ -1,0 +1,277 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+
+  <!-- Sunflower — logo/welcome (colorful style from icon suite 1) -->
+  <symbol id="icon-sunflower" viewBox="0 0 64 64">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Petals -->
+      <ellipse cx="32" cy="14" rx="5" ry="10" fill="#fbbf24" stroke="#d97706" stroke-width="1.5" transform="rotate(0,32,32)"/>
+      <ellipse cx="32" cy="14" rx="5" ry="10" fill="#fbbf24" stroke="#d97706" stroke-width="1.5" transform="rotate(45,32,32)"/>
+      <ellipse cx="32" cy="14" rx="5" ry="10" fill="#fbbf24" stroke="#d97706" stroke-width="1.5" transform="rotate(90,32,32)"/>
+      <ellipse cx="32" cy="14" rx="5" ry="10" fill="#fbbf24" stroke="#d97706" stroke-width="1.5" transform="rotate(135,32,32)"/>
+      <ellipse cx="32" cy="14" rx="5" ry="10" fill="#f59e0b" stroke="#d97706" stroke-width="1.5" transform="rotate(180,32,32)"/>
+      <ellipse cx="32" cy="14" rx="5" ry="10" fill="#f59e0b" stroke="#d97706" stroke-width="1.5" transform="rotate(225,32,32)"/>
+      <ellipse cx="32" cy="14" rx="5" ry="10" fill="#f59e0b" stroke="#d97706" stroke-width="1.5" transform="rotate(270,32,32)"/>
+      <ellipse cx="32" cy="14" rx="5" ry="10" fill="#f59e0b" stroke="#d97706" stroke-width="1.5" transform="rotate(315,32,32)"/>
+      <!-- Center -->
+      <circle cx="32" cy="32" r="9" fill="#92400e" stroke="#78350f" stroke-width="1.5"/>
+      <circle cx="30" cy="30" r="2" fill="#b45309" opacity="0.6"/>
+      <circle cx="34" cy="31" r="1.5" fill="#b45309" opacity="0.6"/>
+      <circle cx="31" cy="34" r="1.5" fill="#b45309" opacity="0.6"/>
+      <!-- Stem -->
+      <path d="M32 41 L32 58" stroke="#16a34a" stroke-width="2.5"/>
+      <path d="M32 48 C26 44 22 46 20 44" stroke="#16a34a" stroke-width="2" fill="none"/>
+      <ellipse cx="19" cy="43" rx="4" ry="6" fill="#22c55e" stroke="#16a34a" stroke-width="1.5" transform="rotate(-30,19,43)"/>
+    </g>
+  </symbol>
+
+  <!-- Seedling — getting started card (colorful style) -->
+  <symbol id="icon-seedling" viewBox="0 0 64 64">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Pot -->
+      <path d="M18 40 L22 56 L42 56 L46 40 Z" fill="#7cc8e8" stroke="#4a9aba" stroke-width="1.5"/>
+      <rect x="16" y="37" width="32" height="5" rx="2" fill="#8bd4f0" stroke="#4a9aba" stroke-width="1.5"/>
+      <!-- Soil -->
+      <ellipse cx="32" cy="40" rx="13" ry="2" fill="#92400e"/>
+      <!-- Stem -->
+      <path d="M32 38 L32 24" stroke="#16a34a" stroke-width="2.5"/>
+      <!-- Leaves -->
+      <path d="M32 28 C28 22 20 22 18 26 C22 24 28 26 32 28" fill="#22c55e" stroke="#16a34a" stroke-width="1.5"/>
+      <path d="M32 22 C36 16 44 16 46 20 C42 18 36 20 32 22" fill="#4ade80" stroke="#16a34a" stroke-width="1.5"/>
+      <!-- Small leaf -->
+      <path d="M32 32 C30 28 24 28 22 31 C26 30 30 31 32 32" fill="#86efac" stroke="#16a34a" stroke-width="1"/>
+    </g>
+  </symbol>
+
+  <!-- Leaf cluster — native plants card (colorful style) -->
+  <symbol id="icon-leaves" viewBox="0 0 64 64">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Large leaf -->
+      <path d="M32 52 C32 52 18 38 18 26 C18 16 28 10 32 10 C36 10 46 16 46 26 C46 38 32 52 32 52Z" fill="#22c55e" stroke="#16a34a" stroke-width="2"/>
+      <!-- Veins -->
+      <path d="M32 14 L32 48" stroke="#16a34a" stroke-width="1.5"/>
+      <path d="M32 22 L24 28" stroke="#16a34a" stroke-width="1"/>
+      <path d="M32 22 L40 28" stroke="#16a34a" stroke-width="1"/>
+      <path d="M32 30 L25 35" stroke="#16a34a" stroke-width="1"/>
+      <path d="M32 30 L39 35" stroke="#16a34a" stroke-width="1"/>
+      <path d="M32 38 L27 42" stroke="#16a34a" stroke-width="1"/>
+      <path d="M32 38 L37 42" stroke="#16a34a" stroke-width="1"/>
+      <!-- Small accent leaf -->
+      <path d="M44 44 C44 44 50 36 54 34 C54 34 52 42 44 44Z" fill="#4ade80" stroke="#16a34a" stroke-width="1.5"/>
+    </g>
+  </symbol>
+
+  <!-- Garden layout — diagram card (colorful style) -->
+  <symbol id="icon-garden-layout" viewBox="0 0 64 64">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Bed border -->
+      <rect x="8" y="14" width="48" height="36" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+      <!-- Grid lines -->
+      <line x1="8" y1="30" x2="56" y2="30" stroke="#bbf7d0" stroke-width="1"/>
+      <line x1="28" y1="14" x2="28" y2="50" stroke="#bbf7d0" stroke-width="1"/>
+      <!-- Plants as colored circles -->
+      <circle cx="18" cy="22" r="5" fill="#a855f7" stroke="#7c3aed" stroke-width="1.5"/>
+      <circle cx="40" cy="22" r="6" fill="#f59e0b" stroke="#d97706" stroke-width="1.5"/>
+      <circle cx="50" cy="22" r="4" fill="#ec4899" stroke="#db2777" stroke-width="1.5"/>
+      <circle cx="16" cy="38" r="4" fill="#ef4444" stroke="#dc2626" stroke-width="1.5"/>
+      <circle cx="38" cy="40" r="5" fill="#3b82f6" stroke="#2563eb" stroke-width="1.5"/>
+      <circle cx="50" cy="38" r="4" fill="#22c55e" stroke="#16a34a" stroke-width="1.5"/>
+      <!-- Pencil -->
+      <path d="M48 54 L56 46 L60 50 L52 58 Z" fill="#fbbf24" stroke="#d97706" stroke-width="1.5"/>
+      <path d="M48 54 L46 60 L52 58" fill="#d97706"/>
+      <line x1="56" y1="46" x2="60" y2="50" stroke="#92400e" stroke-width="1"/>
+    </g>
+  </symbol>
+
+  <!-- Notepad — blog post card (colorful style) -->
+  <symbol id="icon-notepad" viewBox="0 0 64 64">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Paper -->
+      <rect x="14" y="8" width="36" height="48" rx="3" fill="white" stroke="#6b5d4f" stroke-width="2"/>
+      <!-- Top binding -->
+      <line x1="14" y1="16" x2="50" y2="16" stroke="#6b5d4f" stroke-width="2"/>
+      <!-- Rings -->
+      <circle cx="22" cy="16" r="3" fill="none" stroke="#9a8d7f" stroke-width="1.5"/>
+      <circle cx="32" cy="16" r="3" fill="none" stroke="#9a8d7f" stroke-width="1.5"/>
+      <circle cx="42" cy="16" r="3" fill="none" stroke="#9a8d7f" stroke-width="1.5"/>
+      <!-- Lines -->
+      <line x1="20" y1="24" x2="44" y2="24" stroke="#e5ddd0" stroke-width="1.5"/>
+      <line x1="20" y1="30" x2="44" y2="30" stroke="#e5ddd0" stroke-width="1.5"/>
+      <line x1="20" y1="36" x2="38" y2="36" stroke="#e5ddd0" stroke-width="1.5"/>
+      <line x1="20" y1="42" x2="42" y2="42" stroke="#e5ddd0" stroke-width="1.5"/>
+      <line x1="20" y1="48" x2="34" y2="48" stroke="#e5ddd0" stroke-width="1.5"/>
+      <!-- Pen -->
+      <path d="M42 38 L54 26 L58 30 L46 42 Z" fill="#16a34a" stroke="#14532d" stroke-width="1.5"/>
+      <path d="M42 38 L40 44 L46 42" fill="#14532d"/>
+    </g>
+  </symbol>
+
+  <!-- Bee — assistant avatar -->
+  <symbol id="icon-bee" viewBox="0 0 64 64">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Wings -->
+      <ellipse cx="22" cy="22" rx="10" ry="7" fill="#e0f2fe" stroke="#93c5fd" stroke-width="1.5" transform="rotate(-20,22,22)"/>
+      <ellipse cx="42" cy="22" rx="10" ry="7" fill="#e0f2fe" stroke="#93c5fd" stroke-width="1.5" transform="rotate(20,42,22)"/>
+      <!-- Body -->
+      <ellipse cx="32" cy="36" rx="12" ry="16" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+      <!-- Stripes -->
+      <path d="M20 30 Q32 28 44 30" stroke="#1f2937" stroke-width="3" fill="none"/>
+      <path d="M20 38 Q32 36 44 38" stroke="#1f2937" stroke-width="3" fill="none"/>
+      <path d="M22 46 Q32 44 42 46" stroke="#1f2937" stroke-width="3" fill="none"/>
+      <!-- Eyes -->
+      <circle cx="27" cy="28" r="2.5" fill="white" stroke="#1f2937" stroke-width="1"/>
+      <circle cx="37" cy="28" r="2.5" fill="white" stroke="#1f2937" stroke-width="1"/>
+      <circle cx="27.5" cy="28.5" r="1" fill="#1f2937"/>
+      <circle cx="37.5" cy="28.5" r="1" fill="#1f2937"/>
+      <!-- Antennae -->
+      <path d="M28 22 C26 16 22 14 20 12" stroke="#1f2937" stroke-width="1.5"/>
+      <circle cx="20" cy="12" r="2" fill="#1f2937"/>
+      <path d="M36 22 C38 16 42 14 44 12" stroke="#1f2937" stroke-width="1.5"/>
+      <circle cx="44" cy="12" r="2" fill="#1f2937"/>
+      <!-- Stinger -->
+      <path d="M32 52 L32 56" stroke="#1f2937" stroke-width="2"/>
+    </g>
+  </symbol>
+
+  <!-- Gardener person — user avatar (line style from icon suite 2) -->
+  <symbol id="icon-gardener" viewBox="0 0 64 64">
+    <g fill="none" stroke="#3d3229" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Hat -->
+      <ellipse cx="32" cy="14" rx="14" ry="4" fill="#fef3c7" stroke="#3d3229"/>
+      <path d="M22 14 C22 8 26 4 32 4 C38 4 42 8 42 14" fill="#fef3c7"/>
+      <!-- Head -->
+      <circle cx="32" cy="22" r="8" fill="#fef3c7"/>
+      <!-- Eyes -->
+      <circle cx="29" cy="21" r="1" fill="#3d3229" stroke="none"/>
+      <circle cx="35" cy="21" r="1" fill="#3d3229" stroke="none"/>
+      <!-- Smile -->
+      <path d="M29 25 Q32 28 35 25" stroke="#3d3229" stroke-width="1.5" fill="none"/>
+      <!-- Body -->
+      <path d="M24 30 L24 48" stroke-width="2"/>
+      <path d="M40 30 L40 48" stroke-width="2"/>
+      <path d="M24 30 Q32 34 40 30" fill="#22c55e" stroke="#16a34a"/>
+      <rect x="24" y="32" width="16" height="16" rx="2" fill="#22c55e" stroke="#16a34a"/>
+      <!-- Arms -->
+      <path d="M24 36 L14 42" stroke-width="2"/>
+      <path d="M40 36 L50 42" stroke-width="2"/>
+      <!-- Trowel in hand -->
+      <path d="M50 42 L54 38" stroke-width="2"/>
+      <path d="M54 38 L56 36 L58 38 L56 40 Z" fill="#9a8d7f" stroke="#3d3229" stroke-width="1.5"/>
+      <!-- Legs -->
+      <path d="M28 48 L26 58" stroke-width="2"/>
+      <path d="M36 48 L38 58" stroke-width="2"/>
+      <!-- Boots -->
+      <path d="M24 58 L28 58" stroke-width="2.5"/>
+      <path d="M36 58 L40 58" stroke-width="2.5"/>
+    </g>
+  </symbol>
+
+  <!-- Watering can — sidebar new chat icon -->
+  <symbol id="icon-watering-can" viewBox="0 0 64 64">
+    <g fill="none" stroke="#4a6741" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Body -->
+      <path d="M16 28 L18 52 L46 52 L48 28 Z" fill="#e8f0e4" stroke="#4a6741"/>
+      <!-- Handle -->
+      <path d="M20 28 C20 18 28 12 36 12 L44 12" fill="none"/>
+      <!-- Spout -->
+      <path d="M48 32 L56 22 L60 24" stroke-width="2"/>
+      <!-- Spout holes -->
+      <circle cx="60" cy="20" r="1" fill="#4a6741"/>
+      <circle cx="58" cy="18" r="1" fill="#4a6741"/>
+      <circle cx="62" cy="18" r="1" fill="#4a6741"/>
+      <!-- Water drops -->
+      <path d="M58 14 L58 10" stroke="#3b82f6" stroke-width="1.5"/>
+      <path d="M62 14 L62 11" stroke="#3b82f6" stroke-width="1.5"/>
+      <path d="M56 12 L56 9" stroke="#3b82f6" stroke-width="1.5"/>
+      <!-- Band -->
+      <line x1="16" y1="32" x2="48" y2="32" stroke="#4a6741" stroke-width="1.5"/>
+    </g>
+  </symbol>
+
+  <!-- Flower — welcome screen (colorful) -->
+  <symbol id="icon-flower" viewBox="0 0 64 64">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Stem -->
+      <path d="M32 38 L32 58" stroke="#16a34a" stroke-width="2.5"/>
+      <!-- Left leaf -->
+      <path d="M32 48 C26 44 20 46 18 44 C22 42 28 44 32 48" fill="#22c55e" stroke="#16a34a" stroke-width="1.5"/>
+      <!-- Right leaf -->
+      <path d="M32 52 C38 48 44 50 46 48 C42 46 36 48 32 52" fill="#4ade80" stroke="#16a34a" stroke-width="1.5"/>
+      <!-- Petals -->
+      <ellipse cx="32" cy="18" rx="5" ry="9" fill="#ec4899" stroke="#db2777" stroke-width="1.5"/>
+      <ellipse cx="32" cy="18" rx="5" ry="9" fill="#f472b6" stroke="#db2777" stroke-width="1.5" transform="rotate(60,32,26)"/>
+      <ellipse cx="32" cy="18" rx="5" ry="9" fill="#ec4899" stroke="#db2777" stroke-width="1.5" transform="rotate(120,32,26)"/>
+      <ellipse cx="32" cy="18" rx="5" ry="9" fill="#f472b6" stroke="#db2777" stroke-width="1.5" transform="rotate(180,32,26)"/>
+      <ellipse cx="32" cy="18" rx="5" ry="9" fill="#ec4899" stroke="#db2777" stroke-width="1.5" transform="rotate(240,32,26)"/>
+      <ellipse cx="32" cy="18" rx="5" ry="9" fill="#f472b6" stroke="#db2777" stroke-width="1.5" transform="rotate(300,32,26)"/>
+      <!-- Center -->
+      <circle cx="32" cy="26" r="6" fill="#fbbf24" stroke="#d97706" stroke-width="1.5"/>
+      <circle cx="31" cy="25" r="1.5" fill="#d97706" opacity="0.5"/>
+      <circle cx="34" cy="26" r="1" fill="#d97706" opacity="0.5"/>
+      <circle cx="32" cy="28" r="1" fill="#d97706" opacity="0.5"/>
+    </g>
+  </symbol>
+
+  <!-- Butterfly — decorative -->
+  <symbol id="icon-butterfly" viewBox="0 0 64 64">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Body -->
+      <ellipse cx="32" cy="34" rx="2" ry="12" fill="#1f2937" stroke="#1f2937" stroke-width="1"/>
+      <!-- Left wings -->
+      <path d="M30 28 C20 18 8 20 10 30 C12 36 22 36 30 32" fill="#f97316" stroke="#ea580c" stroke-width="1.5"/>
+      <path d="M30 36 C22 38 16 44 18 50 C20 54 28 48 30 40" fill="#fbbf24" stroke="#d97706" stroke-width="1.5"/>
+      <!-- Right wings -->
+      <path d="M34 28 C44 18 56 20 54 30 C52 36 42 36 34 32" fill="#f97316" stroke="#ea580c" stroke-width="1.5"/>
+      <path d="M34 36 C42 38 48 44 46 50 C44 54 36 48 34 40" fill="#fbbf24" stroke="#d97706" stroke-width="1.5"/>
+      <!-- Wing dots -->
+      <circle cx="18" cy="28" r="3" fill="#fef3c7" opacity="0.7"/>
+      <circle cx="46" cy="28" r="3" fill="#fef3c7" opacity="0.7"/>
+      <!-- Antennae -->
+      <path d="M31 22 C28 16 24 14 22 12" stroke="#1f2937" stroke-width="1.5"/>
+      <path d="M33 22 C36 16 40 14 42 12" stroke="#1f2937" stroke-width="1.5"/>
+      <circle cx="22" cy="12" r="1.5" fill="#1f2937"/>
+      <circle cx="42" cy="12" r="1.5" fill="#1f2937"/>
+    </g>
+  </symbol>
+
+  <!-- Plus/new — new chat -->
+  <symbol id="icon-plus" viewBox="0 0 24 24">
+    <path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Menu hamburger -->
+  <symbol id="icon-menu" viewBox="0 0 24 24">
+    <path d="M3 12h18M3 6h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Close X -->
+  <symbol id="icon-close" viewBox="0 0 24 24">
+    <path d="M18 6L6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Send arrow -->
+  <symbol id="icon-send" viewBox="0 0 24 24">
+    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Trash -->
+  <symbol id="icon-trash" viewBox="0 0 24 24">
+    <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Download -->
+  <symbol id="icon-download" viewBox="0 0 24 24">
+    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Copy -->
+  <symbol id="icon-copy" viewBox="0 0 24 24">
+    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"/>
+    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Check -->
+  <symbol id="icon-check" viewBox="0 0 24 24">
+    <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+</svg>

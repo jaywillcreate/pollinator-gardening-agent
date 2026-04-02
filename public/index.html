@@ -13,15 +13,11 @@
       <div class="sidebar-header">
         <span class="sidebar-title">Chat History</span>
         <button class="sidebar-close-btn" id="sidebarCloseBtn" title="Close sidebar">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 6L6 18M6 6l12 12"/>
-          </svg>
+          <svg class="icon icon-sm"><use href="icons.svg#icon-close"/></svg>
         </button>
       </div>
       <button class="sidebar-new-chat-btn" id="sidebarNewChatBtn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12h14"/>
-        </svg>
+        <img src="icons/watering-can.svg" alt="" class="icon icon-sidebar">
         New Chat
       </button>
       <div class="sidebar-sessions" id="sidebarSessions"></div>
@@ -36,22 +32,18 @@
         <div class="header-content">
           <div class="header-left">
             <button class="sidebar-toggle-btn" id="sidebarToggleBtn" title="Toggle chat history">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M3 12h18M3 6h18M3 18h18"/>
-              </svg>
+              <svg class="icon icon-md"><use href="icons.svg#icon-menu"/></svg>
             </button>
-            <div class="logo">
-              <span class="logo-icon">&#127804;</span>
+            <a class="logo" id="logoLink" href="#" title="New conversation">
+              <img src="icons/logo.svg" alt="Pollinator Garden" class="icon icon-logo">
               <div>
                 <h1>Pollinator Garden Advisor</h1>
                 <p class="tagline">Research &amp; brainstorm your pollinator-friendly garden</p>
               </div>
-            </div>
+            </a>
           </div>
           <button class="new-chat-btn" id="newChatBtn" title="New conversation">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 5v14M5 12h14"/>
-            </svg>
+            <svg class="icon icon-sm"><use href="icons.svg#icon-plus"/></svg>
             New Chat
           </button>
         </div>
@@ -59,24 +51,26 @@
 
       <main class="chat-container" id="chatContainer">
         <div class="welcome" id="welcome">
-          <div class="welcome-icon">&#127803;</div>
+          <div class="welcome-icon">
+            <img src="icons/welcome.svg" alt="Welcome" class="icon icon-welcome">
+          </div>
           <h2>Welcome to the Pollinator Garden Advisor</h2>
           <p>I can help you research plants, design gardens, and brainstorm ideas to support pollinators in your area.</p>
           <div class="starter-grid">
             <button class="starter-card" data-prompt="I'm new to gardening and want to create a small pollinator garden in my backyard. Where do I start?">
-              <span class="starter-icon">&#127793;</span>
+              <span class="starter-icon"><img src="icons/seedling.svg" alt="" class="icon icon-card"></span>
               <span class="starter-text">Getting started with a pollinator garden</span>
             </button>
             <button class="starter-card" data-prompt="What are the best native plants for pollinators in the northeastern United States?">
-              <span class="starter-icon">&#127807;</span>
+              <span class="starter-icon"><img src="icons/leaves.svg" alt="" class="icon icon-card"></span>
               <span class="starter-text">Best native plants for my region</span>
             </button>
             <button class="starter-card" data-prompt="Draw me an SVG diagram of a 10x6 foot raised garden bed layout for pollinators with labeled plant placement, using native plants suited for USDA zone 7 with full sun.">
-              <span class="starter-icon">&#127912;</span>
+              <span class="starter-icon"><img src="icons/garden-bed.svg" alt="" class="icon icon-card"></span>
               <span class="starter-text">Draw a garden bed layout diagram</span>
             </button>
             <button class="starter-card" data-prompt="Help me brainstorm 5 engaging blog post ideas about pollinator gardening for beginners. Include catchy titles and a brief angle for each.">
-              <span class="starter-icon">&#128221;</span>
+              <span class="starter-icon"><img src="icons/seed-packets.svg" alt="" class="icon icon-card"></span>
               <span class="starter-text">Brainstorm blog post ideas</span>
             </button>
           </div>
@@ -95,9 +89,7 @@
               autofocus
             ></textarea>
             <button type="submit" class="send-btn" id="sendBtn" disabled>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-              </svg>
+              <svg class="icon icon-md"><use href="icons.svg#icon-send"/></svg>
             </button>
           </div>
         </form>

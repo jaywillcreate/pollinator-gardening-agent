@@ -201,7 +201,7 @@ function renderSidebar() {
       deleteBtn.className = "sidebar-session-delete";
       deleteBtn.title = "Delete conversation";
       deleteBtn.innerHTML =
-        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>';
+        '<svg class="icon icon-xs"><use href="icons.svg#icon-trash"/></svg>';
 
       item.appendChild(title);
       item.appendChild(deleteBtn);
@@ -310,7 +310,7 @@ function copySVGSource(svgEl, btn) {
   navigator.clipboard.writeText(svgString).then(() => {
     const original = btn.innerHTML;
     btn.innerHTML =
-      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Copied!';
+      '<svg class="icon icon-xs"><use href="icons.svg#icon-check"/></svg> Copied!';
     setTimeout(() => {
       btn.innerHTML = original;
     }, 2000);
@@ -327,8 +327,12 @@ document.querySelectorAll(".starter-card").forEach((card) => {
   });
 });
 
-// New chat (header button)
+// New chat (header button + logo click)
 newChatBtn.addEventListener("click", createNewSession);
+document.getElementById("logoLink").addEventListener("click", (e) => {
+  e.preventDefault();
+  createNewSession();
+});
 
 // ── Submit ──
 
@@ -431,7 +435,9 @@ function appendMessage(role, text) {
 
   const avatar = document.createElement("div");
   avatar.className = "message-avatar";
-  avatar.textContent = role === "user" ? "\u{1F9D1}\u200D\u{1F33E}" : "\u{1F41D}";
+  avatar.innerHTML = role === "user"
+    ? '<img src="icons/gardener.svg" alt="You" class="icon icon-avatar">'
+    : '<img src="icons/bee-hotel.svg" alt="Advisor" class="icon icon-avatar">';
 
   const body = document.createElement("div");
   body.className = "message-body";
@@ -458,7 +464,7 @@ function appendAssistantPlaceholder() {
 
   const avatar = document.createElement("div");
   avatar.className = "message-avatar";
-  avatar.textContent = "\u{1F41D}";
+  avatar.innerHTML = '<img src="icons/bee-hotel.svg" alt="Advisor" class="icon icon-avatar">';
 
   const body = document.createElement("div");
   body.className = "message-body";
@@ -511,11 +517,11 @@ function buildSvgContainer(svgMarkup, index) {
       <span class="svg-diagram-label">Garden Diagram</span>
       <div class="svg-diagram-actions">
         <button class="svg-download-btn" title="Download SVG">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <svg class="icon icon-xs"><use href="icons.svg#icon-download"/></svg>
           Download
         </button>
         <button class="svg-copy-btn" title="Copy SVG code">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <svg class="icon icon-xs"><use href="icons.svg#icon-copy"/></svg>
           Copy SVG
         </button>
       </div>
