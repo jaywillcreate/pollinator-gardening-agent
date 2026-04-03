@@ -380,6 +380,29 @@ chatForm.addEventListener("submit", async (e) => {
     const decoder = new TextDecoder();
     let fullText = "";
     let buffer = "";
+    let diagramPhraseIndex = 0;
+    let diagramPhraseTimer = null;
+    const diagramPhrases = [
+      "Building an amazing garden...",
+      "Thank you for caring about our pollinators...",
+      "This is going to BEE-terrific...",
+    ];
+
+    function startDiagramPhrases() {
+      if (diagramPhraseTimer) return;
+      diagramPhraseTimer = setInterval(() => {
+        diagramPhraseIndex = (diagramPhraseIndex + 1) % diagramPhrases.length;
+        const el = messageContent.querySelector(".diagram-loading-phrase");
+        if (el) el.textContent = diagramPhrases[diagramPhraseIndex];
+      }, 2500);
+    }
+
+    function stopDiagramPhrases() {
+      if (diagramPhraseTimer) {
+        clearInterval(diagramPhraseTimer);
+        diagramPhraseTimer = null;
+      }
+    }
 
     while (true) {
       const { done, value } = await reader.read();
@@ -402,7 +425,27 @@ chatForm.addEventListener("submit", async (e) => {
           }
           if (parsed.text) {
             fullText += parsed.text;
-            messageContent.innerHTML = renderMarkdown(fullText);
+
+            // Check if we're inside an unclosed ```svg block
+            // Count opening ```svg fences and completed ```svg...``` pairs
+            const svgOpens = (fullText.match(/```svg\n/g) || []).length;
+            const svgComplete = (fullText.match(/```svg\n[\s\S]*?```/g) || []).length;
+            const insideSvgBlock = svgOpens > svgComplete;
+
+            if (insideSvgBlock) {
+              // Show rotating garden phrases instead of raw SVG code
+              const beforeSvg = fullText.substring(0, fullText.lastIndexOf("```svg"));
+              const rendered = beforeSvg ? renderMarkdown(beforeSvg) : "";
+              messageContent.innerHTML = rendered +
+                '<div class="diagram-loading">' +
+                '<div class="diagram-loading-dots"><span></span><span></span><span></span></div>' +
+                '<div class="diagram-loading-phrase">' + diagramPhrases[diagramPhraseIndex] + '</div>' +
+                '</div>';
+              startDiagramPhrases();
+            } else {
+              stopDiagramPhrases();
+              messageContent.innerHTML = renderMarkdown(fullText);
+            }
             scrollToBottom();
           }
         } catch {
@@ -411,6 +454,7 @@ chatForm.addEventListener("submit", async (e) => {
       }
     }
 
+    stopDiagramPhrases();
     if (typingEl) typingEl.remove();
 
     if (fullText) {
