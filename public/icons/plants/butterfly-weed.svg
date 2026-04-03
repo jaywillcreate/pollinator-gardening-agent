@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Butterfly Weed - Top View: flat-topped umbel cluster from above -->
+  <g fill="none" stroke="#2d3a2e" stroke-linecap="round">
+    <!-- Radiating leaves underneath -->
+    <path d="M50,50 C42,38 30,32 22,28" stroke-width="1.8"/>
+    <path d="M50,50 C58,38 70,32 78,28" stroke-width="1.8"/>
+    <path d="M50,50 C38,42 28,45 18,42" stroke-width="1.6"/>
+    <path d="M50,50 C62,42 72,45 82,42" stroke-width="1.6"/>
+    <path d="M50,50 C42,58 32,65 24,72" stroke-width="1.8"/>
+    <path d="M50,50 C58,58 68,65 76,72" stroke-width="1.8"/>
+    <path d="M50,50 C50,62 48,72 46,80" stroke-width="1.6"/>
+    <path d="M50,50 C50,62 52,72 54,80" stroke-width="1.6"/>
+    <!-- Central umbel - tiny star flowers clustered -->
+    <!-- Ring 1: outer stars -->
+    <g stroke-width="1.0">
+      <path d="M35,38 L37,34 L39,38 L35,36 L39,36Z"/>
+      <path d="M44,32 L46,28 L48,32 L44,30 L48,30Z"/>
+      <path d="M54,30 L56,26 L58,30 L54,28 L58,28Z"/>
+      <path d="M64,34 L66,30 L68,34 L64,32 L68,32Z"/>
+      <path d="M68,44 L70,40 L72,44 L68,42 L72,42Z"/>
+      <path d="M66,54 L68,50 L70,54 L66,52 L70,52Z"/>
+      <path d="M58,62 L60,58 L62,62 L58,60 L62,60Z"/>
+      <path d="M46,64 L48,60 L50,64 L46,62 L50,62Z"/>
+      <path d="M36,58 L38,54 L40,58 L36,56 L40,56Z"/>
+      <path d="M30,48 L32,44 L34,48 L30,46 L34,46Z"/>
+      <path d="M32,38 L34,34 L36,38 L32,36 L36,36Z"/>
+      <path d="M62,62 L64,58 L66,62 L62,60 L66,60Z"/>
+    </g>
+    <!-- Ring 2: middle stars -->
+    <g stroke-width="1.2">
+      <path d="M42,38 L44,34 L46,38 L42,36 L46,36Z"/>
+      <path d="M52,35 L54,31 L56,35 L52,33 L56,33Z"/>
+      <path d="M60,40 L62,36 L64,40 L60,38 L64,38Z"/>
+      <path d="M62,50 L64,46 L66,50 L62,48 L66,48Z"/>
+      <path d="M56,56 L58,52 L60,56 L56,54 L60,54Z"/>
+      <path d="M44,58 L46,54 L48,58 L44,56 L48,56Z"/>
+      <path d="M36,50 L38,46 L40,50 L36,48 L40,48Z"/>
+      <path d="M38,42 L40,38 L42,42 L38,40 L42,40Z"/>
+    </g>
+    <!-- Ring 3: center stars -->
+    <g stroke-width="1.4">
+      <path d="M48,42 L50,38 L52,42 L48,40 L52,40Z"/>
+      <path d="M54,44 L56,40 L58,44 L54,42 L58,42Z"/>
+      <path d="M56,50 L58,46 L60,50 L56,48 L60,48Z"/>
+      <path d="M50,54 L52,50 L54,54 L50,52 L54,52Z"/>
+      <path d="M44,50 L46,46 L48,50 L44,48 L48,48Z"/>
+      <path d="M46,44 L48,40 L50,44 L46,42 L50,42Z"/>
+    </g>
+  </g>
+  <!-- Stippling for shadow -->
+  <g fill="#2d3a2e" stroke="none">
+    <circle cx="40" cy="55" r="0.7"/><circle cx="42" cy="57" r="0.7"/>
+    <circle cx="58" cy="55" r="0.7"/><circle cx="60" cy="53" r="0.7"/>
+    <circle cx="50" cy="58" r="0.7"/><circle cx="48" cy="56" r="0.7"/>
+    <circle cx="36" cy="46" r="0.7"/><circle cx="62" cy="46" r="0.7"/>
+    <circle cx="45" cy="52" r="0.7"/><circle cx="55" cy="52" r="0.7"/>
+    <circle cx="38" cy="50" r="0.7"/><circle cx="60" cy="50" r="0.7"/>
+    <circle cx="30" cy="44" r="0.7"/><circle cx="70" cy="44" r="0.7"/>
+    <circle cx="28" cy="70" r="0.7"/><circle cx="72" cy="70" r="0.7"/>
+    <circle cx="50" cy="76" r="0.7"/><circle cx="24" cy="40" r="0.7"/>
+    <circle cx="76" cy="40" r="0.7"/><circle cx="34" cy="52" r="0.7"/>
+    <circle cx="52" cy="46" r="0.7"/><circle cx="46" cy="48" r="0.7"/>
+  </g>
+</svg>

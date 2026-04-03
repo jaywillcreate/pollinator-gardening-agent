@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Bench - Top View: Rectangle with leg supports at ends -->
+  <!-- Bench seat -->
+  <rect x="15" y="38" width="70" height="24" fill="#c4a882" stroke="#4a4a4a" stroke-width="1.5" rx="2"/>
+  <!-- Plank lines on seat -->
+  <line x1="15" y1="44" x2="85" y2="44" stroke="#4a4a4a" stroke-width="0.6" opacity="0.4"/>
+  <line x1="15" y1="50" x2="85" y2="50" stroke="#4a4a4a" stroke-width="0.6" opacity="0.4"/>
+  <line x1="15" y1="56" x2="85" y2="56" stroke="#4a4a4a" stroke-width="0.6" opacity="0.4"/>
+  <!-- Left leg supports -->
+  <rect x="18" y="34" width="4" height="32" fill="#4a4a4a" stroke="#4a4a4a" stroke-width="1.0" rx="1"/>
+  <rect x="28" y="34" width="4" height="32" fill="#4a4a4a" stroke="#4a4a4a" stroke-width="1.0" rx="1"/>
+  <!-- Cross brace left -->
+  <line x1="20" y1="36" x2="30" y2="36" stroke="#4a4a4a" stroke-width="1.0"/>
+  <line x1="20" y1="64" x2="30" y2="64" stroke="#4a4a4a" stroke-width="1.0"/>
+  <!-- Right leg supports -->
+  <rect x="68" y="34" width="4" height="32" fill="#4a4a4a" stroke="#4a4a4a" stroke-width="1.0" rx="1"/>
+  <rect x="78" y="34" width="4" height="32" fill="#4a4a4a" stroke="#4a4a4a" stroke-width="1.0" rx="1"/>
+  <!-- Cross brace right -->
+  <line x1="70" y1="36" x2="80" y2="36" stroke="#4a4a4a" stroke-width="1.0"/>
+  <line x1="70" y1="64" x2="80" y2="64" stroke="#4a4a4a" stroke-width="1.0"/>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Wild Columbine - Top View: 5 spurs radiating like a star/pinwheel with petals between -->
+  <g fill="none" stroke="#2d3a2e" stroke-linecap="round">
+    <!-- 5 backward-pointing spurs radiating outward -->
+    <!-- Spur 1 - top -->
+    <path d="M50,46 C49,38 46,28 44,18" stroke-width="1.6"/>
+    <path d="M50,46 C51,38 54,28 56,18" stroke-width="1.6"/>
+    <path d="M44,18 C48,16 52,16 56,18" stroke-width="1.2"/>
+    <!-- Spur 2 - upper right -->
+    <path d="M54,48 C60,42 68,36 76,30" stroke-width="1.6"/>
+    <path d="M54,48 C62,46 72,42 80,38" stroke-width="1.6"/>
+    <path d="M76,30 C78,34 80,36 80,38" stroke-width="1.2"/>
+    <!-- Spur 3 - lower right -->
+    <path d="M52,54 C58,58 64,66 68,76" stroke-width="1.6"/>
+    <path d="M52,54 C56,60 62,70 70,78" stroke-width="1.6"/>
+    <path d="M68,76 C70,76 72,78 70,78" stroke-width="1.2"/>
+    <!-- Spur 4 - lower left -->
+    <path d="M48,54 C42,58 36,66 32,76" stroke-width="1.6"/>
+    <path d="M48,54 C44,60 38,70 30,78" stroke-width="1.6"/>
+    <path d="M32,76 C30,76 28,78 30,78" stroke-width="1.2"/>
+    <!-- Spur 5 - upper left -->
+    <path d="M46,48 C40,42 32,36 24,30" stroke-width="1.6"/>
+    <path d="M46,48 C38,46 28,42 20,38" stroke-width="1.6"/>
+    <path d="M24,30 C22,34 20,36 20,38" stroke-width="1.2"/>
+    <!-- Inner petals between spurs (rounded) -->
+    <path d="M50,44 C54,42 58,44 54,48" stroke-width="1.2"/>
+    <path d="M54,48 C56,52 54,56 52,54" stroke-width="1.2"/>
+    <path d="M52,54 C50,56 46,56 48,54" stroke-width="1.2"/>
+    <path d="M48,54 C44,52 44,48 46,48" stroke-width="1.2"/>
+    <path d="M46,48 C46,44 48,42 50,44" stroke-width="1.2"/>
+    <!-- Center stamens -->
+    <circle cx="50" cy="50" r="3" stroke-width="1.4"/>
+    <circle cx="50" cy="50" r="1.2" stroke-width="1.0"/>
+  </g>
+  <!-- Stippling for shadow in spur channels and center -->
+  <g fill="#2d3a2e" stroke="none">
+    <circle cx="50" cy="32" r="0.7"/><circle cx="48" cy="26" r="0.7"/>
+    <circle cx="52" cy="26" r="0.7"/><circle cx="66" cy="38" r="0.7"/>
+    <circle cx="70" cy="34" r="0.7"/><circle cx="62" cy="42" r="0.7"/>
+    <circle cx="64" cy="68" r="0.7"/><circle cx="60" cy="64" r="0.7"/>
+    <circle cx="66" cy="72" r="0.7"/><circle cx="36" cy="68" r="0.7"/>
+    <circle cx="40" cy="64" r="0.7"/><circle cx="34" cy="72" r="0.7"/>
+    <circle cx="34" cy="38" r="0.7"/><circle cx="30" cy="34" r="0.7"/>
+    <circle cx="38" cy="42" r="0.7"/><circle cx="50" cy="48" r="0.7"/>
+    <circle cx="48" cy="50" r="0.7"/><circle cx="52" cy="50" r="0.7"/>
+    <circle cx="50" cy="52" r="0.7"/><circle cx="56" cy="56" r="0.7"/>
+    <circle cx="44" cy="56" r="0.7"/><circle cx="44" cy="44" r="0.7"/>
+    <circle cx="56" cy="44" r="0.7"/>
+  </g>
+</svg>

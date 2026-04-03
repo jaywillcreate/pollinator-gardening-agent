@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Bee Balm (Monarda) - Front View -->
+  <g fill="none" stroke="#2d3a2e" stroke-linecap="round">
+    <!-- Square stem (mint family) -->
+    <path d="M49,85 L49,30" stroke-width="2.3"/>
+    <path d="M51,85 L51,30" stroke-width="2.3"/>
+    <!-- Opposite leaves - lower pair -->
+    <path d="M49,72 C40,66 30,62 22,64" stroke-width="2.0"/>
+    <path d="M22,64 C26,60 28,57 26,54" stroke-width="1.3"/>
+    <path d="M51,72 C60,66 70,62 78,64" stroke-width="2.0"/>
+    <path d="M78,64 C74,60 72,57 74,54" stroke-width="1.3"/>
+    <!-- Opposite leaves - upper pair -->
+    <path d="M49,54 C42,50 34,48 28,50" stroke-width="1.7"/>
+    <path d="M28,50 C31,47 32,44 30,42" stroke-width="1.1"/>
+    <path d="M51,54 C58,50 66,48 72,50" stroke-width="1.7"/>
+    <path d="M72,50 C69,47 68,44 70,42" stroke-width="1.1"/>
+    <!-- Top flower head - tiered spiky tubular whorl -->
+    <!-- Lower whorl bracts -->
+    <path d="M42,32 C36,34 30,36 26,37" stroke-width="1.5"/>
+    <path d="M58,32 C64,34 70,36 74,37" stroke-width="1.5"/>
+    <!-- Upper tubular flowers - spiky crown -->
+    <path d="M46,30 C44,24 42,18 40,13" stroke-width="1.3"/>
+    <path d="M40,13 C38,10 37,8 35,7" stroke-width="1.0"/>
+    <path d="M48,30 C47,23 46,16 46,10" stroke-width="1.3"/>
+    <path d="M46,10 C45,7 45,5 44,4" stroke-width="1.0"/>
+    <path d="M50,30 C50,23 50,16 50,9" stroke-width="1.4"/>
+    <path d="M50,9 C50,6 50,4 50,3" stroke-width="1.0"/>
+    <path d="M52,30 C53,23 54,16 54,10" stroke-width="1.3"/>
+    <path d="M54,10 C55,7 55,5 56,4" stroke-width="1.0"/>
+    <path d="M54,30 C56,24 58,18 60,13" stroke-width="1.3"/>
+    <path d="M60,13 C62,10 63,8 65,7" stroke-width="1.0"/>
+    <!-- Side tubes arching out -->
+    <path d="M44,31 C40,26 36,22 32,19" stroke-width="1.2"/>
+    <path d="M32,19 C30,17 28,16 26,16" stroke-width="1.0"/>
+    <path d="M56,31 C60,26 64,22 68,19" stroke-width="1.2"/>
+    <path d="M68,19 C70,17 72,16 74,16" stroke-width="1.0"/>
+    <!-- Whorl base ring -->
+    <ellipse cx="50" cy="32" rx="9" ry="3" stroke-width="1.6"/>
+  </g>
+  <!-- Stippling for whorl center shadow -->
+  <g fill="#2d3a2e" stroke="none">
+    <circle cx="48" cy="32" r="0.7"/><circle cx="50" cy="32" r="0.7"/>
+    <circle cx="52" cy="32" r="0.7"/><circle cx="46" cy="33" r="0.7"/>
+    <circle cx="54" cy="33" r="0.7"/><circle cx="48" cy="34" r="0.7"/>
+    <circle cx="52" cy="34" r="0.7"/><circle cx="50" cy="34" r="0.7"/>
+    <circle cx="47" cy="31" r="0.7"/><circle cx="53" cy="31" r="0.7"/>
+    <!-- Stem shadow -->
+    <circle cx="50" cy="40" r="0.7"/><circle cx="50" cy="45" r="0.7"/>
+    <circle cx="50" cy="60" r="0.7"/><circle cx="50" cy="65" r="0.7"/>
+    <circle cx="50" cy="78" r="0.7"/>
+  </g>
+</svg>

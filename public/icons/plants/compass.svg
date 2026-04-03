@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Compass - North arrow with N/S/E/W markers -->
+  <g fill="none" stroke="#4a4a4a" stroke-width="1.5">
+    <!-- Outer circle -->
+    <circle cx="50" cy="50" r="38"/>
+    <!-- Inner circle -->
+    <circle cx="50" cy="50" r="32"/>
+    <!-- Tick marks at cardinal points -->
+    <line x1="50" y1="12" x2="50" y2="18"/>
+    <line x1="50" y1="82" x2="50" y2="88"/>
+    <line x1="12" y1="50" x2="18" y2="50"/>
+    <line x1="82" y1="50" x2="88" y2="50"/>
+    <!-- Minor tick marks at ordinal points -->
+    <line x1="26" y1="26" x2="30" y2="30" stroke-width="1.0"/>
+    <line x1="74" y1="26" x2="70" y2="30" stroke-width="1.0"/>
+    <line x1="26" y1="74" x2="30" y2="70" stroke-width="1.0"/>
+    <line x1="74" y1="74" x2="70" y2="70" stroke-width="1.0"/>
+  </g>
+  <!-- North arrow - filled half -->
+  <polygon points="50,18 44,50 50,44" fill="#4a4a4a" stroke="#4a4a4a" stroke-width="1.0" stroke-linejoin="round"/>
+  <!-- North arrow - open half -->
+  <polygon points="50,18 56,50 50,44" fill="none" stroke="#4a4a4a" stroke-width="1.0" stroke-linejoin="round"/>
+  <!-- South pointer -->
+  <polygon points="50,82 47,56 50,58 53,56" fill="none" stroke="#4a4a4a" stroke-width="1.0" stroke-linejoin="round"/>
+  <!-- East pointer -->
+  <line x1="56" y1="50" x2="78" y2="50" stroke="#4a4a4a" stroke-width="1.0"/>
+  <!-- West pointer -->
+  <line x1="44" y1="50" x2="22" y2="50" stroke="#4a4a4a" stroke-width="1.0"/>
+  <!-- Center dot -->
+  <circle cx="50" cy="50" r="2" fill="#4a4a4a" stroke="none"/>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Dogwood top-view: layered horizontal branches, 4-petal flower clusters -->
+  <!-- Center trunk -->
+  <circle cx="50" cy="50" r="2.5" fill="none" stroke="#2d3a2e" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Main horizontal branches -->
+  <line x1="50" y1="50" x2="50" y2="18" stroke="#2d3a2e" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="82" y2="50" stroke="#2d3a2e" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="50" y2="82" stroke="#2d3a2e" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="18" y2="50" stroke="#2d3a2e" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="72" y2="28" stroke="#2d3a2e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="28" y2="72" stroke="#2d3a2e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="72" y2="72" stroke="#2d3a2e" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="50" y1="50" x2="28" y2="28" stroke="#2d3a2e" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Secondary branch tips -->
+  <line x1="50" y1="25" x2="42" y2="16" stroke="#2d3a2e" stroke-width="1.0" stroke-linecap="round"/>
+  <line x1="50" y1="25" x2="58" y2="16" stroke="#2d3a2e" stroke-width="1.0" stroke-linecap="round"/>
+  <line x1="75" y1="50" x2="84" y2="42" stroke="#2d3a2e" stroke-width="1.0" stroke-linecap="round"/>
+  <line x1="75" y1="50" x2="84" y2="58" stroke="#2d3a2e" stroke-width="1.0" stroke-linecap="round"/>
+  <!-- 4-petal flower clusters (characteristic dogwood) -->
+  <g fill="none" stroke="#2d3a2e" stroke-width="1.0" stroke-linecap="round">
+    <!-- Flower at top -->
+    <path d="M50,16 C48,12 48,10 50,8 C52,10 52,12 50,16"/>
+    <path d="M50,16 C46,16 44,16 42,14 C44,12 46,12 50,16"/>
+    <path d="M50,16 C52,16 56,16 58,14 C56,12 54,12 50,16"/>
+    <path d="M50,16 C48,18 48,22 50,24 C52,22 52,18 50,16"/>
+    <!-- Flower at right -->
+    <path d="M84,50 C88,48 90,48 92,50 C90,52 88,52 84,50"/>
+    <path d="M84,50 C84,46 84,44 86,42 C88,44 88,46 84,50"/>
+    <path d="M84,50 C84,54 84,56 86,58 C88,56 88,54 84,50"/>
+    <path d="M84,50 C80,48 78,48 76,50 C78,52 80,52 84,50"/>
+    <!-- Flower at bottom-left -->
+    <path d="M28,72 C24,72 22,74 22,76 C24,76 26,74 28,72"/>
+    <path d="M28,72 C26,68 24,66 22,66 C22,68 24,70 28,72"/>
+    <path d="M28,72 C32,72 34,74 34,76 C32,76 30,74 28,72"/>
+    <path d="M28,72 C30,68 32,66 34,66 C34,68 32,70 28,72"/>
+  </g>
+  <!-- Canopy outline - medium rounded -->
+  <path d="M50,8 C62,6 76,14 84,24 C90,34 92,44 90,52 C92,62 88,74 80,80 C72,86 62,90 50,90 C38,90 28,86 20,80 C12,74 8,62 10,52 C8,44 10,34 16,24 C24,14 38,6 50,8Z" fill="none" stroke="#2d3a2e" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Stippling -->
+  <circle cx="35" cy="20" r="0.7" fill="#2d3a2e" stroke="none"/>
+  <circle cx="68" cy="22" r="0.7" fill="#2d3a2e" stroke="none"/>
+  <circle cx="80" cy="40" r="0.7" fill="#2d3a2e" stroke="none"/>
+  <circle cx="78" cy="65" r="0.7" fill="#2d3a2e" stroke="none"/>
+  <circle cx="62" cy="80" r="0.7" fill="#2d3a2e" stroke="none"/>
+  <circle cx="38" cy="82" r="0.7" fill="#2d3a2e" stroke="none"/>
+  <circle cx="18" cy="62" r="0.7" fill="#2d3a2e" stroke="none"/>
+  <circle cx="16" cy="38" r="0.7" fill="#2d3a2e" stroke="none"/>
+  <circle cx="42" cy="42" r="0.7" fill="#2d3a2e" stroke="none"/>
+  <circle cx="60" cy="58" r="0.7" fill="#2d3a2e" stroke="none"/>
+  <circle cx="40" cy="62" r="0.7" fill="#2d3a2e" stroke="none"/>
+  <circle cx="62" cy="38" r="0.7" fill="#2d3a2e" stroke="none"/>
+</svg>

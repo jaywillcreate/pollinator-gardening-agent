@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Blue Flag Iris (Iris versicolor) - Top View -->
+  <g fill="none" stroke="#2d3a2e" stroke-linecap="round">
+    <!-- Central point where leaves converge -->
+    <circle cx="50" cy="50" r="1.5" stroke-width="1.6"/>
+    <!-- Sword-like leaves radiating in fan arrangement -->
+    <path d="M50,50 C50,42 49,30 48,16" stroke-width="2.0"/>
+    <path d="M48,16 C49,14 50,13 51,14" stroke-width="1.0"/>
+    <path d="M50,50 C54,42 58,32 64,18" stroke-width="1.8"/>
+    <path d="M64,18 C64,16 63,14 62,15" stroke-width="1.0"/>
+    <path d="M50,50 C46,42 42,32 36,18" stroke-width="1.8"/>
+    <path d="M36,18 C36,16 37,14 38,15" stroke-width="1.0"/>
+    <path d="M50,50 C56,44 64,38 74,30" stroke-width="1.6"/>
+    <path d="M74,30 C75,28 74,27 73,27" stroke-width="1.0"/>
+    <path d="M50,50 C44,44 36,38 26,30" stroke-width="1.6"/>
+    <path d="M26,30 C25,28 26,27 27,27" stroke-width="1.0"/>
+    <!-- Rear leaves (growing backward/downward) -->
+    <path d="M50,50 C50,58 50,68 50,82" stroke-width="1.8"/>
+    <path d="M50,82 C49,84 50,85 51,84" stroke-width="1.0"/>
+    <path d="M50,50 C54,58 58,68 62,80" stroke-width="1.5"/>
+    <path d="M50,50 C46,58 42,68 38,80" stroke-width="1.5"/>
+    <!-- 3-petaled iris flower visible from above -->
+    <!-- Three drooping falls (outer petals) -->
+    <path d="M50,44 C48,36 44,28 40,24" stroke-width="1.4"/>
+    <path d="M40,24 C36,22 34,24 36,28" stroke-width="1.2"/>
+    <path d="M56,52 C62,56 68,58 74,58" stroke-width="1.4"/>
+    <path d="M74,58 C78,58 78,55 74,54" stroke-width="1.2"/>
+    <path d="M44,52 C38,56 32,58 26,58" stroke-width="1.4"/>
+    <path d="M26,58 C22,58 22,55 26,54" stroke-width="1.2"/>
+    <!-- Three upright standards (inner petals, seen foreshortened) -->
+    <path d="M50,46 C52,44 54,42 53,40" stroke-width="1.1"/>
+    <path d="M54,52 C56,52 58,50 57,48" stroke-width="1.1"/>
+    <path d="M46,52 C44,52 42,50 43,48" stroke-width="1.1"/>
+  </g>
+  <!-- Stippling for center shadow and petal shadows -->
+  <g fill="#2d3a2e" stroke="none">
+    <circle cx="49" cy="49" r="0.7"/><circle cx="51" cy="49" r="0.7"/>
+    <circle cx="49" cy="51" r="0.7"/><circle cx="51" cy="51" r="0.7"/>
+    <circle cx="50" cy="50" r="0.7"/>
+    <!-- Fall petal shadows -->
+    <circle cx="42" cy="26" r="0.7"/><circle cx="38" cy="24" r="0.7"/>
+    <circle cx="72" cy="56" r="0.7"/><circle cx="70" cy="58" r="0.7"/>
+    <circle cx="28" cy="56" r="0.7"/><circle cx="30" cy="58" r="0.7"/>
+    <!-- Leaf overlap shadows -->
+    <circle cx="50" cy="38" r="0.7"/><circle cx="50" cy="32" r="0.7"/>
+    <circle cx="56" cy="40" r="0.7"/><circle cx="44" cy="40" r="0.7"/>
+    <circle cx="50" cy="62" r="0.7"/><circle cx="50" cy="70" r="0.7"/>
+  </g>
+</svg>
