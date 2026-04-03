@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Spiderwort - Top View: three-petaled flowers with radiating grass-like leaves -->
+  <g fill="none" stroke="#2d3a2e" stroke-linecap="round">
+    <!-- Long grass-like leaves radiating from center -->
+    <path d="M50,50 C46,40 40,24 34,10" stroke-width="1.8"/>
+    <path d="M50,50 C54,40 60,24 66,10" stroke-width="1.8"/>
+    <path d="M50,50 C40,46 24,40 10,36" stroke-width="2.0"/>
+    <path d="M50,50 C40,54 24,60 10,66" stroke-width="2.0"/>
+    <path d="M50,50 C60,46 76,40 90,36" stroke-width="2.0"/>
+    <path d="M50,50 C60,54 76,60 90,66" stroke-width="2.0"/>
+    <path d="M50,50 C46,60 40,76 36,90" stroke-width="1.8"/>
+    <path d="M50,50 C54,60 60,76 64,90" stroke-width="1.8"/>
+    <!-- Leaf midribs (faint) -->
+    <path d="M50,50 C44,42 36,28 30,14" stroke-width="1.0"/>
+    <path d="M50,50 C56,42 64,28 70,14" stroke-width="1.0"/>
+    <path d="M50,50 C42,48 28,44 14,40" stroke-width="1.0"/>
+    <path d="M50,50 C42,52 28,56 14,62" stroke-width="1.0"/>
+    <!-- Central three-petaled flower - triangle arrangement -->
+    <!-- Petal 1 - top -->
+    <path d="M50,46 C44,38 42,32 46,30 C48,28 52,28 54,30 C58,32 56,38 50,46" stroke-width="1.4"/>
+    <!-- Petal 2 - bottom left -->
+    <path d="M48,52 C42,54 36,58 36,54 C34,52 36,48 38,48 C42,46 46,48 48,52" stroke-width="1.4"/>
+    <!-- Petal 3 - bottom right -->
+    <path d="M52,52 C58,54 64,58 64,54 C66,52 64,48 62,48 C58,46 54,48 52,52" stroke-width="1.4"/>
+    <!-- Center stamens -->
+    <circle cx="50" cy="50" r="2.5" stroke-width="1.2"/>
+    <!-- Stamen filaments -->
+    <path d="M50,48 L50,44" stroke-width="1.0"/>
+    <path d="M48,51 L44,53" stroke-width="1.0"/>
+    <path d="M52,51 L56,53" stroke-width="1.0"/>
+    <!-- Second smaller flower bud nearby -->
+    <circle cx="38" cy="40" r="2" stroke-width="1.0"/>
+    <path d="M37,39 L36,37" stroke-width="0.8"/>
+    <path d="M39,39 L40,37" stroke-width="0.8"/>
+  </g>
+  <!-- Stippling for shadow -->
+  <g fill="#2d3a2e" stroke="none">
+    <circle cx="46" cy="42" r="0.7"/><circle cx="54" cy="42" r="0.7"/>
+    <circle cx="44" cy="52" r="0.7"/><circle cx="56" cy="52" r="0.7"/>
+    <circle cx="50" cy="56" r="0.7"/><circle cx="48" cy="36" r="0.7"/>
+    <circle cx="52" cy="36" r="0.7"/><circle cx="40" cy="50" r="0.7"/>
+    <circle cx="60" cy="50" r="0.7"/><circle cx="36" cy="42" r="0.7"/>
+    <circle cx="30" cy="20" r="0.7"/><circle cx="70" cy="20" r="0.7"/>
+    <circle cx="16" cy="42" r="0.7"/><circle cx="16" cy="60" r="0.7"/>
+    <circle cx="84" cy="42" r="0.7"/><circle cx="84" cy="60" r="0.7"/>
+    <circle cx="40" cy="84" r="0.7"/><circle cx="60" cy="84" r="0.7"/>
+    <circle cx="46" cy="54" r="0.7"/><circle cx="54" cy="54" r="0.7"/>
+    <circle cx="42" cy="46" r="0.7"/><circle cx="58" cy="46" r="0.7"/>
+    <circle cx="50" cy="50" r="0.7"/>
+  </g>
+</svg>

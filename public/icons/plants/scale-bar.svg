@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Scale Bar - Horizontal bar with alternating segment fills -->
+  <g stroke="#4a4a4a" stroke-width="1.5">
+    <!-- Main bar outline -->
+    <rect x="10" y="42" width="80" height="8" fill="none"/>
+    <!-- Alternating filled segments -->
+    <rect x="10" y="42" width="16" height="8" fill="#4a4a4a"/>
+    <rect x="26" y="42" width="16" height="8" fill="#f5f5f0"/>
+    <rect x="42" y="42" width="16" height="8" fill="#4a4a4a"/>
+    <rect x="58" y="42" width="16" height="8" fill="#f5f5f0"/>
+    <rect x="74" y="42" width="16" height="8" fill="#4a4a4a"/>
+    <!-- Top tick marks -->
+    <line x1="10" y1="38" x2="10" y2="42" stroke-width="1.5"/>
+    <line x1="26" y1="38" x2="26" y2="42" stroke-width="1.5"/>
+    <line x1="42" y1="38" x2="42" y2="42" stroke-width="1.5"/>
+    <line x1="58" y1="38" x2="58" y2="42" stroke-width="1.5"/>
+    <line x1="74" y1="38" x2="74" y2="42" stroke-width="1.5"/>
+    <line x1="90" y1="38" x2="90" y2="42" stroke-width="1.5"/>
+    <!-- Bottom tick marks -->
+    <line x1="10" y1="50" x2="10" y2="54" stroke-width="1.5"/>
+    <line x1="26" y1="50" x2="26" y2="54" stroke-width="1.5"/>
+    <line x1="42" y1="50" x2="42" y2="54" stroke-width="1.5"/>
+    <line x1="58" y1="50" x2="58" y2="54" stroke-width="1.5"/>
+    <line x1="74" y1="50" x2="74" y2="54" stroke-width="1.5"/>
+    <line x1="90" y1="50" x2="90" y2="54" stroke-width="1.5"/>
+    <!-- Sub-division marks on first segment -->
+    <line x1="14" y1="50" x2="14" y2="52" stroke-width="0.8"/>
+    <line x1="18" y1="50" x2="18" y2="52" stroke-width="0.8"/>
+    <line x1="22" y1="50" x2="22" y2="52" stroke-width="0.8"/>
+  </g>
+</svg>
