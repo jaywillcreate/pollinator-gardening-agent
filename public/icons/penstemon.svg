@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Penstemon - Top View: rosette of basal leaves with central spike emerging -->
+  <g fill="none" stroke="#2d3a2e" stroke-linecap="round">
+    <!-- Radiating oblong basal leaves -->
+    <path d="M50,50 C46,42 42,30 38,18" stroke-width="1.8"/>
+    <path d="M50,50 C44,42 34,34 24,26" stroke-width="1.8"/>
+    <path d="M50,50 C42,46 30,42 18,40" stroke-width="2.0"/>
+    <path d="M50,50 C42,52 30,56 18,60" stroke-width="2.0"/>
+    <path d="M50,50 C44,56 36,66 28,76" stroke-width="1.8"/>
+    <path d="M50,50 C48,58 46,70 44,82" stroke-width="1.8"/>
+    <path d="M50,50 C54,58 58,70 60,82" stroke-width="1.8"/>
+    <path d="M50,50 C56,56 66,66 74,76" stroke-width="1.8"/>
+    <path d="M50,50 C58,52 70,56 82,60" stroke-width="2.0"/>
+    <path d="M50,50 C58,46 70,42 82,40" stroke-width="2.0"/>
+    <path d="M50,50 C56,42 66,34 76,26" stroke-width="1.8"/>
+    <path d="M50,50 C54,42 58,30 62,18" stroke-width="1.8"/>
+    <!-- Leaf edges (oblong shape outlines) -->
+    <path d="M36,18 C38,16 40,16 40,18" stroke-width="1.0"/>
+    <path d="M22,26 C24,24 26,24 26,26" stroke-width="1.0"/>
+    <path d="M16,40 C16,38 18,38 20,40" stroke-width="1.0"/>
+    <path d="M16,60 C16,58 18,58 20,60" stroke-width="1.0"/>
+    <path d="M26,76 C28,74 30,74 30,76" stroke-width="1.0"/>
+    <path d="M42,82 C44,80 46,80 46,82" stroke-width="1.0"/>
+    <path d="M58,82 C60,80 62,80 62,82" stroke-width="1.0"/>
+    <path d="M72,76 C74,74 76,74 76,76" stroke-width="1.0"/>
+    <path d="M80,60 C82,58 84,58 84,60" stroke-width="1.0"/>
+    <path d="M80,40 C82,38 84,38 84,40" stroke-width="1.0"/>
+    <path d="M74,26 C76,24 78,24 78,26" stroke-width="1.0"/>
+    <path d="M60,18 C62,16 64,16 64,18" stroke-width="1.0"/>
+    <!-- Central tight cluster (spike from above) -->
+    <circle cx="50" cy="50" r="4" stroke-width="1.6"/>
+    <circle cx="50" cy="50" r="2" stroke-width="1.2"/>
+    <path d="M48,47 L50,44 L52,47" stroke-width="1.0"/>
+    <path d="M47,50 L44,50 L47,52" stroke-width="1.0"/>
+    <path d="M53,48 L56,50 L53,52" stroke-width="1.0"/>
+    <path d="M48,53 L50,56 L52,53" stroke-width="1.0"/>
+  </g>
+  <!-- Stippling for shadow between leaves -->
+  <g fill="#2d3a2e" stroke="none">
+    <circle cx="44" cy="36" r="0.7"/><circle cx="42" cy="38" r="0.7"/>
+    <circle cx="56" cy="36" r="0.7"/><circle cx="58" cy="38" r="0.7"/>
+    <circle cx="36" cy="48" r="0.7"/><circle cx="38" cy="50" r="0.7"/>
+    <circle cx="64" cy="48" r="0.7"/><circle cx="62" cy="50" r="0.7"/>
+    <circle cx="44" cy="62" r="0.7"/><circle cx="42" cy="60" r="0.7"/>
+    <circle cx="56" cy="62" r="0.7"/><circle cx="58" cy="60" r="0.7"/>
+    <circle cx="36" cy="54" r="0.7"/><circle cx="64" cy="54" r="0.7"/>
+    <circle cx="34" cy="44" r="0.7"/><circle cx="66" cy="44" r="0.7"/>
+    <circle cx="48" cy="68" r="0.7"/><circle cx="52" cy="68" r="0.7"/>
+    <circle cx="40" cy="30" r="0.7"/><circle cx="60" cy="30" r="0.7"/>
+    <circle cx="32" cy="64" r="0.7"/><circle cx="68" cy="64" r="0.7"/>
+    <circle cx="50" cy="46" r="0.7"/><circle cx="50" cy="54" r="0.7"/>
+  </g>
+</svg>

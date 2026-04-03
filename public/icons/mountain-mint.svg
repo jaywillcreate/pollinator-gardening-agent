@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Mountain Mint (Pycnanthemum) - Top View -->
+  <g fill="none" stroke="#2d3a2e" stroke-linecap="round">
+    <!-- Square stem cross-section at center (mint family) -->
+    <rect x="47.5" y="47.5" width="5" height="5" rx="0.4" stroke-width="1.8"/>
+    <!-- Dense rounded flower cluster - tight florets radiating from center -->
+    <!-- Inner ring of tiny florets -->
+    <path d="M50,44 C49,40 48,37 47,34" stroke-width="1.3"/>
+    <path d="M54,45 C57,42 59,39 62,36" stroke-width="1.3"/>
+    <path d="M56,50 C60,50 63,50 67,49" stroke-width="1.3"/>
+    <path d="M54,55 C57,58 60,61 62,64" stroke-width="1.3"/>
+    <path d="M50,56 C50,60 50,63 50,67" stroke-width="1.3"/>
+    <path d="M46,55 C43,58 40,61 38,64" stroke-width="1.3"/>
+    <path d="M44,50 C40,50 37,50 33,49" stroke-width="1.3"/>
+    <path d="M46,45 C43,42 41,39 38,36" stroke-width="1.3"/>
+    <!-- Outer ring of florets (denser, shorter) -->
+    <path d="M48,42 C47,39 45,36 44,33" stroke-width="1.1"/>
+    <path d="M52,42 C53,39 55,36 56,33" stroke-width="1.1"/>
+    <path d="M56,46 C59,44 62,42 65,40" stroke-width="1.1"/>
+    <path d="M57,52 C60,53 63,54 66,55" stroke-width="1.1"/>
+    <path d="M56,56 C58,59 60,62 62,65" stroke-width="1.1"/>
+    <path d="M52,58 C53,61 54,64 55,67" stroke-width="1.1"/>
+    <path d="M48,58 C47,61 46,64 45,67" stroke-width="1.1"/>
+    <path d="M44,56 C42,59 40,62 38,65" stroke-width="1.1"/>
+    <path d="M43,52 C40,53 37,54 34,55" stroke-width="1.1"/>
+    <path d="M43,46 C41,44 38,42 35,40" stroke-width="1.1"/>
+    <!-- Tiny floret tips (small forked ends to show flower detail) -->
+    <path d="M47,34 C45,31 44,29 42,28" stroke-width="1.0"/>
+    <path d="M47,34 C48,31 49,29 50,28" stroke-width="1.0"/>
+    <path d="M62,36 C64,34 66,33 68,32" stroke-width="1.0"/>
+    <path d="M67,49 C70,48 72,47 74,46" stroke-width="1.0"/>
+    <path d="M62,64 C64,66 65,68 67,70" stroke-width="1.0"/>
+    <path d="M50,67 C50,70 50,72 50,74" stroke-width="1.0"/>
+    <path d="M38,64 C36,66 35,68 33,70" stroke-width="1.0"/>
+    <path d="M33,49 C30,49 28,48 26,47" stroke-width="1.0"/>
+    <path d="M38,36 C36,34 34,33 32,32" stroke-width="1.0"/>
+    <!-- Opposite leaves below flower cluster (silvery bracts) -->
+    <path d="M40,75 C32,80 25,85 18,90" stroke-width="2.2"/>
+    <path d="M18,90 C22,87 24,84 23,81" stroke-width="1.4"/>
+    <path d="M60,75 C68,80 75,85 82,90" stroke-width="2.2"/>
+    <path d="M82,90 C78,87 76,84 77,81" stroke-width="1.4"/>
+    <!-- Second pair of opposite leaves (perpendicular) -->
+    <path d="M30,62 C24,68 18,74 14,78" stroke-width="1.8"/>
+    <path d="M70,62 C76,68 82,74 86,78" stroke-width="1.8"/>
+  </g>
+  <!-- Stippling for center shadow and bract shading -->
+  <g fill="#2d3a2e" stroke="none">
+    <circle cx="49" cy="49" r="0.7"/><circle cx="51" cy="49" r="0.7"/>
+    <circle cx="49" cy="51" r="0.7"/><circle cx="51" cy="51" r="0.7"/>
+    <circle cx="50" cy="50" r="0.7"/><circle cx="48" cy="48" r="0.7"/>
+    <circle cx="52" cy="48" r="0.7"/><circle cx="48" cy="52" r="0.7"/>
+    <circle cx="52" cy="52" r="0.7"/>
+    <!-- Bract shadows -->
+    <circle cx="36" cy="78" r="0.7"/><circle cx="34" cy="80" r="0.7"/>
+    <circle cx="64" cy="78" r="0.7"/><circle cx="66" cy="80" r="0.7"/>
+    <circle cx="28" cy="67" r="0.7"/><circle cx="72" cy="67" r="0.7"/>
+  </g>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Little Bluestem - Top View: Radiating thin grass blades from central clump -->
+  <g fill="none" stroke="#2d3a2e" stroke-linecap="round">
+    <!-- Central clump radiating blades -->
+    <path d="M50 50 L50 12" stroke-width="1.2"/>
+    <path d="M50 50 L42 14" stroke-width="1.0"/>
+    <path d="M50 50 L58 13" stroke-width="1.1"/>
+    <path d="M50 50 L35 20" stroke-width="1.0"/>
+    <path d="M50 50 L65 18" stroke-width="1.2"/>
+    <path d="M50 50 L28 28" stroke-width="1.0"/>
+    <path d="M50 50 L72 26" stroke-width="1.1"/>
+    <path d="M50 50 L20 38" stroke-width="1.2"/>
+    <path d="M50 50 L80 36" stroke-width="1.0"/>
+    <path d="M50 50 L15 48" stroke-width="1.1"/>
+    <path d="M50 50 L85 46" stroke-width="1.2"/>
+    <path d="M50 50 L18 58" stroke-width="1.0"/>
+    <path d="M50 50 L82 56" stroke-width="1.1"/>
+    <path d="M50 50 L24 68" stroke-width="1.2"/>
+    <path d="M50 50 L76 66" stroke-width="1.0"/>
+    <path d="M50 50 L32 76" stroke-width="1.1"/>
+    <path d="M50 50 L68 74" stroke-width="1.2"/>
+    <path d="M50 50 L42 82" stroke-width="1.0"/>
+    <path d="M50 50 L58 80" stroke-width="1.1"/>
+    <path d="M50 50 L50 85" stroke-width="1.0"/>
+    <!-- Arching blades -->
+    <path d="M50 50 Q30 25 22 15" stroke-width="1.0"/>
+    <path d="M50 50 Q70 28 78 16" stroke-width="1.0"/>
+    <path d="M50 50 Q25 55 12 55" stroke-width="1.0"/>
+    <path d="M50 50 Q75 52 88 50" stroke-width="1.0"/>
+  </g>
+  <!-- Stippling for central density -->
+  <g fill="#2d3a2e" stroke="none">
+    <circle cx="50" cy="50" r="0.7"/><circle cx="48" cy="48" r="0.7"/><circle cx="52" cy="48" r="0.7"/>
+    <circle cx="49" cy="52" r="0.7"/><circle cx="51" cy="51" r="0.7"/><circle cx="47" cy="50" r="0.7"/>
+    <circle cx="53" cy="50" r="0.7"/><circle cx="50" cy="47" r="0.7"/><circle cx="50" cy="53" r="0.7"/>
+    <circle cx="46" cy="49" r="0.7"/><circle cx="54" cy="51" r="0.7"/><circle cx="48" cy="53" r="0.7"/>
+  </g>
+</svg>
