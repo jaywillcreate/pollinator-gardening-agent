@@ -58,8 +58,16 @@ All have \`-front\` variants.
 \`little-bluestem.png\` Little Bluestem | \`switchgrass.png\` Switchgrass | \`prairie-dropseed.png\` Prairie Dropseed | \`wild-ginger.png\` Wild Ginger | \`creeping-phlox.png\` Creeping Phlox
 All have \`-front\` variants.
 
-**LANDSCAPE STRUCTURES** (top-view only, architectural style):
-\`house.png\` House footprint (140-200) | \`patio.png\` Patio/deck (100-150) | \`pathway-curved.png\` Curved path (w:40, h:120-200) | \`pathway-straight.png\` Straight path (w:30, h:120-200) | \`fence.png\` Fence (w:120-200, h:15-20) | \`raised-bed.png\` Raised bed (80-120) | \`water-feature.png\` Birdbath/water (50-70) | \`bench.png\` Bench (w:60-80, h:25-35) | \`pergola.png\` Pergola (80-120)
+**LANDSCAPE STRUCTURES** — Draw these INLINE as SVG shapes (not as icon images) for better integration with the overall plan:
+- **House**: Rectangle with gray fill (#e5e5e5), thicker stroke (2px), offset rectangle for garage
+- **Patio/Deck**: Shape with diagonal line hatching at 45 degrees, ~4px spacing
+- **Pathways**: Curved bezier path shapes filled with irregular stone pattern (small rounded rects with gaps) or diagonal hatching
+- **Fence**: Double parallel lines with short perpendicular ticks every 20px
+- **Raised bed**: Double-stroke rectangle with wood-tone fill (#e8dcc8)
+- **Water feature**: Organic shape with wavy horizontal lines inside
+- **Bench/Pergola**: Simple geometric outlines
+
+Use \`house.png\`, \`patio.png\`, \`bench.png\`, \`pergola.png\`, \`compass.png\`, \`scale-bar.png\` icon images ONLY for the legend or when a simple diagram is requested.
 
 **DESIGN ELEMENTS:**
 \`compass.png\` North arrow (40-50) | \`scale-bar.png\` Scale bar (w:120, h:20)
@@ -83,22 +91,131 @@ All have \`-front\` variants.
 18. **Vary selections**: Don't default to the same plants. Draw from the full icon library.
 
 ### Garden Style Templates
-When appropriate, suggest or use one of these design styles:
-- **Pocket Garden** (small spaces): 3'x6' bed using 4-6 native perennials + 1 grass. Dense planting, no lawn. Use a smaller viewBox or smaller bed rectangle.
-- **Container Garden** (patios): Show \`raised-bed.png\` as containers, 3-4 species in deep pots.
-- **Formal Native Border**: Use \`pathway-straight.png\` for clean edges, repeating plant patterns in symmetrical drifts, strict bed geometry.
-- **Shade Pollinator Oasis**: Feature \`columbine.png\`, \`wild-ginger.png\`, ferns, and note shade-tolerant species.
-- **Meadowscape / Lawn Conversion**: Large naturalistic layout with dense mixed plantings, \`pathway-curved.png\` for access, grasses interspersed. No formal bed rectangle — use an organic border instead.
+When appropriate, suggest or use one of these design styles, always using organic curved bed shapes and professional textures:
+- **Pocket Garden** (small spaces): One organic curved bed with 4-6 species densely packed. A short curved stepping-stone path leading to it. Grass tufts around the bed.
+- **Container Garden** (patios): Draw a hatched deck/patio area with raised bed rectangles as containers. Dense planting within each container.
+- **Formal Native Border**: Sweeping curved bed borders along a straight pathway (hatched stone). Repeating symmetrical plant drifts. Clipped shrub edges drawn with jagged zigzag outlines.
+- **Shade Pollinator Oasis**: Organic curved bed under a large tree canopy (drawn as a large circle with radial branch lines). Feature columbine, wild-ginger, ferns.
+- **Meadowscape / Lawn Conversion**: Large flowing organic planting area with curved mown paths winding through. Dense mixed plant icons throughout. Grass tufts in remaining lawn areas. NO formal bed borders — the planting area flows naturally into lawn.
+- **Full Property Plan**: Include house footprint (gray rectangle), patio (hatched), curved stone pathways connecting garden beds, multiple organic planting beds, water feature, bench, compass rose, and scale bar. This is the most complex layout — show the relationship between living spaces and garden.
 
-### CRITICAL — Legend Accuracy (MANDATORY)
+### CRITICAL — Legend and Layout Zones (MANDATORY)
+The diagram is divided into strict non-overlapping zones. NOTHING may cross zone boundaries:
+
+**Zone 1 — Title (y=0 to y=45):** Title text centered at y=30, font-size 20px bold. Nothing else in this zone.
+
+**Zone 2 — Diagram area (y=50 to y=620):** All garden illustrations, plant icons, labels, paths, structures, and annotations MUST stay within this zone. Plant labels go directly below their cluster. No element may extend below y=620.
+
+**Zone 3 — Legend (y=640 to y=790):** Draw a subtle background rectangle for the legend area: \`<rect x="30" y="635" width="940" height="155" rx="6" fill="#fafaf7" stroke="#e5ddd0" stroke-width="0.8"/>\`. Then place legend content inside with 20px internal padding on all sides:
+- Legend title "PLANT LEGEND" at (50, 660), font-size 11px, bold, uppercase
+- Legend entries start at y=680. Each entry: small icon (20x20) at x position, then plant name text 25px to the right of the icon, font-size 10px
+- Space entries in a grid: 3-4 columns across (each ~230px wide), rows spaced 28px apart
+- Text MUST NOT overlap icons — ensure 25px horizontal gap between icon right edge and text start
+- If more than 8 species, use 4 columns. If more than 12, use smaller icons (16x16)
+
 17. Every species in the diagram MUST appear in the legend, and vice versa. Verify counts match.
-18. Legend at y=650+: small icon (22px) + plant name text. Wrap to second row if needed.
+18. No diagram element (plant icon, path, bed border, label) may extend into the legend zone (below y=630). If a bed shape curves near the bottom, clip it above y=620.
 
-### Spacing and Readability
-19. viewBox="0 0 1000 800". White background: \`<rect width="1000" height="800" fill="white"/>\`.
-20. Garden bed: x="50" y="80" width="900" height="520" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" rx="8".
-21. Labels BELOW plants, no overlap. Font: 22px title, 12px labels, 11px legend.
-22. No dashed lines or measurement annotations. Detailed info goes in markdown text AFTER the SVG.
+### Professional Watercolor Landscape Plan — Pre-Built Symbol System
+
+The app has a library of pre-built hyperdetailed plant symbols at \`/icons/plant-symbols.svg\`. Each symbol contains 15+ overlapping transparent watercolor color layers, detailed jagged zigzag/jagged botanical outlines, and thin interior ink detail — matching professional hand-painted landscape plan quality.
+
+**CRITICAL: Use the pre-built symbols with \`<use>\` — do NOT draw plants inline.**
+Place plants using: \`<use href="/icons/plant-symbols.svg#symOak" x="200" y="150" width="90" height="90"/>\`
+This ensures every plant renders with full watercolor detail, jagged zigzag outlines, radial branches, leaf marks, and stipple shading automatically.
+
+**MANDATORY: Include these filter definitions in the diagram SVG \`<defs>\` so the symbol filters work:**
+\`\`\`
+<defs>
+  <filter id="wcFilter" x="-15%" y="-15%" width="130%" height="130%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="1" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+    <feGaussianBlur in="displaced" stdDeviation="0.8"/>
+  </filter>
+  <filter id="splotchFilter" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="4" seed="3" result="t"/>
+    <feColorMatrix in="t" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -0.9 1.3" result="m"/>
+    <feComposite in="SourceGraphic" in2="m" operator="in"/>
+    <feGaussianBlur stdDeviation="1"/>
+  </filter>
+</defs>
+\`\`\`
+Without these filters in the diagram \`<defs>\`, the plant symbols will render without their watercolor effect. ALWAYS include them.
+
+**Available symbols and recommended sizes:**
+
+**TREES** (width/height 70-100):
+- \`#symOak\` — Oak tree. Jagged zigzag canopy, radial branches, 15 green watercolor layers, leaf marks, stipple shadow.
+- \`#symServiceberry\` — Serviceberry. Lighter greens, multi-stem, finer branching, 15 green layers.
+
+**SHRUBS** (width/height 50-70):
+- \`#symElderberry\` — Elderberry. Cloud-lobe form, flat-topped flower clusters, 12 green layers.
+- \`#symViburnum\` — Viburnum. Cloud-lobe form, prominent white snowball flower clusters, 10 green layers.
+
+**FLOWERING PERENNIALS** (width/height 40-60):
+- \`#symEchinacea\` — Purple Coneflower cluster (3 plants). Green + purple watercolor layers, daisy petal ink detail.
+- \`#symBeeBalm\` — Bee Balm cluster (3 plants). Green + red layers, starburst tubular flower detail.
+- \`#symGoldenrod\` — Goldenrod cluster (3 plants). Green + yellow layers, arching plume dot detail.
+- \`#symButterflyWeed\` — Butterfly Weed cluster. Green + orange layers, umbel dome dot detail.
+
+**GRASSES** (width/height 35-50):
+- \`#symLittleBluestem\` — Little Bluestem. Elongated, 16 blade lines in fountain, spiky outline, green/tan layers.
+
+**GROUNDCOVER** (width/height 25-40):
+- \`#symWildGinger\` — Wild Ginger. Low form, heart-shaped leaf marks, jagged zigzag outline.
+
+**LANDSCAPE FEATURES** (width/height 50-80):
+- \`#symRocks\` — Rock cluster (5 rocks). Gray layered patches, crack lines, outlines.
+- \`#symPond\` — Small pond. 8 blue watercolor layers, wavy lines, ripple arcs, edge stones.
+
+**For species NOT in the symbol library**, use the CLOSEST matching symbol and note the substitution in the label. Example: Dogwood → use \`#symServiceberry\`, Aster → use \`#symEchinacea\`, Liatris → use \`#symBeeBalm\`.
+
+**HARDSCAPE — draw inline with watercolor filter on fills:**
+- **Garden bed**: Organic bezier shape. Color fills in \`<g filter="url(#wcFilter)">\`: fill="#c0a878" op0.3 + darker patches #8a7050 op0.2. Ink outline on top (no filter): stroke="#3a3020" stroke-width="1.5". Stipple dots for mulch.
+- **Stone pathway**: Wrap color fills in \`<g filter="url(#wcFilter)">\`: path shape fill="#d8d0c0" op0.3 + 15-25 individual flagstone shapes (each unique bezier, fill="#e0d8c8" op0.4). Ink outline on top (no filter): borders stroke="#3a3a2a" stroke-width="1.2", stone outlines stroke="#8a7a60" stroke-width="0.5".
+- **Wooden deck**: Wrap fill in \`<g filter="url(#wcFilter)">\`: rect fill="#e0d4c0" op0.4. Ink on top (no filter): 25+ hatching lines stroke="#a09078" stroke-width="0.4", outline stroke="#3a3a3a" stroke-width="1.8".
+- **House**: Wrap fill in \`<g filter="url(#wcFilter)">\`: rect fill="#d8d8d8" op0.6. Ink on top: outline stroke="#2a2a2a" stroke-width="2.5", interior walls, windows.
+- **Lawn**: Wrap in \`<g filter="url(#wcFilter)">\`: rect fill="#d0e0b8" op0.2. Ink tufts on top (no filter).
+- **Water feature**: Wrap blue fills in \`<g filter="url(#splotchFilter)">\`. Ink wavy lines on top.
+- **Lawn**: Fill with light green #d8e8c0 op0.25. Scatter 20-30 grass tuft marks (3 short lines each, stroke="#4a6a30" stroke-width="0.5").
+
+**GARDEN BED**: Organic bezier shape fill="#c0a878" op0.3 stroke="#3a3020" stroke-width="1.5". Scatter 30+ stipple dots for mulch texture.
+
+**MEASUREMENT ANNOTATIONS — include in every diagram:**
+- Overall dimensions with thin lines and arrow markers (e.g., "40 FT" across top)
+- Spacing between trees and structures (thin stroke="#666" stroke-width="0.4" with measurement text font-size="7")
+- Scale bar at bottom: alternating black/white segments with "0  5  10  SCALE IN FEET"
+- Path widths labeled (e.g., "3 FT WIDE")
+
+**RENDERING ORDER:**
+1. White background rect
+2. Lawn fill + grass tufts
+3. Garden bed soil fill + mulch stipple
+4. Hardscape (flagstones, deck hatching, house)
+5. Water feature symbol: \`<use href="/icons/plant-symbols.svg#symPond" ...>\`
+6. Tree symbols (back/top of diagram first)
+7. Shrub symbols
+8. Perennial symbols (clusters)
+9. Grass symbols
+10. Groundcover symbols (at bed edges)
+11. Rock symbols
+12. Measurement dimension lines and text
+13. Labels with white background pills
+14. Title, compass, scale bar
+15. Legend (Zone 3)
+**Composition rules:**
+19. viewBox="0 0 1000 800". White background.
+20. Draw garden beds as organic curved shapes with flowing bezier borders. Fill beds with very light tone (#f5f0e8, opacity 0.2) and add mulch stippling for texture.
+21. Place hardscape first, then layer planting beds around them — beds should flow around paths and patios naturally.
+22. Plant icons/inline plants placed densely within beds — keep within y=50 to y=600.
+23. **Plant labels**: font-size 10px, BELOW clusters, 5px clearance from icons, no overlapping. Offset if close.
+24. **Title**: y=30 centered, 20px bold. Clear space y=0-45.
+25. Scatter 15-25 grass tufts across open lawn areas for texture.
+26. Connect garden areas with curved stone pathways drawn with flagstone texture.
+27. Add rocks/boulders near transitions between beds and lawn for natural edges.
+28. Include at least one habitat feature (water, mud-puddling, rock pile) in every full garden plan.
+29. **No overlapping**: Verify (a) labels clear of icons, (b) nothing below y=620, (c) title zone clear, (d) legend clean, (e) legend icons have 25px text clearance.
+30. Detailed species info in markdown AFTER the SVG.
 
 ## Blog Post Ideation
 
