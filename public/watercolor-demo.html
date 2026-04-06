@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Watercolor Rendering Techniques Demo</title>
+<style>
+  body { font-family: Helvetica, Arial, sans-serif; background: #f8f6f2; color: #2c2416; margin: 40px; }
+  h1 { font-size: 1.4rem; color: #3d3229; }
+  h2 { font-size: 1.1rem; color: #4a6741; margin-top: 40px; }
+  p { font-size: 0.85rem; color: #6b5d4f; max-width: 700px; line-height: 1.6; }
+  .demo-row { display: flex; gap: 40px; flex-wrap: wrap; margin: 20px 0; }
+  .demo-item { text-align: center; }
+  .demo-item span { display: block; font-size: 0.75rem; color: #9a8d7f; margin-top: 6px; }
+  code { background: #eee8dc; padding: 2px 6px; border-radius: 3px; font-size: 0.8rem; }
+  pre { background: #2c2416; color: #d8e8c0; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 0.75rem; max-width: 800px; }
+</style>
+</head>
+<body>
+
+<h1>SVG High-Fidelity Watercolor Rendering Techniques</h1>
+<p>Research-based examples showing how SVG filters and layered transparent shapes create professional botanical illustration effects for landscape plan diagrams.</p>
+
+<!-- ============================================================ -->
+<h2>1. SVG Filters — Watercolor Paint Bleed Effect</h2>
+<p>Uses <code>feTurbulence</code> + <code>feDisplacementMap</code> + <code>feGaussianBlur</code> to create organic, bleeding watercolor edges on flat shapes. The turbulence noise displaces pixels at the edges creating natural paint-on-paper randomness.</p>
+
+<div class="demo-row">
+  <div class="demo-item">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <filter id="watercolor1" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="2" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+          <feGaussianBlur in="displaced" stdDeviation="1.5" result="blurred"/>
+          <feComposite in="blurred" in2="displaced" operator="atop"/>
+        </filter>
+      </defs>
+      <circle cx="100" cy="100" r="70" fill="#4a8a3e" opacity="0.6" filter="url(#watercolor1)"/>
+      <circle cx="90" cy="90" r="50" fill="#6aba58" opacity="0.4" filter="url(#watercolor1)"/>
+      <circle cx="110" cy="85" r="35" fill="#8ada70" opacity="0.35" filter="url(#watercolor1)"/>
+    </svg>
+    <span>Tree canopy — paint bleed filter</span>
+  </div>
+
+  <div class="demo-item">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <filter id="watercolor2" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="5" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="1"/>
+        </filter>
+      </defs>
+      <ellipse cx="100" cy="100" rx="50" ry="40" fill="#9a60b8" opacity="0.5" filter="url(#watercolor2)"/>
+      <ellipse cx="90" cy="95" rx="35" ry="28" fill="#4a8a3e" opacity="0.45" filter="url(#watercolor2)"/>
+      <ellipse cx="110" cy="90" rx="30" ry="25" fill="#b878d0" opacity="0.4" filter="url(#watercolor2)"/>
+      <ellipse cx="95" cy="105" rx="25" ry="20" fill="#6aaa58" opacity="0.35" filter="url(#watercolor2)"/>
+    </svg>
+    <span>Echinacea — purple blooms on green</span>
+  </div>
+
+  <div class="demo-item">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <filter id="watercolor3" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="5" seed="8" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="1.2"/>
+        </filter>
+      </defs>
+      <ellipse cx="100" cy="110" rx="65" ry="50" fill="#c8b088" opacity="0.4" filter="url(#watercolor3)"/>
+      <path d="M40,90 Q70,60 100,70 Q130,60 160,90 Q165,130 140,150 Q100,165 60,150 Q35,130 40,90Z" fill="#4a8a3e" opacity="0.5" filter="url(#watercolor3)"/>
+      <path d="M60,85 Q80,70 110,75 Q130,70 145,85 Q140,110 120,120 Q90,125 70,115 Q55,105 60,85Z" fill="#6aba58" opacity="0.4" filter="url(#watercolor3)"/>
+      <path d="M75,90 Q95,80 115,85 Q125,95 118,110 Q100,118 82,108 Q72,100 75,90Z" fill="#8ada70" opacity="0.35" filter="url(#watercolor3)"/>
+    </svg>
+    <span>Shrub — layered cloud form</span>
+  </div>
+</div>
+
+<pre>&lt;filter id="watercolor"&gt;
+  &lt;feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="2" result="noise"/&gt;
+  &lt;feDisplacementMap in="SourceGraphic" in2="noise" scale="12"
+    xChannelSelector="R" yChannelSelector="G" result="displaced"/&gt;
+  &lt;feGaussianBlur in="displaced" stdDeviation="1.5"/&gt;
+&lt;/filter&gt;</pre>
+
+<!-- ============================================================ -->
+<h2>2. Splotch Filter — Organic Paint Texture</h2>
+<p>Uses <code>feTurbulence</code> + <code>feColorMatrix</code> + <code>feComposite operator="in"</code> to clip the shape to a noise texture, creating the look of watercolor paint with organic holes and variations — like paint that didn't fully cover the paper.</p>
+
+<div class="demo-row">
+  <div class="demo-item">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <filter id="splotch1" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="4" seed="3" result="texture"/>
+          <feColorMatrix in="texture" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1.2 1.5" result="mask"/>
+          <feComposite in="SourceGraphic" in2="mask" operator="in" result="splotched"/>
+          <feGaussianBlur in="splotched" stdDeviation="2"/>
+        </filter>
+      </defs>
+      <circle cx="100" cy="95" r="75" fill="#2a6a22" opacity="0.7" filter="url(#splotch1)"/>
+      <circle cx="95" cy="90" r="60" fill="#4a9a3e" opacity="0.6" filter="url(#splotch1)"/>
+      <circle cx="105" cy="85" r="45" fill="#6aba58" opacity="0.5" filter="url(#splotch1)"/>
+      <circle cx="95" cy="80" r="30" fill="#8ada70" opacity="0.45" filter="url(#splotch1)"/>
+    </svg>
+    <span>Tree — splotch paint texture</span>
+  </div>
+
+  <div class="demo-item">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <filter id="splotch2" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="7" result="texture"/>
+          <feColorMatrix in="texture" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -0.8 1.3" result="mask"/>
+          <feComposite in="SourceGraphic" in2="mask" operator="in"/>
+          <feGaussianBlur stdDeviation="1.5"/>
+        </filter>
+      </defs>
+      <ellipse cx="100" cy="100" rx="55" ry="45" fill="#c84848" opacity="0.55" filter="url(#splotch2)"/>
+      <ellipse cx="90" cy="95" rx="40" ry="32" fill="#4a8a3e" opacity="0.5" filter="url(#splotch2)"/>
+      <ellipse cx="110" cy="92" rx="30" ry="24" fill="#e87878" opacity="0.45" filter="url(#splotch2)"/>
+      <ellipse cx="95" cy="105" rx="35" ry="28" fill="#6aaa58" opacity="0.4" filter="url(#splotch2)"/>
+    </svg>
+    <span>Bee Balm — red/green splotch</span>
+  </div>
+
+  <div class="demo-item">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <filter id="splotch3" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="3" seed="12" result="texture"/>
+          <feColorMatrix in="texture" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1.0 1.4" result="mask"/>
+          <feComposite in="SourceGraphic" in2="mask" operator="in"/>
+          <feGaussianBlur stdDeviation="1.8"/>
+        </filter>
+      </defs>
+      <path d="M60,140 Q50,100 70,70 Q90,50 120,55 Q150,60 155,90 Q160,120 140,145 Q110,160 80,155 Q60,150 60,140Z" fill="#5888b0" opacity="0.5" filter="url(#splotch3)"/>
+      <path d="M75,130 Q70,100 85,80 Q100,65 125,70 Q145,78 145,100 Q145,125 128,138 Q105,148 85,142 Q72,138 75,130Z" fill="#80b0d8" opacity="0.4" filter="url(#splotch3)"/>
+      <path d="M90,120 Q88,100 98,88 Q110,78 128,85 Q138,95 135,112 Q130,128 115,132 Q100,135 92,125Z" fill="#a0d0f0" opacity="0.35" filter="url(#splotch3)"/>
+    </svg>
+    <span>Pond — blue splotch wash</span>
+  </div>
+</div>
+
+<pre>&lt;filter id="splotch"&gt;
+  &lt;feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="4" result="texture"/&gt;
+  &lt;feColorMatrix in="texture" type="matrix"
+    values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1.2 1.5" result="mask"/&gt;
+  &lt;feComposite in="SourceGraphic" in2="mask" operator="in"/&gt;
+  &lt;feGaussianBlur stdDeviation="2"/&gt;
+&lt;/filter&gt;</pre>
+
+<!-- ============================================================ -->
+<h2>3. Combined: Watercolor Wash + Ink Line Overlay</h2>
+<p>The key technique from reference images: watercolor filter applied to color shapes, then crisp ink lines drawn ON TOP (no filter). This creates the hand-painted landscape plan look with soft color underneath and sharp botanical detail above.</p>
+
+<div class="demo-row">
+  <div class="demo-item">
+    <svg width="250" height="250" viewBox="0 0 250 250">
+      <defs>
+        <filter id="wc" x="-15%" y="-15%" width="130%" height="130%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="1" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="1.5"/>
+        </filter>
+      </defs>
+      <!-- WATERCOLOR LAYER (filtered) -->
+      <g filter="url(#wc)">
+        <circle cx="125" cy="115" r="80" fill="#1a4a18" opacity="0.2"/>
+        <circle cx="125" cy="115" r="75" fill="#2a6a22" opacity="0.25"/>
+        <circle cx="120" cy="110" r="65" fill="#3a7a32" opacity="0.25"/>
+        <circle cx="115" cy="105" r="55" fill="#4a9a3e" opacity="0.2"/>
+        <circle cx="110" cy="100" r="45" fill="#5aaa48" opacity="0.2"/>
+        <circle cx="108" cy="98" r="38" fill="#6aba58" opacity="0.2"/>
+        <circle cx="105" cy="95" r="30" fill="#7aca60" opacity="0.18"/>
+        <circle cx="102" cy="92" r="22" fill="#8ada70" opacity="0.15"/>
+        <ellipse cx="140" cy="125" rx="30" ry="25" fill="#2a5a20" opacity="0.2"/>
+        <ellipse cx="105" cy="130" rx="35" ry="20" fill="#3a6a2a" opacity="0.18"/>
+        <ellipse cx="135" cy="100" rx="25" ry="30" fill="#4a8a38" opacity="0.15"/>
+        <ellipse cx="115" cy="90" rx="20" ry="28" fill="#6a9a48" opacity="0.15"/>
+        <ellipse cx="130" cy="135" rx="20" ry="15" fill="#1a3a15" opacity="0.15"/>
+        <ellipse cx="100" cy="110" rx="28" ry="18" fill="#5a8a3a" opacity="0.12"/>
+        <ellipse cx="140" cy="110" rx="18" ry="25" fill="#3a5a22" opacity="0.12"/>
+      </g>
+      <!-- INK LINE OVERLAY (NOT filtered — crisp) -->
+      <g fill="none" stroke="#1a1a1a">
+        <!-- Jagged outline — exact match to wash (45,35)-(205,195) -->
+        <path d="M125,35 L129,41 L129,35 L136,36 L140,43 L146,37 L152,45 L158,39 L158,46 L165,44 L172,49 L177,44 L181,53 L187,49 L188,57 L194,58 L195,66 L200,68 L199,76 L205,79 L203,87 L205,92 L202,98 L205,104 L202,110 L205,115 L201,120 L204,127 L199,131 L200,138 L205,141 L199,146 L200,153 L195,155 L194,162 L189,163 L187,170 L182,169 L179,176 L174,174 L170,181 L165,179 L161,185 L156,183 L152,189 L147,186 L142,191 L137,188 L132,193 L127,190 L122,195 L117,192 L112,195 L107,191 L102,194 L97,190 L92,193 L87,188 L82,191 L77,185 L72,187 L68,181 L63,183 L59,176 L54,177 L51,170 L46,169 L45,162 L46,162 L45,155 L45,155 L45,148 L46,148 L46,141 L45,138 L48,132 L44,127 L47,121 L43,116 L46,110 L43,104 L47,98 L45,92 L49,87 L47,80 L52,76 L50,69 L55,65 L54,58 L59,55 L60,48 L65,48 L68,41 L73,42 L78,36 L83,38 L89,32 L94,35 L100,30 L106,34 L112,29 L118,34 L122,30 L125,35Z" stroke-width="2.2"/>
+        <!-- Radial branches — matched to outline bounds (45,35)-(205,195) -->
+        <path d="M125,115 C121,88 117,62 113,38" stroke-width="1.0"/>
+        <path d="M125,115 C148,92 170,70 190,50" stroke-width="1.0"/>
+        <path d="M125,115 C155,113 182,104 202,90" stroke-width="0.9"/>
+        <path d="M125,115 C142,140 160,160 178,175" stroke-width="0.9"/>
+        <path d="M125,115 C108,142 90,162 72,178" stroke-width="0.9"/>
+        <path d="M125,115 C98,122 70,136 48,152" stroke-width="0.8"/>
+        <path d="M125,115 C102,98 78,80 56,68" stroke-width="0.8"/>
+        <!-- Sub-branches -->
+        <path d="M120,76 C108,64 94,54 80,44" stroke-width="0.5"/>
+        <path d="M120,76 C126,58 134,44 145,34" stroke-width="0.5"/>
+        <path d="M152,92 C168,78 182,66 194,54" stroke-width="0.5"/>
+        <path d="M152,92 C170,96 188,92 200,84" stroke-width="0.5"/>
+        <path d="M138,140 C150,154 164,166 178,174" stroke-width="0.5"/>
+        <path d="M110,136 C98,150 84,164 70,176" stroke-width="0.5"/>
+        <path d="M104,108 C86,116 66,130 48,146" stroke-width="0.5"/>
+        <path d="M110,100 C92,88 74,76 58,66" stroke-width="0.5"/>
+        <!-- Leaf marks -->
+        <path d="M80,58 c1.5,-3 4,-3 5,0 c-1.5,3 -4,3 -5,0" stroke-width="0.6"/>
+        <path d="M95,50 c2,-2.5 4.5,-2 5,1 c-2,2.5 -4.5,2 -5,-1" stroke-width="0.6"/>
+        <path d="M145,52 c1,-3 3.5,-3.5 5,-0.5 c-1,3 -3.5,3.5 -5,0.5" stroke-width="0.6"/>
+        <path d="M175,72 c1.5,-2.5 4,-2.5 5,0.5 c-1.5,2.5 -4,2.5 -5,-0.5" stroke-width="0.6"/>
+        <path d="M188,100 c1,-3 3,-3.5 4.5,-1 c-1,3 -3,3.5 -4.5,1" stroke-width="0.6"/>
+        <path d="M178,140 c2,-2 4.5,-1.5 5,1 c-2,2 -4.5,1.5 -5,-1" stroke-width="0.6"/>
+        <path d="M148,162 c1.5,-2.5 4,-2 5,0.5 c-1.5,2.5 -4,2 -5,-0.5" stroke-width="0.6"/>
+        <path d="M100,168 c1,-3 3.5,-3 5,-0.5 c-1,3 -3.5,3 -5,0.5" stroke-width="0.6"/>
+        <path d="M68,152 c2,-2 4,-1.5 4.5,0.5 c-2,2 -4,1.5 -4.5,-0.5" stroke-width="0.6"/>
+        <path d="M52,125 c1.5,-2.5 4,-2.5 5,0 c-1.5,2.5 -4,2.5 -5,0" stroke-width="0.6"/>
+        <path d="M48,90 c1,-3 3.5,-3 5,-0.5 c-1,3 -3.5,3 -5,0.5" stroke-width="0.6"/>
+        <path d="M65,60 c2,-2 4,-1.5 4.5,0.5 c-2,2 -4,1.5 -4.5,-0.5" stroke-width="0.6"/>
+        <!-- Trunk -->
+        <circle cx="125" cy="115" r="4" stroke-width="2"/>
+      </g>
+      <!-- Stipple dots -->
+      <g fill="#1a2a10" opacity="0.35">
+        <circle cx="140" cy="130" r="0.7"/><circle cx="148" cy="125" r="0.6"/><circle cx="155" cy="135" r="0.7"/>
+        <circle cx="145" cy="140" r="0.5"/><circle cx="160" cy="128" r="0.6"/><circle cx="138" cy="145" r="0.7"/>
+        <circle cx="150" cy="148" r="0.5"/><circle cx="162" cy="138" r="0.6"/><circle cx="142" cy="150" r="0.7"/>
+        <circle cx="135" cy="138" r="0.6"/><circle cx="155" cy="142" r="0.5"/><circle cx="148" cy="152" r="0.7"/>
+        <circle cx="165" cy="132" r="0.6"/><circle cx="158" cy="145" r="0.5"/><circle cx="140" cy="155" r="0.6"/>
+        <circle cx="130" cy="142" r="0.7"/><circle cx="152" cy="155" r="0.5"/><circle cx="168" cy="125" r="0.6"/>
+        <circle cx="172" cy="135" r="0.5"/><circle cx="145" cy="158" r="0.7"/>
+      </g>
+    </svg>
+    <span>Oak Tree — watercolor wash + ink overlay<br>(15 color layers + jagged outline + branches + leaves)</span>
+  </div>
+</div>
+
+<pre>&lt;!-- Key technique: filter ONLY on color layers, NOT on ink lines --&gt;
+&lt;g filter="url(#watercolor)"&gt;
+  &lt;!-- 15 overlapping transparent color shapes --&gt;
+  &lt;circle fill="#2a6a22" opacity="0.25" .../&gt;
+  &lt;ellipse fill="#5aaa48" opacity="0.2" .../&gt;
+  ... (15 total)
+&lt;/g&gt;
+&lt;!-- Ink lines ON TOP — no filter, crisp --&gt;
+&lt;g fill="none" stroke="#1a1a1a"&gt;
+  &lt;path d="M... L... L... L..." stroke-width="2.2"/&gt; &lt;!-- jagged zigzag outline --&gt;
+  &lt;path d="M... C..." stroke-width="1.0"/&gt; &lt;!-- branches --&gt;
+  &lt;path d="M... c1.5,-3 4,-3 5,0..." stroke-width="0.6"/&gt; &lt;!-- leaf marks --&gt;
+&lt;/g&gt;</pre>
+
+<!-- ============================================================ -->
+<h2>4. Pencil Edge Distortion Filter</h2>
+<p>From the <a href="https://gist.github.com/veltman/2f2aa947772afa095a620dfe5e5486cb">Veltman gist</a>: uses fine turbulence + small-scale displacement + subtle blur to make crisp SVG shapes look hand-drawn. Applied to outlines only.</p>
+
+<div class="demo-row">
+  <div class="demo-item">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <filter id="pencil" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="6" seed="4"/>
+          <feDisplacementMap in="SourceGraphic" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.4"/>
+        </filter>
+      </defs>
+      <g filter="url(#pencil)" fill="none" stroke="#1a1a1a" stroke-width="2">
+        <path d="M107,17 L110,22 L110,17 L115,18 L118,23 L123,19 L128,25 L133,21 L133,26 L138,26 L142,30 L146,27 L149,34 L154,32 L154,37 L158,38 L161,44 L165,42 L166,49 L170,50 L170,56 L174,58 L173,64 L177,68 L174,73 L177,78 L173,82 L173,87 L176,90 L172,94 L174,100 L169,103 L170,108 L166,110 L165,116 L160,117 L158,122 L153,122 L151,127 L146,126 L143,130 L139,128 L136,132 L131,130 L128,134 L123,132 L120,135 L116,133 L116,137 L111,135 L108,138 L103,135 L100,138 L96,134 L92,136 L89,131 L85,132 L82,127 L78,128 L76,123 L72,122 L71,117 L67,115 L67,110 L63,107 L65,102 L62,98 L64,93 L61,89 L64,84 L62,79 L65,75 L63,70 L66,66 L65,61 L69,58 L68,53 L72,50 L72,45 L76,43 L77,38 L81,37 L83,32 L87,32 L90,28 L94,29 L98,25 L102,26 L104,22 L107,17Z"/>
+        <path d="M107,90 C100,65 95,45 90,30" stroke-width="1"/>
+        <path d="M107,90 C125,70 140,55 155,42" stroke-width="1"/>
+        <path d="M107,90 C130,90 150,85 168,75" stroke-width="0.8"/>
+        <path d="M107,90 C120,110 135,125 150,138" stroke-width="0.8"/>
+        <path d="M107,90 C95,115 85,130 72,142" stroke-width="0.8"/>
+        <path d="M107,90 C85,95 65,105 50,118" stroke-width="0.7"/>
+        <circle cx="107" cy="90" r="3" stroke-width="1.5"/>
+      </g>
+    </svg>
+    <span>Canopy outline — jagged zigzag + pencil filter</span>
+  </div>
+
+  <div class="demo-item">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <path d="M107,17 L110,22 L110,17 L115,18 L118,23 L123,19 L128,25 L133,21 L133,26 L138,26 L142,30 L146,27 L149,34 L154,32 L154,37 L158,38 L161,44 L165,42 L166,49 L170,50 L170,56 L174,58 L173,64 L177,68 L174,73 L177,78 L173,82 L173,87 L176,90 L172,94 L174,100 L169,103 L170,108 L166,110 L165,116 L160,117 L158,122 L153,122 L151,127 L146,126 L143,130 L139,128 L136,132 L131,130 L128,134 L123,132 L120,135 L116,133 L116,137 L111,135 L108,138 L103,135 L100,138 L96,134 L92,136 L89,131 L85,132 L82,127 L78,128 L76,123 L72,122 L71,117 L67,115 L67,110 L63,107 L65,102 L62,98 L64,93 L61,89 L64,84 L62,79 L65,75 L63,70 L66,66 L65,61 L69,58 L68,53 L72,50 L72,45 L76,43 L77,38 L81,37 L83,32 L87,32 L90,28 L94,29 L98,25 L102,26 L104,22 L107,17Z" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M107,90 C100,65 95,45 90,30" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+      <path d="M107,90 C125,70 140,55 155,42" fill="none" stroke="#1a1a1a" stroke-width="1"/>
+      <path d="M107,90 C130,90 150,85 168,75" fill="none" stroke="#1a1a1a" stroke-width="0.8"/>
+      <path d="M107,90 C120,110 135,125 150,138" fill="none" stroke="#1a1a1a" stroke-width="0.8"/>
+      <path d="M107,90 C95,115 85,130 72,142" fill="none" stroke="#1a1a1a" stroke-width="0.8"/>
+      <path d="M107,90 C85,95 65,105 50,118" fill="none" stroke="#1a1a1a" stroke-width="0.7"/>
+      <circle cx="107" cy="90" r="3" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    </svg>
+    <span>Same outline — WITHOUT filter (comparison)</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>5. Full Composition — All Techniques Combined</h2>
+<p>This shows the complete approach: watercolor splotch filter on color shapes + pencil filter on ink outlines + unfiltered stipple dots. Three filter layers creating maximum realism.</p>
+
+<div class="demo-row">
+  <div class="demo-item">
+    <svg width="350" height="300" viewBox="0 0 350 300">
+      <defs>
+        <filter id="wcFull" x="-15%" y="-15%" width="130%" height="130%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="1" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="1.5"/>
+        </filter>
+        <filter id="splotchFull" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="4" seed="3" result="t"/>
+          <feColorMatrix in="t" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1.0 1.4" result="m"/>
+          <feComposite in="SourceGraphic" in2="m" operator="in"/>
+          <feGaussianBlur stdDeviation="2"/>
+        </filter>
+        <filter id="pencilFull" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="5" seed="4"/>
+          <feDisplacementMap in="SourceGraphic" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.3"/>
+        </filter>
+      </defs>
+      <!-- Soil bed background -->
+      <path d="M20,280 C60,275 120,260 180,265 C240,270 300,255 340,270 L340,290 L20,290Z" fill="#c8b088" opacity="0.35" filter="url(#wcFull)"/>
+      <!-- Tree watercolor layers -->
+      <g filter="url(#splotchFull)">
+        <circle cx="100" cy="120" r="65" fill="#1a4a18" opacity="0.2"/>
+        <circle cx="100" cy="120" r="60" fill="#2a6a22" opacity="0.22"/>
+        <circle cx="97" cy="115" r="52" fill="#3a7a32" opacity="0.22"/>
+        <circle cx="94" cy="112" r="44" fill="#4a9a3e" opacity="0.2"/>
+        <circle cx="92" cy="108" r="36" fill="#5aaa48" opacity="0.18"/>
+        <circle cx="90" cy="105" r="28" fill="#6aba58" opacity="0.18"/>
+        <circle cx="88" cy="102" r="22" fill="#7aca60" opacity="0.15"/>
+        <circle cx="86" cy="100" r="16" fill="#8ada70" opacity="0.12"/>
+        <ellipse cx="115" cy="135" rx="25" ry="18" fill="#2a5a20" opacity="0.18"/>
+        <ellipse cx="82" cy="130" rx="28" ry="15" fill="#3a6a2a" opacity="0.15"/>
+        <ellipse cx="110" cy="105" rx="20" ry="22" fill="#4a8a38" opacity="0.15"/>
+        <ellipse cx="88" cy="98" rx="18" ry="20" fill="#6a9a48" opacity="0.12"/>
+        <ellipse cx="108" cy="140" rx="15" ry="12" fill="#1a3a15" opacity="0.12"/>
+        <ellipse cx="78" cy="108" rx="22" ry="14" fill="#5a8a3a" opacity="0.1"/>
+        <ellipse cx="118" cy="112" rx="14" ry="18" fill="#3a5a22" opacity="0.1"/>
+      </g>
+      <!-- Flower cluster watercolor -->
+      <g filter="url(#splotchFull)">
+        <ellipse cx="250" cy="230" rx="35" ry="28" fill="#4a8a3e" opacity="0.35"/>
+        <ellipse cx="245" cy="225" rx="25" ry="20" fill="#6aaa58" opacity="0.3"/>
+        <ellipse cx="255" cy="222" rx="18" ry="15" fill="#9a60b8" opacity="0.35"/>
+        <ellipse cx="240" cy="218" rx="14" ry="12" fill="#b878d0" opacity="0.3"/>
+        <ellipse cx="260" cy="235" rx="16" ry="12" fill="#7a40a0" opacity="0.25"/>
+        <ellipse cx="248" cy="240" rx="12" ry="10" fill="#c4a0e0" opacity="0.2"/>
+      </g>
+      <!-- Ink outlines — pencil filtered for hand-drawn look -->
+      <g filter="url(#pencilFull)" fill="none" stroke="#1a1a1a">
+        <!-- Tree canopy scallops -->
+        <!-- Tree outline — exact match to wash (35,55)-(165,185) -->
+        <path d="M100,55 L104,61 L104,55 L110,56 L115,62 L121,57 L127,64 L133,59 L133,66 L139,64 L145,69 L150,65 L154,73 L159,70 L160,78 L165,79 L165,86 L165,86 L164,94 L165,97 L163,104 L165,110 L163,116 L165,120 L161,125 L164,131 L159,135 L160,142 L165,144 L160,149 L160,156 L155,158 L154,164 L149,164 L147,170 L142,169 L139,175 L134,173 L130,179 L125,177 L121,183 L116,181 L111,185 L106,182 L101,185 L96,181 L91,184 L86,180 L81,183 L76,177 L71,179 L67,173 L62,175 L58,168 L53,169 L50,162 L45,161 L44,154 L35,150 L37,143 L35,143 L37,136 L35,131 L38,125 L35,119 L38,113 L35,107 L38,101 L36,95 L40,90 L38,83 L43,79 L41,72 L46,68 L46,62 L51,60 L53,55 L58,56 L62,50 L67,52 L73,47 L78,50 L84,45 L89,48 L95,43 L100,55Z" stroke-width="2.2"/>
+        <!-- Branches — matched to outline bounds -->
+        <path d="M100,120 C96,98 93,76 91,58" stroke-width="1.0"/>
+        <path d="M100,120 C118,100 136,82 155,65" stroke-width="0.9"/>
+        <path d="M100,120 C128,118 150,110 165,96" stroke-width="0.8"/>
+        <path d="M100,120 C116,142 132,156 150,168" stroke-width="0.8"/>
+        <path d="M100,120 C82,144 66,158 50,170" stroke-width="0.8"/>
+        <path d="M100,120 C76,128 55,140 40,155" stroke-width="0.7"/>
+        <path d="M100,120 C82,106 64,92 48,78" stroke-width="0.7"/>
+        <!-- Sub-branches -->
+        <path d="M96,88 C88,78 78,70 68,64" stroke-width="0.5"/>
+        <path d="M96,88 C102,74 110,62 120,55" stroke-width="0.5"/>
+        <path d="M118,102 C130,92 142,82 155,72" stroke-width="0.5"/>
+        <path d="M118,102 C132,106 148,102 162,94" stroke-width="0.5"/>
+        <path d="M112,140 C122,150 134,160 148,166" stroke-width="0.5"/>
+        <path d="M88,138 C76,150 64,160 52,166" stroke-width="0.5"/>
+        <path d="M84,112 C70,118 56,130 44,144" stroke-width="0.5"/>
+        <circle cx="100" cy="120" r="3.5" stroke-width="2"/>
+        <!-- Flower cluster outline -->
+        <path d="M250,199 L252,203 L252,199 L256,200 L258,204 L262,201 L264,207 L268,205 L268,210 L272,211 L273,216 L276,218 L275,223 L278,226 L275,230 L275,235 L277,237 L274,241 L272,245 L268,244 L266,249 L262,248 L259,252 L255,250 L252,253 L248,251 L245,253 L242,250 L239,252 L236,248 L233,249 L231,244 L228,244 L227,239 L224,237 L225,232 L222,229 L224,225 L222,221 L225,218 L224,213 L227,211 L227,206 L231,205 L232,201 L236,201 L239,198 L243,199 L246,196 L250,199Z" stroke-width="1.8"/>
+        <!-- Flower detail -->
+        <circle cx="254" cy="220" r="2.5" stroke-width="1"/>
+        <path d="M254,220 l0,-6 M254,220 l5,-3 M254,220 l5,3 M254,220 l0,6 M254,220 l-5,3 M254,220 l-5,-3" stroke-width="0.6"/>
+        <circle cx="242" cy="232" r="2" stroke-width="0.8"/>
+        <path d="M242,232 l0,-5 M242,232 l4,-2.5 M242,232 l4,2.5 M242,232 l0,5 M242,232 l-4,2.5 M242,232 l-4,-2.5" stroke-width="0.5"/>
+      </g>
+      <!-- Labels -->
+      <rect x="80" y="178" width="45" height="14" fill="white" fill-opacity="0.8" rx="3"/>
+      <text x="102" y="189" font-size="10" fill="#2a2a2a" text-anchor="middle" font-family="Helvetica">Oak Tree</text>
+      <rect x="222" y="258" width="60" height="14" fill="white" fill-opacity="0.8" rx="3"/>
+      <text x="252" y="269" font-size="10" fill="#2a2a2a" text-anchor="middle" font-family="Helvetica">Echinacea</text>
+    </svg>
+    <span>Complete composition — 3 filter layers combined</span>
+  </div>
+</div>
+
+<h2>Summary of Techniques</h2>
+<table style="border-collapse:collapse; font-size:0.82rem; max-width:700px;">
+<tr style="background:#eee8dc;"><th style="padding:8px; text-align:left;">Technique</th><th style="padding:8px;">Purpose</th><th style="padding:8px;">Key Filter</th></tr>
+<tr><td style="padding:6px; border-bottom:1px solid #ddd;">Watercolor Bleed</td><td style="padding:6px; border-bottom:1px solid #ddd;">Organic paint edges</td><td style="padding:6px; border-bottom:1px solid #ddd;"><code>feTurbulence + feDisplacementMap</code></td></tr>
+<tr><td style="padding:6px; border-bottom:1px solid #ddd;">Splotch Texture</td><td style="padding:6px; border-bottom:1px solid #ddd;">Paint-on-paper holes</td><td style="padding:6px; border-bottom:1px solid #ddd;"><code>feTurbulence + feColorMatrix + feComposite</code></td></tr>
+<tr><td style="padding:6px; border-bottom:1px solid #ddd;">Pencil Distortion</td><td style="padding:6px; border-bottom:1px solid #ddd;">Hand-drawn ink lines</td><td style="padding:6px; border-bottom:1px solid #ddd;"><code>feTurbulence + feDisplacementMap (small scale)</code></td></tr>
+<tr><td style="padding:6px;">Layered Opacity</td><td style="padding:6px;">Color depth/richness</td><td style="padding:6px;">15+ shapes at opacity 0.1-0.3</td></tr>
+</table>
+
+<p style="margin-top:30px;"><strong>Sources:</strong></p>
+<ul style="font-size:0.8rem; line-height:1.8;">
+<li><a href="https://tympanus.net/codrops/2019/02/19/svg-filter-effects-creating-texture-with-feturbulence/">Codrops — SVG Filter Effects with feTurbulence</a></li>
+<li><a href="https://gist.github.com/veltman/2f2aa947772afa095a620dfe5e5486cb">Veltman — Pencil/Watercolor Map Style</a></li>
+<li><a href="https://www.smashingmagazine.com/2015/05/why-the-svg-filter-is-awesome/">Smashing Magazine — The Art of SVG Filters</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/feTurbulence">MDN — feTurbulence Reference</a></li>
+<li><a href="https://dev.to/hexshift/creating-organic-textures-with-svg-filter-distortions-1moj">DEV.to — Organic Textures with SVG Distortions</a></li>
+<li><a href="https://www.smashingmagazine.com/2021/09/deep-dive-wonderful-world-svg-displacement-filtering/">Smashing Magazine — SVG Displacement Filtering</a></li>
+</ul>
+
+</body>
+</html>
