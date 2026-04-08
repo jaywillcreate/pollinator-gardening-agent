@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botanical SVG Plant Design Demo</title>
+<style>
+  body { font-family: Helvetica, Arial, sans-serif; background: #f8f6f2; color: #2c2416; margin: 40px; }
+  h1 { font-size: 1.4rem; color: #3d3229; }
+  h2 { font-size: 1.1rem; color: #4a6741; margin-top: 40px; border-bottom: 1px solid #e5ddd0; padding-bottom: 8px; }
+  p { font-size: 0.85rem; color: #6b5d4f; max-width: 700px; line-height: 1.6; }
+  .demo-row { display: flex; gap: 30px; flex-wrap: wrap; margin: 20px 0; align-items: flex-start; }
+  .demo-item { text-align: center; background: white; padding: 16px; border-radius: 8px; border: 1px solid #e5ddd0; }
+  .demo-item span { display: block; font-size: 0.72rem; color: #9a8d7f; margin-top: 8px; max-width: 220px; }
+</style>
+</head>
+<body>
+
+<h1>Botanically Accurate SVG Plant Designs</h1>
+<p>Combining watercolor washes, tapered strokes, mixed-technique outlines, petal bezier curves, leaf venation, and contour stippling to create realistic native plant symbols for landscape plan diagrams.</p>
+
+<!-- ============================================================ -->
+<h2>1. Purple Coneflower (Echinacea purpurea) — Top View</h2>
+
+<div class="demo-row">
+  <div class="demo-item">
+    <svg width="300" height="300" viewBox="0 0 300 300">
+      <defs>
+        <filter id="wcBot" x="-15%" y="-15%" width="130%" height="130%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="10" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="1"/>
+        </filter>
+      </defs>
+
+      <!-- WATERCOLOR WASHES -->
+      <g filter="url(#wcBot)">
+        <!-- Green foliage base -->
+        <ellipse cx="150" cy="155" rx="95" ry="90" fill="#3a7a30" opacity="0.15"/>
+        <ellipse cx="145" cy="150" rx="80" ry="76" fill="#4a8a3e" opacity="0.15"/>
+        <ellipse cx="140" cy="148" rx="65" ry="60" fill="#5a9a4a" opacity="0.12"/>
+        <!-- Purple petal washes — each petal direction -->
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#9a60b8" opacity="0.25"/>
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#8a48a8" opacity="0.2" transform="rotate(30,150,150)"/>
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#b070c8" opacity="0.22" transform="rotate(60,150,150)"/>
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#9a58b0" opacity="0.2" transform="rotate(90,150,150)"/>
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#a868c0" opacity="0.22" transform="rotate(120,150,150)"/>
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#8a50a8" opacity="0.2" transform="rotate(150,150,150)"/>
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#b878d0" opacity="0.18" transform="rotate(180,150,150)"/>
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#9a60b8" opacity="0.2" transform="rotate(210,150,150)"/>
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#a060b8" opacity="0.22" transform="rotate(240,150,150)"/>
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#8a50a0" opacity="0.2" transform="rotate(270,150,150)"/>
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#b068c0" opacity="0.18" transform="rotate(300,150,150)"/>
+        <ellipse cx="150" cy="90" rx="18" ry="40" fill="#9858b0" opacity="0.2" transform="rotate(330,150,150)"/>
+        <!-- Cone center wash -->
+        <circle cx="150" cy="150" r="22" fill="#8a6a20" opacity="0.3"/>
+        <circle cx="148" cy="148" r="16" fill="#a08030" opacity="0.25"/>
+        <circle cx="146" cy="146" r="10" fill="#b89840" opacity="0.2"/>
+      </g>
+
+      <!-- TAPERED PETALS — each petal is a filled teardrop shape -->
+      <g fill="#6a3888" opacity="0.15">
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(0,150,150)"/>
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(30,150,150)"/>
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(60,150,150)"/>
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(90,150,150)"/>
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(120,150,150)"/>
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(150,150,150)"/>
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(180,150,150)"/>
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(210,150,150)"/>
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(240,150,150)"/>
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(270,150,150)"/>
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(300,150,150)"/>
+        <path d="M150,150 C140,130 135,110 138,85 L150,80 L162,85 C165,110 160,130 150,150Z" transform="rotate(330,150,150)"/>
+      </g>
+
+      <!-- INK PETAL OUTLINES — each petal as a bezier with midrib vein -->
+      <g fill="none" stroke="#3a1848" stroke-width="1">
+        <g transform="rotate(0,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+        <g transform="rotate(30,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+        <g transform="rotate(60,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+        <g transform="rotate(90,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+        <g transform="rotate(120,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+        <g transform="rotate(150,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+        <g transform="rotate(180,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+        <g transform="rotate(210,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+        <g transform="rotate(240,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+        <g transform="rotate(270,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+        <g transform="rotate(300,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+        <g transform="rotate(330,150,150)"><path d="M145,148 C140,128 136,108 140,82 C142,78 148,76 150,76 C152,76 158,78 160,82 C164,108 160,128 155,148"/><line x1="150" y1="148" x2="150" y2="78" stroke-width="0.5"/></g>
+      </g>
+
+      <!-- CONE CENTER — raised dome with stipple texture -->
+      <circle cx="150" cy="150" r="20" fill="none" stroke="#4a3010" stroke-width="1.8"/>
+      <circle cx="150" cy="150" r="14" fill="none" stroke="#5a4018" stroke-width="0.6"/>
+      <circle cx="150" cy="150" r="8" fill="none" stroke="#6a5020" stroke-width="0.4"/>
+      <!-- Cone stipple dots -->
+      <g fill="#4a3010" opacity="0.6">
+        <circle cx="144" cy="144" r="0.8"/><circle cx="150" cy="142" r="0.7"/><circle cx="156" cy="144" r="0.8"/>
+        <circle cx="142" cy="150" r="0.7"/><circle cx="148" cy="148" r="0.6"/><circle cx="154" cy="147" r="0.7"/>
+        <circle cx="158" cy="150" r="0.8"/><circle cx="144" cy="154" r="0.7"/><circle cx="150" cy="156" r="0.8"/>
+        <circle cx="156" cy="155" r="0.7"/><circle cx="146" cy="158" r="0.6"/><circle cx="152" cy="152" r="0.5"/>
+        <circle cx="148" cy="145" r="0.5"/><circle cx="153" cy="150" r="0.6"/><circle cx="147" cy="152" r="0.5"/>
+      </g>
+
+      <!-- FOLIAGE LEAVES at base — tapered shapes with veins -->
+      <g>
+        <path d="M150,240 C130,230 110,220 90,215 C110,225 130,234 150,242Z" fill="#3a6a28" opacity="0.4"/>
+        <path d="M150,240 C170,230 190,220 210,215 C190,225 170,234 150,242Z" fill="#3a6a28" opacity="0.4"/>
+        <path d="M150,245 C125,238 95,230 70,228 C95,234 125,240 150,247Z" fill="#4a7a38" opacity="0.35"/>
+        <path d="M150,245 C175,238 205,230 230,228 C205,234 175,240 150,247Z" fill="#4a7a38" opacity="0.35"/>
+        <!-- Leaf vein lines -->
+        <g fill="none" stroke="#2a4a1a" stroke-width="0.4">
+          <line x1="150" y1="240" x2="90" y2="216"/>
+          <path d="M120,228 l-8,-6"/><path d="M105,222 l-6,-8"/>
+          <line x1="150" y1="240" x2="210" y2="216"/>
+          <path d="M180,228 l8,-6"/><path d="M195,222 l6,-8"/>
+        </g>
+      </g>
+
+      <!-- Contour shadow stipple -->
+      <path d="M170,165 C180,175 188,185 195,195" fill="none" stroke="#2a1a30" stroke-width="0.8" stroke-dasharray="0 3" stroke-linecap="round" opacity="0.3"/>
+
+      <text x="150" y="280" font-size="11" fill="#3d3229" text-anchor="middle" font-weight="bold">Purple Coneflower (Echinacea)</text>
+      <text x="150" y="294" font-size="8" fill="#888" text-anchor="middle">12 petals, raised cone, basal leaves — top view</text>
+    </svg>
+    <span>Botanically accurate: 12 drooping ray petals with bezier curves, raised cone with concentric rings + stipple, tapered basal leaves with pinnate venation</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>2. Black-eyed Susan (Rudbeckia hirta) — Top View</h2>
+
+<div class="demo-row">
+  <div class="demo-item">
+    <svg width="280" height="280" viewBox="0 0 280 280">
+      <defs>
+        <filter id="wcBot2" x="-15%" y="-15%" width="130%" height="130%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="22" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="1"/>
+        </filter>
+      </defs>
+
+      <!-- WATERCOLOR WASHES -->
+      <g filter="url(#wcBot2)">
+        <!-- Green foliage -->
+        <ellipse cx="140" cy="145" rx="90" ry="85" fill="#3a7a30" opacity="0.12"/>
+        <ellipse cx="136" cy="140" rx="72" ry="68" fill="#4a8a3e" opacity="0.12"/>
+        <!-- Golden yellow petal washes — 14 petals radiating -->
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#d8b030" opacity="0.28" transform="rotate(0,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#e8c840" opacity="0.25" transform="rotate(25.7,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#c8a020" opacity="0.22" transform="rotate(51.4,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#d8b838" opacity="0.26" transform="rotate(77.1,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#e0c030" opacity="0.24" transform="rotate(102.9,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#d0a828" opacity="0.22" transform="rotate(128.6,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#dab838" opacity="0.26" transform="rotate(154.3,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#e8c040" opacity="0.24" transform="rotate(180,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#c8a828" opacity="0.22" transform="rotate(205.7,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#d8b830" opacity="0.26" transform="rotate(231.4,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#e0c038" opacity="0.24" transform="rotate(257.1,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#d0a820" opacity="0.22" transform="rotate(282.9,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#dab028" opacity="0.26" transform="rotate(308.6,140,140)"/>
+        <ellipse cx="140" cy="82" rx="14" ry="38" fill="#e8c840" opacity="0.24" transform="rotate(334.3,140,140)"/>
+        <!-- Dark center -->
+        <circle cx="140" cy="140" r="18" fill="#3a2810" opacity="0.4"/>
+        <circle cx="138" cy="138" r="12" fill="#2a1808" opacity="0.35"/>
+      </g>
+
+      <!-- INK PETAL OUTLINES — 14 narrow upright petals with notched tips -->
+      <g fill="none" stroke="#6a4a08" stroke-width="0.8">
+        <g transform="rotate(0,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(25.7,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(51.4,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(77.1,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(102.9,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(128.6,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(154.3,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(180,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(205.7,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(231.4,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(257.1,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(282.9,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(308.6,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+        <g transform="rotate(334.3,140,140)"><path d="M136,138 C134,120 132,104 134,80 L137,76 L140,74 L143,76 L146,80 C148,104 146,120 144,138"/><line x1="140" y1="136" x2="140" y2="76" stroke-width="0.4"/></g>
+      </g>
+
+      <!-- DARK CENTER — concentric rings + dense stipple -->
+      <circle cx="140" cy="140" r="16" fill="none" stroke="#1a1008" stroke-width="1.8"/>
+      <circle cx="140" cy="140" r="11" fill="none" stroke="#2a1810" stroke-width="0.8"/>
+      <circle cx="140" cy="140" r="6" fill="none" stroke="#3a2818" stroke-width="0.5"/>
+      <g fill="#1a1008" opacity="0.7">
+        <circle cx="134" cy="134" r="0.7"/><circle cx="140" cy="132" r="0.6"/><circle cx="146" cy="134" r="0.7"/>
+        <circle cx="132" cy="140" r="0.6"/><circle cx="138" cy="138" r="0.5"/><circle cx="144" cy="137" r="0.6"/>
+        <circle cx="148" cy="140" r="0.7"/><circle cx="134" cy="146" r="0.6"/><circle cx="140" cy="148" r="0.7"/>
+        <circle cx="146" cy="146" r="0.6"/><circle cx="136" cy="142" r="0.5"/><circle cx="142" cy="144" r="0.5"/>
+        <circle cx="138" cy="146" r="0.4"/><circle cx="144" cy="142" r="0.5"/><circle cx="136" cy="136" r="0.4"/>
+        <circle cx="142" cy="136" r="0.4"/><circle cx="138" cy="140" r="0.3"/><circle cx="142" cy="140" r="0.3"/>
+      </g>
+
+      <!-- BASAL LEAVES -->
+      <g>
+        <path d="M140,230 C118,222 92,216 68,215 C92,220 118,226 140,234Z" fill="#3a6a28" opacity="0.35"/>
+        <path d="M140,230 C162,222 188,216 212,215 C188,220 162,226 140,234Z" fill="#3a6a28" opacity="0.35"/>
+        <path d="M140,236 C112,230 82,225 55,225 C82,229 112,233 140,239Z" fill="#4a7a38" opacity="0.3"/>
+        <path d="M140,236 C168,230 198,225 225,225 C198,229 168,233 140,239Z" fill="#4a7a38" opacity="0.3"/>
+        <g fill="none" stroke="#2a4a1a" stroke-width="0.4">
+          <line x1="140" y1="232" x2="68" y2="216"/>
+          <line x1="140" y1="232" x2="212" y2="216"/>
+          <path d="M108,224 l-6,-5"/><path d="M86,218 l-5,-6"/>
+          <path d="M172,224 l6,-5"/><path d="M194,218 l5,-6"/>
+        </g>
+      </g>
+
+      <text x="140" y="262" font-size="11" fill="#3d3229" text-anchor="middle" font-weight="bold">Black-eyed Susan (Rudbeckia)</text>
+      <text x="140" y="276" font-size="8" fill="#888" text-anchor="middle">14 upright golden petals, dark dome center — top view</text>
+    </svg>
+    <span>14 narrow golden ray petals (upright, not drooping), very dark brown/black center dome with dense stipple, lanceolate basal leaves</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>3. Side-by-Side Comparison</h2>
+<p>Both flowers at diagram scale (60px) showing how they'd appear in a landscape plan, with all techniques applied.</p>
+
+<div class="demo-row">
+  <div class="demo-item">
+    <svg width="300" height="120" viewBox="0 0 300 120">
+      <defs>
+        <filter id="wcSmall" x="-15%" y="-15%" width="130%" height="130%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="33" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.5"/>
+        </filter>
+      </defs>
+
+      <!-- Echinacea at plan scale -->
+      <g filter="url(#wcSmall)">
+        <circle cx="60" cy="55" r="28" fill="#5a9a48" opacity="0.15"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#9a60b8" opacity="0.25" transform="rotate(0,60,55)"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#8a48a8" opacity="0.22" transform="rotate(30,60,55)"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#b070c8" opacity="0.2" transform="rotate(60,60,55)"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#9a58b0" opacity="0.22" transform="rotate(90,60,55)"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#a868c0" opacity="0.2" transform="rotate(120,60,55)"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#8a50a8" opacity="0.22" transform="rotate(150,60,55)"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#b878d0" opacity="0.18" transform="rotate(180,60,55)"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#9a60b8" opacity="0.2" transform="rotate(210,60,55)"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#a060b8" opacity="0.22" transform="rotate(240,60,55)"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#8a50a0" opacity="0.2" transform="rotate(270,60,55)"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#b068c0" opacity="0.18" transform="rotate(300,60,55)"/>
+        <ellipse cx="60" cy="45" rx="5" ry="14" fill="#9858b0" opacity="0.2" transform="rotate(330,60,55)"/>
+        <circle cx="60" cy="55" r="7" fill="#8a6a20" opacity="0.35"/>
+      </g>
+      <g fill="none" stroke="#3a1848" stroke-width="0.5">
+        <g transform="rotate(0,60,55)"><path d="M58,54 C57,48 56,42 57,38 L60,36 L63,38 C64,42 63,48 62,54"/></g>
+        <g transform="rotate(60,60,55)"><path d="M58,54 C57,48 56,42 57,38 L60,36 L63,38 C64,42 63,48 62,54"/></g>
+        <g transform="rotate(120,60,55)"><path d="M58,54 C57,48 56,42 57,38 L60,36 L63,38 C64,42 63,48 62,54"/></g>
+        <g transform="rotate(180,60,55)"><path d="M58,54 C57,48 56,42 57,38 L60,36 L63,38 C64,42 63,48 62,54"/></g>
+        <g transform="rotate(240,60,55)"><path d="M58,54 C57,48 56,42 57,38 L60,36 L63,38 C64,42 63,48 62,54"/></g>
+        <g transform="rotate(300,60,55)"><path d="M58,54 C57,48 56,42 57,38 L60,36 L63,38 C64,42 63,48 62,54"/></g>
+      </g>
+      <circle cx="60" cy="55" r="6" fill="none" stroke="#4a3010" stroke-width="1"/>
+      <text x="60" y="100" font-size="8" fill="#555" text-anchor="middle">Echinacea</text>
+      <text x="60" y="112" font-size="7" fill="#888" text-anchor="middle">60px plan scale</text>
+
+      <!-- Rudbeckia at plan scale -->
+      <g filter="url(#wcSmall)">
+        <circle cx="180" cy="55" r="26" fill="#5a9a48" opacity="0.12"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#d8b030" opacity="0.3" transform="rotate(0,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#e8c840" opacity="0.26" transform="rotate(25.7,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#c8a020" opacity="0.24" transform="rotate(51.4,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#d8b838" opacity="0.28" transform="rotate(77.1,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#e0c030" opacity="0.26" transform="rotate(102.9,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#d0a828" opacity="0.24" transform="rotate(128.6,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#dab838" opacity="0.28" transform="rotate(154.3,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#e8c040" opacity="0.26" transform="rotate(180,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#c8a828" opacity="0.24" transform="rotate(205.7,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#d8b830" opacity="0.28" transform="rotate(231.4,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#e0c038" opacity="0.26" transform="rotate(257.1,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#d0a820" opacity="0.24" transform="rotate(282.9,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#dab028" opacity="0.28" transform="rotate(308.6,180,55)"/>
+        <ellipse cx="180" cy="43" rx="4" ry="13" fill="#e8c840" opacity="0.26" transform="rotate(334.3,180,55)"/>
+        <circle cx="180" cy="55" r="5" fill="#2a1808" opacity="0.4"/>
+      </g>
+      <g fill="none" stroke="#6a4a08" stroke-width="0.4">
+        <g transform="rotate(0,180,55)"><path d="M178,54 C178,48 177,42 178,38 L180,36 L182,38 C183,42 182,48 182,54"/></g>
+        <g transform="rotate(51.4,180,55)"><path d="M178,54 C178,48 177,42 178,38 L180,36 L182,38 C183,42 182,48 182,54"/></g>
+        <g transform="rotate(102.9,180,55)"><path d="M178,54 C178,48 177,42 178,38 L180,36 L182,38 C183,42 182,48 182,54"/></g>
+        <g transform="rotate(154.3,180,55)"><path d="M178,54 C178,48 177,42 178,38 L180,36 L182,38 C183,42 182,48 182,54"/></g>
+        <g transform="rotate(205.7,180,55)"><path d="M178,54 C178,48 177,42 178,38 L180,36 L182,38 C183,42 182,48 182,54"/></g>
+        <g transform="rotate(257.1,180,55)"><path d="M178,54 C178,48 177,42 178,38 L180,36 L182,38 C183,42 182,48 182,54"/></g>
+        <g transform="rotate(308.6,180,55)"><path d="M178,54 C178,48 177,42 178,38 L180,36 L182,38 C183,42 182,48 182,54"/></g>
+      </g>
+      <circle cx="180" cy="55" r="5" fill="none" stroke="#1a1008" stroke-width="1.2"/>
+      <text x="180" y="100" font-size="8" fill="#555" text-anchor="middle">Rudbeckia</text>
+      <text x="180" y="112" font-size="7" fill="#888" text-anchor="middle">60px plan scale</text>
+    </svg>
+    <span>Both plants at diagram scale showing how petal structure, color, and center detail remain visible even at 60px</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watercolor Brush Stroke SVG Techniques</title>
+<style>
+  body { font-family: Helvetica, Arial, sans-serif; background: #f8f6f2; color: #2c2416; margin: 40px; }
+  h1 { font-size: 1.3rem; color: #3d3229; }
+  h2 { font-size: 1rem; color: #4a6741; margin-top: 36px; border-bottom: 1px solid #e5ddd0; padding-bottom: 6px; }
+  p { font-size: 0.82rem; color: #6b5d4f; max-width: 700px; line-height: 1.6; }
+  .row { display: flex; gap: 24px; flex-wrap: wrap; margin: 20px 0; }
+  .card { text-align: center; background: white; padding: 12px; border-radius: 8px; border: 1px solid #e5ddd0; }
+  .card span { display: block; font-size: 0.7rem; color: #9a8d7f; margin-top: 6px; max-width: 220px; }
+  .card b { display: block; font-size: 0.78rem; color: #3d3229; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<h1>Watercolor Brush Stroke Techniques in SVG</h1>
+<p>Three core techniques for realistic watercolor brush strokes: (1) tapered filled shapes with gradient masks for soft transparent edges, (2) feTurbulence displacement for organic wobble, (3) layered overlapping strokes for pigment buildup. All using color-matched strokes — no black.</p>
+
+<!-- ============================================================ -->
+<h2>1. Gradient-Masked Brush Strokes — Soft Transparent Edges</h2>
+<p>A filled tapered shape + a radial gradient mask = paint stroke that's opaque in the center and fades to transparent at the edges, like real watercolor on paper.</p>
+
+<div class="row">
+  <div class="card">
+    <svg width="300" height="100" viewBox="0 0 300 100">
+      <defs>
+        <!-- Radial gradient mask: opaque center, transparent edges -->
+        <radialGradient id="brushFade1" cx="50%" cy="50%" rx="50%" ry="50%">
+          <stop offset="0%" stop-color="white"/>
+          <stop offset="60%" stop-color="white"/>
+          <stop offset="100%" stop-color="black"/>
+        </radialGradient>
+        <mask id="brushMask1">
+          <ellipse cx="150" cy="50" rx="140" ry="30" fill="url(#brushFade1)"/>
+        </mask>
+      </defs>
+      <!-- Tapered brush stroke shape — thick middle, thin ends -->
+      <path d="M10,50 C40,35 80,28 150,25 C220,22 260,30 290,42
+               C260,48 220,56 150,58 C80,60 40,58 10,50Z"
+            fill="#7a48a0" opacity="0.6" mask="url(#brushMask1)"/>
+    </svg>
+    <b>Purple stroke — gradient masked</b>
+    <span>Opaque center fading to transparent edges like wet paint</span>
+  </div>
+
+  <div class="card">
+    <svg width="300" height="100" viewBox="0 0 300 100">
+      <defs>
+        <radialGradient id="brushFade2" cx="50%" cy="50%" rx="50%" ry="50%">
+          <stop offset="0%" stop-color="white"/>
+          <stop offset="50%" stop-color="white"/>
+          <stop offset="100%" stop-color="black"/>
+        </radialGradient>
+        <mask id="brushMask2">
+          <ellipse cx="150" cy="50" rx="140" ry="28" fill="url(#brushFade2)"/>
+        </mask>
+      </defs>
+      <path d="M10,52 C50,38 100,30 150,26 C200,22 250,28 290,40
+               C250,50 200,58 150,60 C100,62 50,60 10,52Z"
+            fill="#c04040" opacity="0.55" mask="url(#brushMask2)"/>
+    </svg>
+    <b>Red stroke — gradient masked</b>
+    <span>Wider center, tapered ends, soft fade at all edges</span>
+  </div>
+
+  <div class="card">
+    <svg width="300" height="100" viewBox="0 0 300 100">
+      <defs>
+        <radialGradient id="brushFade3" cx="50%" cy="50%" rx="50%" ry="50%">
+          <stop offset="0%" stop-color="white"/>
+          <stop offset="40%" stop-color="white" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="black"/>
+        </radialGradient>
+        <mask id="brushMask3">
+          <ellipse cx="150" cy="50" rx="138" ry="25" fill="url(#brushFade3)"/>
+        </mask>
+      </defs>
+      <path d="M15,50 C50,40 100,34 150,30 C200,26 250,32 285,44
+               C250,52 200,58 150,60 C100,62 50,58 15,50Z"
+            fill="#c8a020" opacity="0.6" mask="url(#brushMask3)"/>
+    </svg>
+    <b>Gold stroke — gradient masked</b>
+    <span>Warm gold with transparent feathered edges</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>2. Turbulence-Displaced Brush Strokes — Organic Wobble</h2>
+<p>Adding feTurbulence + feDisplacementMap makes the crisp brush shapes look hand-painted with irregular organic edges.</p>
+
+<div class="row">
+  <div class="card">
+    <svg width="300" height="100" viewBox="0 0 300 100">
+      <defs>
+        <filter id="brushWobble" x="-10%" y="-20%" width="120%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="4" seed="8" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.8"/>
+        </filter>
+        <radialGradient id="bf4" cx="50%" cy="50%" rx="50%" ry="50%">
+          <stop offset="0%" stop-color="white"/><stop offset="55%" stop-color="white"/><stop offset="100%" stop-color="black"/>
+        </radialGradient>
+        <mask id="bm4"><ellipse cx="150" cy="50" rx="138" ry="28" fill="url(#bf4)"/></mask>
+      </defs>
+      <path d="M12,50 C45,36 90,28 150,24 C210,20 255,30 288,44
+               C255,52 210,60 150,62 C90,64 45,58 12,50Z"
+            fill="#7a48a0" opacity="0.6" mask="url(#bm4)" filter="url(#brushWobble)"/>
+    </svg>
+    <b>Purple — masked + turbulence wobble</b>
+    <span>Same stroke shape but with organic paint-edge distortion</span>
+  </div>
+
+  <div class="card">
+    <svg width="300" height="100" viewBox="0 0 300 100">
+      <defs>
+        <filter id="brushWobble2" x="-10%" y="-20%" width="120%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="15" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.6"/>
+        </filter>
+        <radialGradient id="bf5" cx="50%" cy="50%"><stop offset="0%" stop-color="white"/><stop offset="50%" stop-color="white"/><stop offset="100%" stop-color="black"/></radialGradient>
+        <mask id="bm5"><ellipse cx="150" cy="50" rx="136" ry="26" fill="url(#bf5)"/></mask>
+      </defs>
+      <path d="M14,52 C50,38 100,28 150,24 C200,20 250,30 286,44
+               C250,52 200,60 150,62 C100,64 50,60 14,52Z"
+            fill="#3a7a28" opacity="0.5" mask="url(#bm5)" filter="url(#brushWobble2)"/>
+    </svg>
+    <b>Green — masked + turbulence wobble</b>
+    <span>Foliage-colored brush stroke with natural paint edge</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>3. Layered Overlapping Strokes — Pigment Buildup</h2>
+<p>Multiple semi-transparent strokes overlapping creates rich color where they cross, like real watercolor paint layers drying. Each stroke has gradient mask + turbulence.</p>
+
+<div class="row">
+  <div class="card">
+    <svg width="300" height="160" viewBox="0 0 300 160">
+      <defs>
+        <filter id="bw3" x="-10%" y="-20%" width="120%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="22" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.7"/>
+        </filter>
+        <radialGradient id="bf6" cx="50%" cy="50%"><stop offset="0%" stop-color="white"/><stop offset="50%" stop-color="white"/><stop offset="100%" stop-color="black"/></radialGradient>
+        <mask id="bm6a"><ellipse cx="140" cy="60" rx="120" ry="24" fill="url(#bf6)"/></mask>
+        <mask id="bm6b"><ellipse cx="160" cy="80" rx="110" ry="22" fill="url(#bf6)"/></mask>
+        <mask id="bm6c"><ellipse cx="150" cy="100" rx="125" ry="20" fill="url(#bf6)"/></mask>
+        <mask id="bm6d"><ellipse cx="145" cy="70" rx="100" ry="18" fill="url(#bf6)"/></mask>
+      </defs>
+      <!-- Stroke 1 — lightest, widest -->
+      <path d="M20,60 C60,46 110,38 150,36 C190,34 240,40 280,52
+               C240,60 190,68 150,70 C110,72 60,68 20,60Z"
+            fill="#8a58b0" opacity="0.35" mask="url(#bm6a)" filter="url(#bw3)"/>
+      <!-- Stroke 2 — offset down, different angle -->
+      <path d="M30,82 C70,68 120,60 160,58 C200,56 250,62 280,72
+               C250,80 200,88 160,90 C120,92 70,88 30,82Z"
+            fill="#7a48a0" opacity="0.35" mask="url(#bm6b)" filter="url(#bw3)"/>
+      <!-- Stroke 3 — bottom layer -->
+      <path d="M15,100 C55,88 105,82 150,80 C195,78 245,84 285,94
+               C245,100 195,106 150,108 C105,110 55,106 15,100Z"
+            fill="#6a3890" opacity="0.3" mask="url(#bm6c)" filter="url(#bw3)"/>
+      <!-- Stroke 4 — concentrated center layer -->
+      <path d="M40,72 C75,62 115,56 150,54 C185,52 225,58 260,66
+               C225,72 185,78 150,80 C115,82 75,78 40,72Z"
+            fill="#9a68c0" opacity="0.3" mask="url(#bm6d)" filter="url(#bw3)"/>
+    </svg>
+    <b>4 purple strokes layered</b>
+    <span>Each semi-transparent — overlap areas build richer color like real watercolor pigment</span>
+  </div>
+
+  <div class="card">
+    <svg width="300" height="160" viewBox="0 0 300 160">
+      <defs>
+        <filter id="bw4" x="-10%" y="-20%" width="120%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="30" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.6"/>
+        </filter>
+        <radialGradient id="bf7" cx="50%" cy="50%"><stop offset="0%" stop-color="white"/><stop offset="45%" stop-color="white"/><stop offset="100%" stop-color="black"/></radialGradient>
+        <mask id="bm7a"><ellipse cx="140" cy="55" rx="115" ry="22" fill="url(#bf7)"/></mask>
+        <mask id="bm7b"><ellipse cx="155" cy="75" rx="108" ry="20" fill="url(#bf7)"/></mask>
+        <mask id="bm7c"><ellipse cx="148" cy="95" rx="120" ry="18" fill="url(#bf7)"/></mask>
+        <mask id="bm7d"><ellipse cx="150" cy="68" rx="95" ry="16" fill="url(#bf7)"/></mask>
+      </defs>
+      <!-- Green foliage wash -->
+      <path d="M25,56 C60,44 110,36 150,34 C190,32 240,38 275,48 C240,56 190,64 150,66 C110,68 60,64 25,56Z"
+            fill="#3a7a28" opacity="0.3" mask="url(#bm7a)" filter="url(#bw4)"/>
+      <!-- Red bloom wash 1 -->
+      <path d="M35,76 C70,64 120,56 160,54 C200,52 245,58 275,68 C245,74 200,82 160,84 C120,86 70,82 35,76Z"
+            fill="#c04040" opacity="0.35" mask="url(#bm7b)" filter="url(#bw4)"/>
+      <!-- Red bloom wash 2 -->
+      <path d="M20,96 C55,86 105,80 148,78 C195,76 240,82 280,90 C240,96 195,102 148,104 C105,106 55,102 20,96Z"
+            fill="#a83030" opacity="0.3" mask="url(#bm7c)" filter="url(#bw4)"/>
+      <!-- Concentrated center -->
+      <path d="M50,70 C80,60 120,54 155,52 C190,50 225,56 255,64 C225,70 190,76 155,78 C120,80 80,76 50,70Z"
+            fill="#d85858" opacity="0.3" mask="url(#bm7d)" filter="url(#bw4)"/>
+    </svg>
+    <b>Green + red layered (Bee Balm)</b>
+    <span>Green foliage wash underneath, 3 red bloom strokes on top — color mixing where they overlap</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>4. Full Botanical Swatch — Brush Stroke Build-Up</h2>
+<p>Complete plant swatch built entirely from overlapping masked watercolor brush strokes. No flat shapes — every element is a painted stroke with feathered edges.</p>
+
+<div class="row">
+  <div class="card">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <filter id="bwFull" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="50" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.5"/>
+        </filter>
+        <!-- Circular brush mask -->
+        <radialGradient id="bfC" cx="50%" cy="50%">
+          <stop offset="0%" stop-color="white"/><stop offset="50%" stop-color="white"/><stop offset="100%" stop-color="black"/>
+        </radialGradient>
+        <!-- Petal stroke masks — elongated -->
+        <radialGradient id="bfP" cx="50%" cy="50%" rx="50%" ry="50%">
+          <stop offset="0%" stop-color="white"/><stop offset="40%" stop-color="white"/><stop offset="100%" stop-color="black"/>
+        </radialGradient>
+      </defs>
+
+      <!-- GREEN FOLIAGE — circular brush strokes -->
+      <g filter="url(#bwFull)">
+        <ellipse cx="100" cy="100" rx="72" ry="68" fill="#2a5a18" opacity="0.25" mask="url(#bfCm1)"/>
+        <ellipse cx="96" cy="96" rx="62" ry="58" fill="#3a7a28" opacity="0.25"/>
+        <ellipse cx="104" cy="98" rx="56" ry="52" fill="#4a8a38" opacity="0.22"/>
+        <ellipse cx="92" cy="94" rx="48" ry="44" fill="#5a9a48" opacity="0.2"/>
+        <ellipse cx="108" cy="96" rx="40" ry="38" fill="#3a6a20" opacity="0.2"/>
+
+        <!-- PURPLE PETAL STROKES — each an elongated tapered shape -->
+        <!-- Petal up -->
+        <path d="M98,98 C94,80 92,62 96,40 L100,36 L104,40 C108,62 106,80 102,98Z" fill="#7848a0" opacity="0.4"/>
+        <!-- Petal upper-right -->
+        <path d="M100,98 C108,82 118,66 130,52 L134,52 L134,56 C120,68 110,82 102,98Z" fill="#8858b0" opacity="0.38"/>
+        <!-- Petal right -->
+        <path d="M102,100 C118,96 134,94 154,96 L156,100 L154,104 C134,102 118,102 102,100Z" fill="#7a48a0" opacity="0.36"/>
+        <!-- Petal lower-right -->
+        <path d="M102,102 C110,118 118,132 128,148 L126,152 L122,150 C114,134 108,118 102,102Z" fill="#8a58b0" opacity="0.34"/>
+        <!-- Petal down -->
+        <path d="M100,102 C104,118 106,134 104,156 L100,160 L96,156 C94,134 96,118 98,102Z" fill="#7a48a0" opacity="0.36"/>
+        <!-- Petal lower-left -->
+        <path d="M98,102 C90,118 82,132 72,148 L74,152 L78,150 C86,134 92,118 98,102Z" fill="#8858b0" opacity="0.34"/>
+        <!-- Petal left -->
+        <path d="M98,100 C82,96 66,94 46,96 L44,100 L46,104 C66,102 82,102 98,100Z" fill="#7848a0" opacity="0.36"/>
+        <!-- Petal upper-left -->
+        <path d="M98,98 C90,82 80,66 70,52 L66,52 L66,56 C78,68 88,82 98,98Z" fill="#8a58b0" opacity="0.38"/>
+
+        <!-- Additional thin petal strokes between main ones -->
+        <path d="M99,98 C102,82 108,66 116,48 L118,48 L117,52 C110,66 104,82 101,98Z" fill="#9a68c0" opacity="0.3"/>
+        <path d="M101,99 C116,102 132,108 148,118 L148,120 L146,120 C130,112 116,104 101,100Z" fill="#9a68c0" opacity="0.28"/>
+        <path d="M101,101 C104,116 108,132 116,148 L114,150 L112,148 C106,132 102,116 100,102Z" fill="#9a68c0" opacity="0.28"/>
+        <path d="M99,101 C96,116 92,132 84,148 L86,150 L88,148 C94,132 98,116 100,102Z" fill="#9a68c0" opacity="0.28"/>
+
+        <!-- Dark mottled patches for depth -->
+        <ellipse cx="82" cy="80" rx="12" ry="8" fill="#4a1868" opacity="0.3"/>
+        <ellipse cx="118" cy="84" rx="10" ry="8" fill="#5a2878" opacity="0.28"/>
+        <ellipse cx="90" cy="112" rx="11" ry="7" fill="#4a1868" opacity="0.25"/>
+        <ellipse cx="112" cy="116" rx="9" ry="8" fill="#5a2878" opacity="0.22"/>
+      </g>
+
+      <!-- CONE CENTER — warm brown strokes -->
+      <g filter="url(#bwFull)">
+        <circle cx="100" cy="100" r="14" fill="#8a6a18" opacity="0.5"/>
+        <circle cx="99" cy="99" r="10" fill="#a07820" opacity="0.4"/>
+        <circle cx="98" cy="98" r="6" fill="#b88828" opacity="0.35"/>
+      </g>
+
+      <!-- Colored detail strokes — petal veins in dark purple -->
+      <g fill="none" stroke="#4a1868" stroke-width="0.5" opacity="0.35">
+        <line x1="100" y1="98" x2="100" y2="42"/><line x1="100" y1="98" x2="132" y2="54"/>
+        <line x1="102" y1="100" x2="152" y2="98"/><line x1="102" y1="102" x2="126" y2="148"/>
+        <line x1="100" y1="102" x2="100" y2="156"/><line x1="98" y1="102" x2="74" y2="148"/>
+        <line x1="98" y1="100" x2="48" y2="98"/><line x1="98" y1="98" x2="68" y2="54"/>
+      </g>
+
+      <!-- Cone detail — warm brown circles -->
+      <circle cx="100" cy="100" r="12" fill="none" stroke="#6a4a10" stroke-width="0.7" opacity="0.4"/>
+      <circle cx="100" cy="100" r="7" fill="none" stroke="#7a5a18" stroke-width="0.4" opacity="0.35"/>
+      <!-- Cone stipple in warm brown -->
+      <g fill="#6a4a10" opacity="0.4">
+        <circle cx="97" cy="97" r="0.5"/><circle cx="103" cy="98" r="0.5"/><circle cx="100" cy="95" r="0.4"/>
+        <circle cx="96" cy="101" r="0.4"/><circle cx="104" cy="100" r="0.5"/><circle cx="100" cy="103" r="0.4"/>
+      </g>
+    </svg>
+    <b>Echinacea — Full Brush Stroke</b>
+    <span>Built entirely from tapered brush-stroke shapes with turbulence wobble. Green foliage strokes + 12 purple petal strokes + brown cone. No flat shapes, no black lines.</span>
+  </div>
+
+  <div class="card">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <filter id="bwFull2" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="60" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.5"/>
+        </filter>
+      </defs>
+
+      <!-- GREEN FOLIAGE strokes -->
+      <g filter="url(#bwFull2)">
+        <ellipse cx="100" cy="100" rx="70" ry="66" fill="#2a5a18" opacity="0.22"/>
+        <ellipse cx="96" cy="96" rx="58" ry="54" fill="#3a7a28" opacity="0.22"/>
+        <ellipse cx="104" cy="98" rx="50" ry="48" fill="#4a8a38" opacity="0.2"/>
+
+        <!-- GOLDEN PETAL STROKES — shorter, more upright than echinacea -->
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#c8a020" opacity="0.42"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#d8b030" opacity="0.38" transform="rotate(25.7,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#c09018" opacity="0.36" transform="rotate(51.4,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#d8b838" opacity="0.4" transform="rotate(77.1,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#c8a820" opacity="0.36" transform="rotate(102.9,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#e0c040" opacity="0.34" transform="rotate(128.6,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#d0b028" opacity="0.38" transform="rotate(154.3,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#c8a020" opacity="0.4" transform="rotate(180,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#d8b838" opacity="0.36" transform="rotate(205.7,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#c09018" opacity="0.38" transform="rotate(231.4,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#e0c840" opacity="0.34" transform="rotate(257.1,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#d0a828" opacity="0.38" transform="rotate(282.9,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#c8a820" opacity="0.36" transform="rotate(308.6,100,100)"/>
+        <path d="M98,98 C96,84 95,68 97,48 L100,44 L103,48 C105,68 104,84 102,98Z" fill="#d8b030" opacity="0.4" transform="rotate(334.3,100,100)"/>
+
+        <!-- Dark center -->
+        <circle cx="100" cy="100" r="12" fill="#2a1808" opacity="0.5"/>
+        <circle cx="99" cy="99" r="8" fill="#1a1004" opacity="0.4"/>
+
+        <!-- Dark mottled patches -->
+        <ellipse cx="84" cy="82" rx="10" ry="7" fill="#887008" opacity="0.28"/>
+        <ellipse cx="116" cy="86" rx="9" ry="6" fill="#907810" opacity="0.25"/>
+        <ellipse cx="92" cy="114" rx="10" ry="6" fill="#887008" opacity="0.22"/>
+        <!-- Bright highlights -->
+        <ellipse cx="94" cy="72" rx="6" ry="4" fill="#f0d850" opacity="0.22"/>
+        <ellipse cx="110" cy="76" rx="5" ry="4" fill="#f8e060" opacity="0.2"/>
+        <!-- Green fringe -->
+        <ellipse cx="50" cy="80" rx="12" ry="8" fill="#4a8a38" opacity="0.22"/>
+        <ellipse cx="148" cy="86" rx="10" ry="10" fill="#3a7a28" opacity="0.2"/>
+        <ellipse cx="96" cy="140" rx="16" ry="6" fill="#5a9a48" opacity="0.22"/>
+      </g>
+
+      <!-- Colored petal veins — dark gold -->
+      <g fill="none" stroke="#6a4a08" stroke-width="0.4" opacity="0.3">
+        <line x1="100" y1="98" x2="100" y2="48"/><line x1="100" y1="98" x2="100" y2="48" transform="rotate(51.4,100,100)"/>
+        <line x1="100" y1="98" x2="100" y2="48" transform="rotate(102.9,100,100)"/>
+        <line x1="100" y1="98" x2="100" y2="48" transform="rotate(154.3,100,100)"/>
+        <line x1="100" y1="98" x2="100" y2="48" transform="rotate(205.7,100,100)"/>
+        <line x1="100" y1="98" x2="100" y2="48" transform="rotate(257.1,100,100)"/>
+        <line x1="100" y1="98" x2="100" y2="48" transform="rotate(308.6,100,100)"/>
+      </g>
+
+      <!-- Center detail — very dark brown -->
+      <circle cx="100" cy="100" r="10" fill="none" stroke="#1a1008" stroke-width="0.8" opacity="0.4"/>
+      <g fill="#1a1008" opacity="0.45">
+        <circle cx="97" cy="97" r="0.5"/><circle cx="103" cy="98" r="0.4"/><circle cx="100" cy="95" r="0.4"/>
+        <circle cx="96" cy="101" r="0.4"/><circle cx="104" cy="100" r="0.5"/><circle cx="100" cy="103" r="0.4"/>
+      </g>
+    </svg>
+    <b>Rudbeckia — Full Brush Stroke</b>
+    <span>14 golden tapered petal strokes + very dark center dome + green foliage washes. All brush-stroke technique, no flat shapes.</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>5. Thin Brush Strokes — Fine Detail Technique</h2>
+<p>Narrower, finer tapered strokes for delicate detail — leaf veins, petal edges, grass blades, stem lines. Same gradient mask + turbulence technique but with much thinner shapes (2-6px wide vs 20-40px). Great for layering ON TOP of wider washes.</p>
+
+<div class="row">
+  <div class="card">
+    <svg width="300" height="80" viewBox="0 0 300 80">
+      <defs>
+        <filter id="thinWobble" x="-10%" y="-30%" width="120%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="70" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.3"/>
+        </filter>
+      </defs>
+      <!-- Thin tapered strokes — thick center ~5px, tips ~0px -->
+      <g filter="url(#thinWobble)">
+        <path d="M10,40 C60,38 120,36 150,35 C180,34 240,36 290,38 C240,40 180,42 150,43 C120,44 60,42 10,40Z" fill="#5a2878" opacity="0.5"/>
+        <path d="M10,52 C70,49 130,47 150,46 C170,45 230,47 290,50 C230,53 170,55 150,56 C130,57 70,55 10,52Z" fill="#7a48a0" opacity="0.4"/>
+        <path d="M10,64 C80,62 140,60.5 150,60 C160,59.5 220,61 290,63 C220,65 160,66.5 150,67 C140,67.5 80,66 10,64Z" fill="#9a68c0" opacity="0.35"/>
+      </g>
+      <text x="150" y="16" font-size="8" fill="#888" text-anchor="middle">Thin tapered — 3 weights: heavy, medium, light</text>
+    </svg>
+    <span>Hairline to medium — each stroke tapers from nothing to ~5px and back</span>
+  </div>
+
+  <div class="card">
+    <svg width="300" height="100" viewBox="0 0 300 100">
+      <defs>
+        <filter id="thinWobble2" x="-10%" y="-30%" width="120%" height="160%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="75" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.2"/>
+        </filter>
+      </defs>
+      <!-- Curved thin strokes — like leaf veins or branches -->
+      <g filter="url(#thinWobble2)">
+        <!-- Main vein -->
+        <path d="M20,80 C40,60 80,40 150,30 C220,20 260,22 280,25 C260,24 220,24 150,34 C80,44 40,64 20,80Z" fill="#1a4a10" opacity="0.5"/>
+        <!-- Side veins branching off -->
+        <path d="M60,65 C70,55 90,48 110,44 C90,50 70,57 60,65Z" fill="#2a5a18" opacity="0.4"/>
+        <path d="M100,50 C110,42 130,36 150,34 C130,38 110,44 100,50Z" fill="#2a5a18" opacity="0.4"/>
+        <path d="M140,38 C150,30 170,26 190,24 C170,28 150,32 140,38Z" fill="#2a5a18" opacity="0.38"/>
+        <path d="M180,30 C190,24 210,20 230,20 C210,22 190,26 180,30Z" fill="#2a5a18" opacity="0.35"/>
+        <!-- Sub-veins — ultra-thin -->
+        <path d="M75,58 C80,52 88,48 96,46 C88,50 80,54 75,58Z" fill="#3a6a28" opacity="0.3"/>
+        <path d="M120,44 C128,38 138,34 148,32 C138,36 128,40 120,44Z" fill="#3a6a28" opacity="0.3"/>
+        <path d="M160,34 C168,28 178,24 190,22 C178,26 168,30 160,34Z" fill="#3a6a28" opacity="0.28"/>
+      </g>
+      <text x="150" y="96" font-size="8" fill="#888" text-anchor="middle">Curved thin strokes — leaf vein branching pattern</text>
+    </svg>
+    <span>Main vein + side branches + sub-veins, all tapered fills with wobble</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>6. Thin Strokes Applied — Botanical Detail Overlay</h2>
+<p>Layering thin brush strokes ON TOP of wide watercolor washes to add botanical detail — petal edges, leaf veins, grass blades — all in color-matched thin tapered shapes.</p>
+
+<div class="row">
+  <div class="card">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <filter id="bwT1" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="80" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.5"/>
+        </filter>
+        <filter id="thinT1" x="-10%" y="-20%" width="120%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="85" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.2"/>
+        </filter>
+      </defs>
+
+      <!-- WIDE watercolor washes -->
+      <g filter="url(#bwT1)">
+        <circle cx="100" cy="100" r="70" fill="#2a5a18" opacity="0.22"/>
+        <circle cx="100" cy="98" r="58" fill="#7848a0" opacity="0.35"/>
+        <ellipse cx="96" cy="94" rx="50" ry="48" fill="#8a58b0" opacity="0.28"/>
+        <ellipse cx="104" cy="96" rx="44" ry="42" fill="#9a68c0" opacity="0.22"/>
+        <ellipse cx="88" cy="84" rx="14" ry="10" fill="#5a2878" opacity="0.32"/>
+        <ellipse cx="112" cy="88" rx="12" ry="9" fill="#6a3888" opacity="0.28"/>
+        <ellipse cx="96" cy="110" rx="12" ry="7" fill="#5a2878" opacity="0.26"/>
+        <ellipse cx="80" cy="72" rx="8" ry="6" fill="#b880d8" opacity="0.22"/>
+        <ellipse cx="108" cy="74" rx="7" ry="5" fill="#c898e0" opacity="0.2"/>
+        <ellipse cx="54" cy="80" rx="10" ry="8" fill="#4a8a38" opacity="0.22"/>
+        <ellipse cx="144" cy="86" rx="8" ry="10" fill="#3a7a2a" opacity="0.2"/>
+        <ellipse cx="96" cy="136" rx="14" ry="5" fill="#5a9a48" opacity="0.22"/>
+        <circle cx="100" cy="98" r="12" fill="#8a6a18" opacity="0.42"/>
+        <circle cx="99" cy="97" r="8" fill="#a07820" opacity="0.32"/>
+      </g>
+
+      <!-- THIN petal edge strokes — dark purple tapered shapes on top -->
+      <g filter="url(#thinT1)">
+        <!-- 12 thin petal strokes — very narrow tapered shapes -->
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#4a1868" opacity="0.4"/>
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#4a1868" opacity="0.38" transform="rotate(30,100,98)"/>
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#5a2878" opacity="0.36" transform="rotate(60,100,98)"/>
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#4a1868" opacity="0.38" transform="rotate(90,100,98)"/>
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#5a2878" opacity="0.36" transform="rotate(120,100,98)"/>
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#4a1868" opacity="0.38" transform="rotate(150,100,98)"/>
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#5a2878" opacity="0.36" transform="rotate(180,100,98)"/>
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#4a1868" opacity="0.38" transform="rotate(210,100,98)"/>
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#5a2878" opacity="0.36" transform="rotate(240,100,98)"/>
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#4a1868" opacity="0.38" transform="rotate(270,100,98)"/>
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#5a2878" opacity="0.36" transform="rotate(300,100,98)"/>
+        <path d="M99,96 C98,82 97,66 98,42 L100,40 L102,42 C103,66 102,82 101,96Z" fill="#4a1868" opacity="0.38" transform="rotate(330,100,98)"/>
+      </g>
+
+      <!-- THIN cone detail strokes — warm brown -->
+      <g filter="url(#thinT1)">
+        <circle cx="100" cy="98" r="10" fill="none" stroke="#6a4a10" stroke-width="1" opacity="0.4"/>
+        <circle cx="100" cy="98" r="6" fill="none" stroke="#7a5a18" stroke-width="0.5" opacity="0.35"/>
+      </g>
+      <!-- Cone stipple in color -->
+      <g fill="#5a3a08" opacity="0.4">
+        <circle cx="97" cy="95" r="0.5"/><circle cx="103" cy="96" r="0.4"/><circle cx="100" cy="93" r="0.4"/>
+        <circle cx="96" cy="99" r="0.4"/><circle cx="104" cy="98" r="0.5"/><circle cx="100" cy="101" r="0.4"/>
+      </g>
+
+      <!-- THIN leaf vein strokes — green tapered shapes at base -->
+      <g filter="url(#thinT1)">
+        <!-- Leaf 1 -->
+        <path d="M100,132 C86,128 70,126 52,126 C70,128 86,130 100,134Z" fill="#1a4a10" opacity="0.35"/>
+        <!-- Sub-veins -->
+        <path d="M82,130 C76,126 68,124 60,124 C68,126 76,128 82,130Z" fill="#2a5a18" opacity="0.28"/>
+        <path d="M70,128 C64,124 56,122 48,124 C56,124 64,126 70,128Z" fill="#2a5a18" opacity="0.25"/>
+        <!-- Leaf 2 -->
+        <path d="M100,132 C114,128 130,126 148,126 C130,128 114,130 100,134Z" fill="#1a4a10" opacity="0.35"/>
+        <path d="M118,130 C124,126 132,124 140,124 C132,126 124,128 118,130Z" fill="#2a5a18" opacity="0.28"/>
+        <path d="M130,128 C136,124 144,122 152,124 C144,124 136,126 130,128Z" fill="#2a5a18" opacity="0.25"/>
+      </g>
+    </svg>
+    <b>Echinacea — Wide + Thin Layers</b>
+    <span>Wide watercolor washes underneath, thin tapered petal strokes + leaf vein strokes on top. Two weights of brush creating depth.</span>
+  </div>
+
+  <div class="card">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <filter id="bwT2" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="90" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.5"/>
+        </filter>
+        <filter id="thinT2" x="-10%" y="-20%" width="120%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="95" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.2"/>
+        </filter>
+      </defs>
+
+      <!-- Wide watercolor washes — grass -->
+      <g filter="url(#bwT2)">
+        <ellipse cx="100" cy="120" rx="60" ry="70" fill="#3a6a20" opacity="0.2"/>
+        <ellipse cx="96" cy="116" rx="50" ry="60" fill="#4a8a30" opacity="0.2"/>
+        <ellipse cx="104" cy="118" rx="42" ry="52" fill="#5a9a40" opacity="0.18"/>
+        <ellipse cx="92" cy="112" rx="34" ry="42" fill="#6aaa50" opacity="0.15"/>
+        <!-- Tan autumn tips -->
+        <ellipse cx="80" cy="60" rx="20" ry="12" fill="#c8a860" opacity="0.2"/>
+        <ellipse cx="120" cy="55" rx="18" ry="10" fill="#d0b068" opacity="0.18"/>
+        <ellipse cx="100" cy="50" rx="16" ry="8" fill="#b89850" opacity="0.15"/>
+      </g>
+
+      <!-- THIN blade strokes — each a very narrow tapered shape curving outward -->
+      <g filter="url(#thinT2)">
+        <!-- 16 grass blades as thin tapered fills -->
+        <path d="M99,160 C98,130 96,100 90,55 L92,52 C97,98 98,128 100,160Z" fill="#2a5a18" opacity="0.4"/>
+        <path d="M100,160 C100,128 102,96 110,50 L112,48 C104,94 102,126 101,160Z" fill="#3a6a22" opacity="0.38"/>
+        <path d="M98,158 C94,126 88,94 76,52 L78,50 C90,92 96,124 99,158Z" fill="#2a5a18" opacity="0.36"/>
+        <path d="M101,158 C106,126 112,94 124,52 L122,50 C110,92 104,124 101,158Z" fill="#3a6a22" opacity="0.36"/>
+        <path d="M97,156 C90,124 80,92 62,56 L64,54 C82,90 92,122 98,156Z" fill="#4a7a30" opacity="0.34"/>
+        <path d="M102,156 C110,124 120,92 138,56 L136,54 C118,90 108,122 102,156Z" fill="#4a7a30" opacity="0.34"/>
+        <path d="M96,154 C86,122 72,90 50,62 L52,60 C74,88 88,120 97,154Z" fill="#3a6a20" opacity="0.32"/>
+        <path d="M103,154 C114,122 128,90 150,62 L148,60 C126,88 112,120 103,154Z" fill="#3a6a20" opacity="0.32"/>
+        <!-- Thinner sub-blades -->
+        <path d="M99,155 C96,128 92,100 84,60 L85,58 C94,98 97,126 100,155Z" fill="#5a8a38" opacity="0.28"/>
+        <path d="M101,155 C104,128 108,100 116,60 L115,58 C106,98 103,126 100,155Z" fill="#5a8a38" opacity="0.28"/>
+        <path d="M98,152 C92,124 84,96 70,58 L71,56 C86,94 94,122 99,152Z" fill="#4a7a28" opacity="0.26"/>
+        <path d="M102,152 C108,124 116,96 130,58 L129,56 C114,94 106,122 101,152Z" fill="#4a7a28" opacity="0.26"/>
+        <!-- Ultra-thin wispy tips -->
+        <path d="M99.5,150 C98,126 97,102 94,64 L95,62 C98,100 99,124 100,150Z" fill="#6a9a48" opacity="0.22"/>
+        <path d="M100.5,150 C102,126 103,102 106,64 L105,62 C102,100 101,124 100,150Z" fill="#6a9a48" opacity="0.22"/>
+        <path d="M100,148 C100,122 100,96 100,54 L100.5,52 C101,94 101,120 100.5,148Z" fill="#5a8a38" opacity="0.2"/>
+        <path d="M98,148 C92,120 82,92 66,60 L67,58 C84,90 94,118 99,148Z" fill="#5a8a38" opacity="0.2"/>
+      </g>
+
+      <!-- Seed head dots at some blade tips — warm tan -->
+      <g filter="url(#thinT2)">
+        <circle cx="90" cy="54" r="2" fill="#b89848" opacity="0.4"/>
+        <circle cx="110" cy="49" r="1.8" fill="#c8a858" opacity="0.38"/>
+        <circle cx="76" cy="52" r="1.5" fill="#a88838" opacity="0.35"/>
+        <circle cx="124" cy="52" r="1.5" fill="#b89040" opacity="0.35"/>
+        <circle cx="62" cy="56" r="1.2" fill="#a08030" opacity="0.3"/>
+        <circle cx="138" cy="56" r="1.2" fill="#a88838" opacity="0.3"/>
+      </g>
+    </svg>
+    <b>Little Bluestem — Thin Blade Strokes</b>
+    <span>16 thin tapered grass blade shapes radiating from base. 3 weights: main blades, sub-blades, ultra-thin wisps. Tan seed heads at tips.</span>
+  </div>
+</div>
+
+</body>
+</html>
