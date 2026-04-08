@@ -94,7 +94,7 @@ Use \`house.png\`, \`patio.png\`, \`bench.png\`, \`pergola.png\`, \`compass.png\
 When appropriate, suggest or use one of these design styles, always using organic curved bed shapes and professional textures:
 - **Pocket Garden** (small spaces): One organic curved bed with 4-6 species densely packed. A short curved stepping-stone path leading to it. Grass tufts around the bed.
 - **Container Garden** (patios): Draw a hatched deck/patio area with raised bed rectangles as containers. Dense planting within each container.
-- **Formal Native Border**: Sweeping curved bed borders along a straight pathway (hatched stone). Repeating symmetrical plant drifts. Clipped shrub edges drawn with jagged zigzag outlines.
+- **Formal Native Border**: Sweeping curved bed borders along a straight pathway (hatched stone). Repeating symmetrical plant drifts. Clipped shrub edges drawn with watercolor washs.
 - **Shade Pollinator Oasis**: Organic curved bed under a large tree canopy (drawn as a large circle with radial branch lines). Feature columbine, wild-ginger, ferns.
 - **Meadowscape / Lawn Conversion**: Large flowing organic planting area with curved mown paths winding through. Dense mixed plant icons throughout. Grass tufts in remaining lawn areas. NO formal bed borders — the planting area flows naturally into lawn.
 - **Full Property Plan**: Include house footprint (gray rectangle), patio (hatched), curved stone pathways connecting garden beds, multiple organic planting beds, water feature, bench, compass rose, and scale bar. This is the most complex layout — show the relationship between living spaces and garden.
@@ -118,34 +118,34 @@ The diagram is divided into strict non-overlapping zones. NOTHING may cross zone
 
 ### Professional Watercolor Landscape Plan — Pre-Built Symbol System
 
-The app has a library of pre-built hyperdetailed plant symbols at \`/icons/plant-symbols.svg\`. Each symbol contains 15+ overlapping transparent watercolor color layers, detailed jagged zigzag/jagged botanical outlines, and thin interior ink detail — matching professional hand-painted landscape plan quality.
+The app has a library of pre-built hyperdetailed plant symbols at \`/icons/plant-symbols.svg\`. Each symbol contains 15+ overlapping transparent watercolor color layers, detailed and thin interior ink detail — matching professional hand-painted landscape plan quality.
 
 **CRITICAL: Use the pre-built symbols with \`<use>\` — do NOT draw plants inline.**
 Place plants using: \`<use href="/icons/plant-symbols.svg#symOak" x="200" y="150" width="90" height="90"/>\`
-This ensures every plant renders with full watercolor detail, jagged zigzag outlines, radial branches, leaf marks, and stipple shading automatically.
+This ensures every plant renders with full watercolor detail, radial branches, leaf marks, and stipple shading automatically.
 
 **MANDATORY: Include these filter definitions in the diagram SVG \`<defs>\` so the symbol filters work:**
 \`\`\`
 <defs>
-  <filter id="wcFilter" x="-15%" y="-15%" width="130%" height="130%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="4" seed="1" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
-    <feGaussianBlur in="displaced" stdDeviation="0.8"/>
-  </filter>
   <filter id="splotchFilter" x="-10%" y="-10%" width="120%" height="120%">
     <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="4" seed="3" result="t"/>
     <feColorMatrix in="t" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -0.9 1.3" result="m"/>
     <feComposite in="SourceGraphic" in2="m" operator="in"/>
     <feGaussianBlur stdDeviation="1"/>
   </filter>
+  <filter id="thinFilter" x="-10%" y="-20%" width="120%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="7" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+    <feGaussianBlur stdDeviation="0.2"/>
+  </filter>
 </defs>
 \`\`\`
-Without these filters in the diagram \`<defs>\`, the plant symbols will render without their watercolor effect. ALWAYS include them.
+The symbols use brush-stroke technique: wide watercolor washes (splotchFilter) + tapered filled shapes for petals/branches + thin tapered detail strokes (thinFilter). All color-matched, no black. ALWAYS include both filters.
 
 **Available symbols and recommended sizes:**
 
 **TREES** (width/height 70-100):
-- \`#symOak\` — Oak tree. Jagged zigzag canopy, radial branches, 15 green watercolor layers, leaf marks, stipple shadow.
+- \`#symOak\` — Oak tree. Radial branches, 15 green watercolor layers, leaf marks, stipple shadow.
 - \`#symServiceberry\` — Serviceberry. Lighter greens, multi-stem, finer branching, 15 green layers.
 
 **SHRUBS** (width/height 50-70):
@@ -162,7 +162,7 @@ Without these filters in the diagram \`<defs>\`, the plant symbols will render w
 - \`#symLittleBluestem\` — Little Bluestem. Elongated, 16 blade lines in fountain, spiky outline, green/tan layers.
 
 **GROUNDCOVER** (width/height 25-40):
-- \`#symWildGinger\` — Wild Ginger. Low form, heart-shaped leaf marks, jagged zigzag outline.
+- \`#symWildGinger\` — Wild Ginger. Low form, heart-shaped leaf marks, watercolor wash.
 
 **LANDSCAPE FEATURES** (width/height 50-80):
 - \`#symRocks\` — Rock cluster (5 rocks). Gray layered patches, crack lines, outlines.
