@@ -263,6 +263,57 @@ body {
   color: #b91c1c;
 }
 
+/* Sidebar footer — secondary nav for demo/research pages.
+   Pinned at the bottom of the sidebar below the (flex:1) sessions list. */
+.sidebar-footer {
+  flex-shrink: 0;
+  border-top: 1px solid var(--border-light);
+  padding: 6px 8px 12px;
+  max-height: 40vh;
+  overflow-y: auto;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.01) 100%
+  );
+}
+
+.sidebar-footer-group {
+  padding: 2px 0 4px;
+}
+
+.sidebar-footer-group + .sidebar-footer-group {
+  border-top: 1px dashed var(--border-light);
+  margin-top: 4px;
+  padding-top: 4px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.82rem;
+  line-height: 1.2;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sidebar-link:hover {
+  background: var(--moss-faint);
+  color: var(--moss);
+}
+
+.sidebar-link-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.6);
+}
+
 /* Header — translucent, minimal, editorial */
 .header {
   background: rgba(253, 252, 248, 0.85);
@@ -703,6 +754,50 @@ body {
 @keyframes bounce {
   0%, 80%, 100% { transform: scale(0.6); opacity: 0.3; }
   40% { transform: scale(1); opacity: 1; }
+}
+
+/* Diagram Loading Indicator */
+.diagram-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 32px 20px;
+  margin: 12px 0;
+  background: var(--cream-warm);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+.diagram-loading-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.diagram-loading-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--moss);
+  animation: bounce 1.4s infinite ease-in-out;
+}
+
+.diagram-loading-dots span:nth-child(1) { animation-delay: 0s; }
+.diagram-loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.diagram-loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+.diagram-loading-phrase {
+  font-size: 0.88rem;
+  color: var(--moss);
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+  animation: phraseFade 2.5s ease-in-out infinite;
+}
+
+@keyframes phraseFade {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
 }
 
 /* Input Area */
