@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botanical Swatch Icon Comparison</title>
+<style>
+  body { font-family: Helvetica, Arial, sans-serif; background: #f8f6f2; color: #2c2416; margin: 40px; }
+  h1 { font-size: 1.3rem; color: #3d3229; }
+  h2 { font-size: 1rem; color: #4a6741; margin-top: 36px; border-bottom: 1px solid #e5ddd0; padding-bottom: 6px; }
+  p { font-size: 0.82rem; color: #6b5d4f; max-width: 700px; line-height: 1.6; }
+  .compare { display: flex; gap: 40px; align-items: flex-start; margin: 20px 0; flex-wrap: wrap; }
+  .swatch-card { text-align: center; background: white; padding: 12px; border-radius: 8px; border: 1px solid #e5ddd0; }
+  .swatch-card span { display: block; font-size: 0.7rem; color: #9a8d7f; margin-top: 6px; }
+  .swatch-card b { display: block; font-size: 0.8rem; color: #3d3229; margin-top: 4px; }
+  .ref-note { font-size: 0.75rem; color: #888; font-style: italic; margin: 8px 0; }
+</style>
+</head>
+<body>
+
+<h1>Botanical Swatch Icon Replication — Reference Analysis</h1>
+<p>Replicating the watercolor swatch style from the Signe Danler landscape plan. Key observations: rich saturated colors (opacity 0.4-0.7), 30+ mottled patches per icon creating dense depth, soft organic edges with NO hard outlines, dark ink flower/leaf detail on top.</p>
+
+<h2>Purple Coneflower (Echinacea) — Aerial Swatch</h2>
+<p class="ref-note">Reference: Dense purple mass with visible petal radiating pattern, darker mottled center, lighter purple edges</p>
+
+<div class="compare">
+  <div class="swatch-card">
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <defs>
+        <filter id="wc1" x="-12%" y="-12%" width="124%" height="124%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="5" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.6"/>
+        </filter>
+      </defs>
+      <!-- 30+ color layers — RICH opacity, SATURATED colors, MOTTLED patches -->
+      <g filter="url(#wc1)">
+        <!-- Base green foliage mass -->
+        <circle cx="60" cy="60" r="48" fill="#3a6a28" opacity="0.35"/>
+        <ellipse cx="55" cy="58" rx="42" ry="40" fill="#4a7a32" opacity="0.3"/>
+        <ellipse cx="65" cy="56" rx="36" ry="34" fill="#5a8a3e" opacity="0.25"/>
+        <!-- Purple bloom mass — dense, saturated -->
+        <circle cx="60" cy="58" r="38" fill="#7848a0" opacity="0.4"/>
+        <ellipse cx="56" cy="55" rx="34" ry="32" fill="#8a58b0" opacity="0.35"/>
+        <ellipse cx="64" cy="54" rx="30" ry="28" fill="#9a68c0" opacity="0.3"/>
+        <!-- Dark mottled patches scattered throughout — key to realism -->
+        <ellipse cx="48" cy="48" rx="14" ry="10" fill="#5a2878" opacity="0.4"/>
+        <ellipse cx="72" cy="52" rx="12" ry="9" fill="#6a3888" opacity="0.38"/>
+        <ellipse cx="58" cy="68" rx="13" ry="8" fill="#5a2878" opacity="0.35"/>
+        <ellipse cx="44" cy="62" rx="10" ry="12" fill="#4a1868" opacity="0.32"/>
+        <ellipse cx="76" cy="64" rx="11" ry="8" fill="#6a3888" opacity="0.3"/>
+        <!-- Medium purple variation patches -->
+        <ellipse cx="52" cy="44" rx="10" ry="8" fill="#8a50b0" opacity="0.35"/>
+        <ellipse cx="68" cy="46" rx="9" ry="7" fill="#a070c8" opacity="0.3"/>
+        <ellipse cx="60" cy="72" rx="11" ry="7" fill="#9060b8" opacity="0.32"/>
+        <ellipse cx="40" cy="55" rx="8" ry="10" fill="#7a48a8" opacity="0.3"/>
+        <ellipse cx="78" cy="56" rx="8" ry="10" fill="#8858b0" opacity="0.28"/>
+        <!-- Light purple highlight patches -->
+        <ellipse cx="54" cy="40" rx="8" ry="6" fill="#b880d8" opacity="0.3"/>
+        <ellipse cx="66" cy="42" rx="7" ry="5" fill="#c898e0" opacity="0.25"/>
+        <ellipse cx="50" cy="52" rx="6" ry="8" fill="#b078d0" opacity="0.28"/>
+        <ellipse cx="70" cy="50" rx="7" ry="6" fill="#c090d8" opacity="0.25"/>
+        <!-- Pink/magenta accent patches -->
+        <ellipse cx="58" cy="56" rx="8" ry="6" fill="#c060a0" opacity="0.2"/>
+        <ellipse cx="62" cy="64" rx="6" ry="8" fill="#b050a0" opacity="0.22"/>
+        <ellipse cx="48" cy="58" rx="7" ry="5" fill="#d070b0" opacity="0.18"/>
+        <!-- Green showing through at edges -->
+        <ellipse cx="36" cy="46" rx="10" ry="8" fill="#4a8a38" opacity="0.3"/>
+        <ellipse cx="82" cy="50" rx="8" ry="10" fill="#3a7a2a" opacity="0.25"/>
+        <ellipse cx="60" cy="80" rx="14" ry="6" fill="#5a9a48" opacity="0.3"/>
+        <ellipse cx="38" cy="72" rx="10" ry="8" fill="#4a8a38" opacity="0.25"/>
+        <ellipse cx="80" cy="72" rx="10" ry="7" fill="#3a7a2a" opacity="0.22"/>
+        <!-- Cone center — warm brown -->
+        <circle cx="60" cy="58" r="10" fill="#8a6a20" opacity="0.5"/>
+        <circle cx="59" cy="57" r="7" fill="#a07828" opacity="0.4"/>
+        <circle cx="58" cy="56" r="4" fill="#b88830" opacity="0.35"/>
+      </g>
+
+      <!-- INK DETAIL — dark flower structures on top -->
+      <g fill="none" stroke="#3a1848">
+        <!-- Petal radiating lines — visible structure -->
+        <line x1="60" y1="58" x2="60" y2="18" stroke-width="0.6" opacity="0.5"/>
+        <line x1="60" y1="58" x2="95" y2="40" stroke-width="0.6" opacity="0.5"/>
+        <line x1="60" y1="58" x2="98" y2="68" stroke-width="0.6" opacity="0.5"/>
+        <line x1="60" y1="58" x2="80" y2="95" stroke-width="0.6" opacity="0.5"/>
+        <line x1="60" y1="58" x2="40" y2="95" stroke-width="0.6" opacity="0.5"/>
+        <line x1="60" y1="58" x2="22" y2="68" stroke-width="0.6" opacity="0.5"/>
+        <line x1="60" y1="58" x2="25" y2="40" stroke-width="0.6" opacity="0.5"/>
+        <line x1="60" y1="58" x2="42" y2="22" stroke-width="0.6" opacity="0.5"/>
+        <line x1="60" y1="58" x2="78" y2="22" stroke-width="0.6" opacity="0.5"/>
+        <line x1="60" y1="58" x2="95" y2="52" stroke-width="0.6" opacity="0.5"/>
+        <line x1="60" y1="58" x2="90" y2="82" stroke-width="0.6" opacity="0.5"/>
+        <line x1="60" y1="58" x2="30" y2="82" stroke-width="0.6" opacity="0.5"/>
+        <!-- Cone center rings -->
+        <circle cx="60" cy="58" r="9" stroke-width="0.8" opacity="0.6"/>
+        <circle cx="60" cy="58" r="5" stroke-width="0.5" opacity="0.5"/>
+        <!-- Cone stipple -->
+        <g fill="#4a2a08" stroke="none" opacity="0.6">
+          <circle cx="57" cy="55" r="0.6"/><circle cx="63" cy="56" r="0.5"/><circle cx="60" cy="53" r="0.5"/>
+          <circle cx="56" cy="59" r="0.5"/><circle cx="64" cy="58" r="0.6"/><circle cx="60" cy="61" r="0.5"/>
+          <circle cx="58" cy="57" r="0.4"/><circle cx="62" cy="60" r="0.4"/>
+        </g>
+        <!-- Tiny petal tip marks -->
+        <g stroke-width="0.4" opacity="0.4">
+          <path d="M60,20 l-2,4 l4,0Z"/>
+          <path d="M93,42 l-4,1 l2,3Z"/>
+          <path d="M96,66 l-4,-1 l1,4Z"/>
+          <path d="M78,93 l-3,-3 l4,-1Z"/>
+          <path d="M42,93 l3,-3 l-4,-1Z"/>
+          <path d="M24,66 l4,-1 l-1,4Z"/>
+        </g>
+      </g>
+    </svg>
+    <b>Echinacea</b>
+    <span>30+ layers, rich purple<br>watercolor + ink petal lines</span>
+  </div>
+
+  <div class="swatch-card">
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <defs>
+        <filter id="wc2" x="-12%" y="-12%" width="124%" height="124%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="12" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.6"/>
+        </filter>
+      </defs>
+      <!-- DOUGLAS ASTER style — dense blue-purple mass -->
+      <g filter="url(#wc2)">
+        <circle cx="60" cy="60" r="50" fill="#3a5a88" opacity="0.35"/>
+        <circle cx="60" cy="60" r="46" fill="#4a6a98" opacity="0.3"/>
+        <ellipse cx="56" cy="56" rx="40" ry="38" fill="#5a7aa8" opacity="0.3"/>
+        <!-- Dense blue-purple mottled patches -->
+        <ellipse cx="48" cy="46" rx="16" ry="12" fill="#3a4a78" opacity="0.4"/>
+        <ellipse cx="72" cy="50" rx="14" ry="10" fill="#4a5a88" opacity="0.38"/>
+        <ellipse cx="55" cy="70" rx="15" ry="10" fill="#3a4a78" opacity="0.35"/>
+        <ellipse cx="42" cy="58" rx="12" ry="14" fill="#2a3a68" opacity="0.35"/>
+        <ellipse cx="78" cy="62" rx="10" ry="12" fill="#4a5a88" opacity="0.32"/>
+        <ellipse cx="60" cy="48" rx="12" ry="8" fill="#5a6a98" opacity="0.35"/>
+        <ellipse cx="50" cy="62" rx="10" ry="12" fill="#3a5080" opacity="0.3"/>
+        <ellipse cx="70" cy="56" rx="12" ry="10" fill="#4a6090" opacity="0.3"/>
+        <!-- Lighter blue highlights -->
+        <ellipse cx="52" cy="42" rx="8" ry="6" fill="#7a9ac0" opacity="0.3"/>
+        <ellipse cx="68" cy="44" rx="7" ry="5" fill="#8aaad0" opacity="0.25"/>
+        <ellipse cx="46" cy="54" rx="6" ry="8" fill="#6a8ab8" opacity="0.28"/>
+        <ellipse cx="74" cy="52" rx="7" ry="8" fill="#7a98c0" opacity="0.25"/>
+        <!-- Purple tint patches -->
+        <ellipse cx="56" cy="52" rx="10" ry="8" fill="#6a58a0" opacity="0.25"/>
+        <ellipse cx="64" cy="60" rx="8" ry="10" fill="#7a68b0" opacity="0.22"/>
+        <ellipse cx="44" cy="66" rx="10" ry="6" fill="#5a48a0" opacity="0.2"/>
+        <ellipse cx="76" cy="68" rx="8" ry="8" fill="#6a58a8" opacity="0.2"/>
+        <!-- Dark depth patches -->
+        <ellipse cx="50" cy="50" rx="8" ry="6" fill="#2a3058" opacity="0.3"/>
+        <ellipse cx="68" cy="54" rx="6" ry="8" fill="#2a3058" opacity="0.28"/>
+        <ellipse cx="58" cy="64" rx="8" ry="5" fill="#2a3058" opacity="0.25"/>
+        <!-- Green edge peeping through -->
+        <ellipse cx="34" cy="48" rx="8" ry="6" fill="#4a7a38" opacity="0.25"/>
+        <ellipse cx="84" cy="52" rx="7" ry="8" fill="#3a6a28" opacity="0.22"/>
+        <ellipse cx="60" cy="82" rx="12" ry="5" fill="#4a8a38" opacity="0.25"/>
+        <ellipse cx="36" cy="72" rx="8" ry="6" fill="#3a7a2a" opacity="0.2"/>
+        <ellipse cx="82" cy="70" rx="8" ry="6" fill="#4a7a38" opacity="0.2"/>
+        <!-- Additional mottling -->
+        <ellipse cx="54" cy="58" rx="5" ry="7" fill="#4a5888" opacity="0.25"/>
+        <ellipse cx="66" cy="62" rx="7" ry="5" fill="#5a6898" opacity="0.22"/>
+        <ellipse cx="60" cy="74" rx="8" ry="4" fill="#3a4878" opacity="0.2"/>
+        <ellipse cx="42" cy="48" rx="6" ry="4" fill="#5a6a90" opacity="0.22"/>
+        <ellipse cx="74" cy="46" rx="5" ry="6" fill="#4a5a80" opacity="0.2"/>
+      </g>
+
+      <!-- INK detail — tiny aster flower marks -->
+      <g fill="none" stroke="#2a2a58" stroke-width="0.5" opacity="0.5">
+        <!-- Small daisy marks scattered -->
+        <circle cx="48" cy="48" r="2.5"/><path d="M48,48 l0,-4 M48,48 l3,-2 M48,48 l3,2 M48,48 l0,4 M48,48 l-3,2 M48,48 l-3,-2"/>
+        <circle cx="68" cy="52" r="2"/><path d="M68,52 l0,-3 M68,52 l2.5,-1.5 M68,52 l2.5,1.5 M68,52 l0,3 M68,52 l-2.5,1.5 M68,52 l-2.5,-1.5"/>
+        <circle cx="56" cy="64" r="2.5"/><path d="M56,64 l0,-4 M56,64 l3,-2 M56,64 l3,2 M56,64 l0,4 M56,64 l-3,2 M56,64 l-3,-2"/>
+        <circle cx="72" cy="66" r="2"/><path d="M72,66 l0,-3 M72,66 l2.5,-1.5 M72,66 l2.5,1.5 M72,66 l0,3 M72,66 l-2.5,1.5 M72,66 l-2.5,-1.5"/>
+        <circle cx="44" cy="58" r="2"/><path d="M44,58 l0,-3 M44,58 l2,-2 M44,58 l3,0 M44,58 l2,2 M44,58 l0,3 M44,58 l-2,2 M44,58 l-3,0 M44,58 l-2,-2"/>
+        <circle cx="62" cy="50" r="2.5"/><path d="M62,50 l0,-4 M62,50 l3,-2 M62,50 l3,2 M62,50 l0,4 M62,50 l-3,2 M62,50 l-3,-2"/>
+        <circle cx="52" cy="72" r="2"/><path d="M52,72 l0,-3 M52,72 l2.5,-1.5 M52,72 l2.5,1.5 M52,72 l0,3 M52,72 l-2.5,1.5 M52,72 l-2.5,-1.5"/>
+        <circle cx="74" cy="58" r="2"/><path d="M74,58 l0,-3 M74,58 l2,-2 M74,58 l3,0 M74,58 l2,2 M74,58 l0,3 M74,58 l-2,2 M74,58 l-3,0 M74,58 l-2,-2"/>
+      </g>
+    </svg>
+    <b>New England Aster</b>
+    <span>30+ layers, dense blue-purple<br>mass with tiny aster marks</span>
+  </div>
+
+  <div class="swatch-card">
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <defs>
+        <filter id="wc3" x="-12%" y="-12%" width="124%" height="124%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="20" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.6"/>
+        </filter>
+      </defs>
+      <!-- BEE BALM / RED style — rich red/pink mass -->
+      <g filter="url(#wc3)">
+        <circle cx="60" cy="60" r="46" fill="#3a6a28" opacity="0.3"/>
+        <ellipse cx="56" cy="56" rx="38" ry="36" fill="#4a7a32" opacity="0.25"/>
+        <!-- Red bloom mass -->
+        <circle cx="60" cy="58" r="36" fill="#a83838" opacity="0.4"/>
+        <ellipse cx="56" cy="54" rx="32" ry="30" fill="#c04848" opacity="0.35"/>
+        <ellipse cx="64" cy="56" rx="28" ry="26" fill="#d85858" opacity="0.3"/>
+        <!-- Dark mottled -->
+        <ellipse cx="48" cy="48" rx="12" ry="8" fill="#882020" opacity="0.4"/>
+        <ellipse cx="70" cy="52" rx="10" ry="8" fill="#902828" opacity="0.38"/>
+        <ellipse cx="56" cy="66" rx="12" ry="7" fill="#882020" opacity="0.35"/>
+        <ellipse cx="42" cy="60" rx="8" ry="10" fill="#781818" opacity="0.32"/>
+        <ellipse cx="76" cy="62" rx="9" ry="8" fill="#882828" opacity="0.3"/>
+        <!-- Medium red -->
+        <ellipse cx="52" cy="44" rx="8" ry="6" fill="#c85050" opacity="0.32"/>
+        <ellipse cx="68" cy="46" rx="7" ry="6" fill="#d86060" opacity="0.28"/>
+        <ellipse cx="60" cy="70" rx="10" ry="5" fill="#b84848" opacity="0.3"/>
+        <ellipse cx="38" cy="54" rx="7" ry="8" fill="#a04040" opacity="0.28"/>
+        <ellipse cx="80" cy="56" rx="6" ry="8" fill="#b84848" opacity="0.25"/>
+        <!-- Light pink highlights -->
+        <ellipse cx="54" cy="40" rx="6" ry="5" fill="#e88888" opacity="0.25"/>
+        <ellipse cx="66" cy="42" rx="5" ry="4" fill="#f0a0a0" opacity="0.22"/>
+        <ellipse cx="48" cy="52" rx="5" ry="6" fill="#e08080" opacity="0.25"/>
+        <!-- Magenta accent -->
+        <ellipse cx="58" cy="56" rx="6" ry="5" fill="#c04070" opacity="0.2"/>
+        <ellipse cx="62" cy="62" rx="5" ry="6" fill="#b03868" opacity="0.22"/>
+        <!-- Green edges -->
+        <ellipse cx="34" cy="46" rx="8" ry="6" fill="#4a8a38" opacity="0.28"/>
+        <ellipse cx="84" cy="50" rx="7" ry="8" fill="#3a7a28" opacity="0.25"/>
+        <ellipse cx="58" cy="80" rx="12" ry="5" fill="#5a9a48" opacity="0.28"/>
+        <ellipse cx="36" cy="72" rx="8" ry="6" fill="#4a8a38" opacity="0.22"/>
+        <ellipse cx="82" cy="70" rx="7" ry="5" fill="#3a7a28" opacity="0.2"/>
+        <!-- More mottling -->
+        <ellipse cx="54" cy="58" rx="4" ry="6" fill="#982830" opacity="0.28"/>
+        <ellipse cx="66" cy="60" rx="6" ry="4" fill="#a83838" opacity="0.25"/>
+        <ellipse cx="44" cy="64" rx="5" ry="4" fill="#883030" opacity="0.22"/>
+        <ellipse cx="74" cy="64" rx="4" ry="6" fill="#982830" opacity="0.2"/>
+      </g>
+
+      <!-- INK detail — starburst tubular marks -->
+      <g fill="none" stroke="#581818" stroke-width="0.5" opacity="0.5">
+        <g transform="translate(50,50)"><path d="M0,0 l0,-5 M0,0 l3,-4 M0,0 l5,-2 M0,0 l5,1 M0,0 l4,3 M0,0 l2,5 M0,0 l-1,5 M0,0 l-3,4 M0,0 l-5,2 M0,0 l-5,-1 M0,0 l-4,-3 M0,0 l-2,-5"/></g>
+        <g transform="translate(70,54)"><path d="M0,0 l0,-4 M0,0 l3,-3 M0,0 l4,-1 M0,0 l4,1 M0,0 l3,3 M0,0 l1,4 M0,0 l-1,4 M0,0 l-3,3 M0,0 l-4,1 M0,0 l-4,-1 M0,0 l-3,-3 M0,0 l0,-4"/></g>
+        <g transform="translate(56,66)"><path d="M0,0 l0,-4 M0,0 l3,-3 M0,0 l4,-1 M0,0 l4,1 M0,0 l3,3 M0,0 l1,4 M0,0 l-1,4 M0,0 l-3,3 M0,0 l-4,1 M0,0 l-4,-1 M0,0 l-3,-3"/></g>
+        <g transform="translate(44,56)"><path d="M0,0 l0,-4 M0,0 l3,-2 M0,0 l4,0 M0,0 l3,2 M0,0 l1,4 M0,0 l-1,4 M0,0 l-3,2 M0,0 l-4,0 M0,0 l-3,-2 M0,0 l0,-4"/></g>
+      </g>
+    </svg>
+    <b>Bee Balm</b>
+    <span>30+ layers, rich red/magenta<br>watercolor + starburst marks</span>
+  </div>
+
+  <div class="swatch-card">
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <defs>
+        <filter id="wc4" x="-12%" y="-12%" width="124%" height="124%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" seed="35" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+          <feGaussianBlur stdDeviation="0.6"/>
+        </filter>
+      </defs>
+      <!-- GOLDENROD style — yellow/gold mass -->
+      <g filter="url(#wc4)">
+        <circle cx="60" cy="60" r="46" fill="#4a7a28" opacity="0.3"/>
+        <ellipse cx="56" cy="56" rx="38" ry="36" fill="#5a8a32" opacity="0.25"/>
+        <!-- Gold bloom mass -->
+        <circle cx="60" cy="56" r="34" fill="#c8a020" opacity="0.4"/>
+        <ellipse cx="56" cy="52" rx="30" ry="28" fill="#d8b030" opacity="0.35"/>
+        <ellipse cx="64" cy="54" rx="26" ry="24" fill="#e8c040" opacity="0.3"/>
+        <!-- Dark yellow-brown mottled -->
+        <ellipse cx="48" cy="46" rx="12" ry="8" fill="#a08018" opacity="0.38"/>
+        <ellipse cx="70" cy="50" rx="10" ry="8" fill="#907010" opacity="0.35"/>
+        <ellipse cx="56" cy="64" rx="12" ry="6" fill="#a08018" opacity="0.32"/>
+        <ellipse cx="42" cy="58" rx="8" ry="10" fill="#887008" opacity="0.3"/>
+        <ellipse cx="76" cy="58" rx="8" ry="8" fill="#907018" opacity="0.28"/>
+        <!-- Bright yellow highlights -->
+        <ellipse cx="52" cy="42" rx="8" ry="5" fill="#f0d850" opacity="0.3"/>
+        <ellipse cx="66" cy="44" rx="7" ry="5" fill="#f8e060" opacity="0.28"/>
+        <ellipse cx="58" cy="68" rx="8" ry="4" fill="#e8d040" opacity="0.25"/>
+        <!-- Green showing -->
+        <ellipse cx="34" cy="46" rx="10" ry="6" fill="#5a9a38" opacity="0.3"/>
+        <ellipse cx="84" cy="50" rx="8" ry="8" fill="#4a8a28" opacity="0.25"/>
+        <ellipse cx="58" cy="80" rx="14" ry="5" fill="#5a9a48" opacity="0.3"/>
+        <ellipse cx="36" cy="72" rx="8" ry="6" fill="#4a8a38" opacity="0.22"/>
+        <ellipse cx="82" cy="68" rx="8" ry="6" fill="#4a8a28" opacity="0.2"/>
+        <!-- Additional mottling -->
+        <ellipse cx="54" cy="56" rx="6" ry="4" fill="#b89020" opacity="0.3"/>
+        <ellipse cx="66" cy="58" rx="4" ry="6" fill="#c8a028" opacity="0.28"/>
+        <ellipse cx="60" cy="48" rx="8" ry="4" fill="#d0b030" opacity="0.25"/>
+        <ellipse cx="46" cy="52" rx="5" ry="6" fill="#a88818" opacity="0.25"/>
+        <ellipse cx="74" cy="52" rx="5" ry="5" fill="#b89820" opacity="0.22"/>
+        <ellipse cx="50" cy="62" rx="6" ry="4" fill="#c09818" opacity="0.22"/>
+        <ellipse cx="70" cy="62" rx="5" ry="5" fill="#b89020" opacity="0.2"/>
+        <ellipse cx="58" cy="40" rx="6" ry="3" fill="#e0c840" opacity="0.22"/>
+        <ellipse cx="44" cy="44" rx="4" ry="5" fill="#d0b028" opacity="0.2"/>
+        <ellipse cx="74" cy="44" rx="5" ry="4" fill="#c8a820" opacity="0.2"/>
+      </g>
+
+      <!-- INK — tiny plume spray dots -->
+      <g fill="#6a5008" opacity="0.5">
+        <circle cx="48" cy="46" r="0.8"/><circle cx="52" cy="44" r="0.6"/><circle cx="56" cy="42" r="0.7"/>
+        <circle cx="60" cy="40" r="0.6"/><circle cx="64" cy="42" r="0.7"/><circle cx="68" cy="44" r="0.6"/>
+        <circle cx="72" cy="48" r="0.8"/><circle cx="44" cy="52" r="0.7"/><circle cx="76" cy="54" r="0.6"/>
+        <circle cx="46" cy="58" r="0.6"/><circle cx="74" cy="60" r="0.7"/><circle cx="50" cy="64" r="0.6"/>
+        <circle cx="70" cy="64" r="0.7"/><circle cx="54" cy="68" r="0.6"/><circle cx="66" cy="68" r="0.5"/>
+        <circle cx="58" cy="72" r="0.6"/><circle cx="62" cy="70" r="0.5"/>
+      </g>
+      <g fill="none" stroke="#6a5008" stroke-width="0.4" opacity="0.4">
+        <!-- Tiny arching plume lines -->
+        <path d="M52,50 C54,46 58,44 62,44"/>
+        <path d="M48,54 C50,50 54,48 58,48"/>
+        <path d="M68,50 C66,46 62,44 58,44"/>
+        <path d="M52,62 C54,58 58,56 62,56"/>
+        <path d="M68,62 C66,58 62,56 58,56"/>
+      </g>
+    </svg>
+    <b>Goldenrod</b>
+    <span>30+ layers, rich gold/yellow<br>watercolor + plume dot sprays</span>
+  </div>
+</div>
+
+<h2>Key Differences from Reference</h2>
+<p>Analyzing what makes the reference icons look more realistic:</p>
+<ul style="font-size:0.82rem; line-height:1.8; color:#6b5d4f;">
+  <li><b>Opacity:</b> Reference uses 0.4-0.7 per layer (we now match this)</li>
+  <li><b>Saturation:</b> Reference colors are deep and rich, not washed out</li>
+  <li><b>Mottling:</b> 30+ irregular patches of varying sizes/shades create organic depth</li>
+  <li><b>No hard outlines:</b> The edge of each swatch fades naturally via the watercolor filter</li>
+  <li><b>Dark accents:</b> Deep shadow patches (much darker than base) create dramatic contrast</li>
+  <li><b>Light highlights:</b> Small bright patches on the light side add dimension</li>
+  <li><b>Green fringe:</b> Green foliage peeks through at edges where flowers thin out</li>
+  <li><b>Ink detail:</b> Subtle, not heavy — tiny flower marks at about 50% opacity</li>
+</ul>
+
+</body>
+</html>
