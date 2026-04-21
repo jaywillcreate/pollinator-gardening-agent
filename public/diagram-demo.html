@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Watercolor Plants in Garden Diagrams — Demo</title>
+<style>
+  :root {
+    --bg: #f5efe4;
+    --bg-card: #fffaf0;
+    --ink: #2b2617;
+    --muted: #7a6f57;
+    --line: #d8cdb4;
+    --accent: #6b8a3a;
+    --sky-top: #dfeaf2;
+    --sky-bot: #f4efdb;
+    --ground-top: #c7b98a;
+    --ground-bot: #8a7a4f;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  }
+  a { color: var(--accent); }
+  header {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 24px 8px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    margin: 0 0 8px;
+    letter-spacing: 0.5px;
+  }
+  header p {
+    margin: 0 auto;
+    max-width: 66ch;
+    color: var(--muted);
+    line-height: 1.55;
+    font-size: 16px;
+  }
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  section {
+    margin: 44px 0 0;
+  }
+  section > h2 {
+    font-size: 22px;
+    margin: 0 0 6px;
+    letter-spacing: 0.2px;
+  }
+  section > p.lede {
+    margin: 0 0 18px;
+    color: var(--muted);
+    max-width: 62ch;
+    line-height: 1.55;
+    font-size: 14px;
+  }
+  .diagram-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 14px 18px;
+    box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 18px 36px -28px rgba(60,45,15,.25);
+    margin-bottom: 28px;
+  }
+  .diagram-card svg.scene {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: transparent;
+  }
+  .diagram-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0 6px 10px;
+    gap: 12px;
+  }
+  .diagram-title h3 {
+    margin: 0;
+    font-size: 17px;
+    letter-spacing: 0.2px;
+  }
+  .diagram-title .meta {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    padding: 10px 8px 0;
+    margin: 10px 0 0;
+    border-top: 1px dashed var(--line);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink);
+  }
+  .legend-item img {
+    width: 28px;
+    height: 28px;
+    display: block;
+  }
+  .legend-item .dot {
+    color: var(--muted);
+    font-style: italic;
+  }
+  .library {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 18px;
+  }
+  .plant-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .plant-card .thumb {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(ellipse at center, #fffdf5 0%, #f3ead3 100%);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .plant-card .thumb img {
+    width: 92%;
+    height: 92%;
+  }
+  .plant-card .name {
+    margin: 10px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .plant-card .latin {
+    margin: 2px 0 0;
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+  }
+  .plant-card .slug {
+    margin: 8px 0 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    color: var(--accent);
+    background: #f4efdb;
+    border-radius: 3px;
+    padding: 2px 6px;
+  }
+  pre.usage {
+    background: #2b2617;
+    color: #f4efdb;
+    border-radius: 10px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    line-height: 1.55;
+  }
+  pre.usage .kw { color: #b9d877; }
+  pre.usage .attr { color: #e5c07b; }
+  pre.usage .str { color: #f4efdb; }
+  footer {
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    padding: 0 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 6px;
+  }
+
+  /* View toggle (Side Profile / Aerial) */
+  .view-toggle {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 20px;
+  }
+  .view-toggle-inner {
+    display: inline-flex;
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px;
+    background: var(--bg-card);
+  }
+  .view-toggle-inner button {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 13px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .view-toggle-inner button.active {
+    background: var(--accent);
+    color: #fffaf0;
+  }
+  .view-toggle-inner button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* View containers — hide the inactive one */
+  .view { display: block; }
+  body[data-view="aerial"]    .view-elevation { display: none; }
+  body[data-view="elevation"] .view-aerial    { display: none; }
+
+  /* Caption text under the scene title swaps too */
+  body[data-view="elevation"] .meta-aerial    { display: none; }
+  body[data-view="aerial"]    .meta-elevation { display: none; }
+
+  /* Aerial scene reuses the same SVG sizing as elevation */
+  svg.scene-aerial {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: transparent;
+  }
+</style>
+</head>
+<body data-view="elevation">
+
+<header>
+  <h1>Watercolor Plants in Garden Diagrams</h1>
+  <p>
+    Thirty full-color watercolor plant illustrations, installed as a shared asset
+    library at <code style="font-family:ui-monospace,Menlo,monospace">/icons/plants/watercolor-front/</code>
+    and referenced directly from SVG garden diagrams. The chat agent's system prompt
+    now knows about them, so elevation views can be painted with real species instead
+    of flat shapes. Toggle below switches every scene between side profile and a
+    bird's-eye plan view.
+  </p>
+</header>
+
+<main>
+
+  <div class="view-toggle" role="tablist" aria-label="View mode">
+    <div class="view-toggle-inner">
+      <button id="btn-elevation" class="active" data-mode="elevation" aria-pressed="true">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 13h12"/><path d="M5 13V8l1.5-2L8 8v5"/><path d="M9 13V6l1.5-1.5L12 6v7"/></svg>
+        Side profile
+      </button>
+      <button id="btn-aerial" data-mode="aerial" aria-pressed="false">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="6.5" r="1.6"/><circle cx="10.5" cy="5.5" r="1.6"/><circle cx="8" cy="10" r="1.6"/><circle cx="12" cy="10.5" r="1.6"/><path d="M2 14h12"/></svg>
+        Aerial
+      </button>
+    </div>
+  </div>
+
+  <!-- ================================================================== -->
+  <!-- SCENE 1 — Spring Woodland Edge                                     -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Example 1 — Spring Woodland Edge</h2>
+    <p class="lede">A shaded border for early pollinators: native violets, columbine, and ragwort for bees and mason bees; moss phlox and wild strawberry as living groundcover.</p>
+
+    <div class="diagram-card" data-scene="spring-woodland">
+      <div class="diagram-title">
+        <h3>Spring Woodland Edge</h3>
+        <p class="meta"><span class="meta-elevation">Elevation — 1000×400 · ground line y=350 · 8 species</span><span class="meta-aerial">Plan view — 1000×400 · curved bed border · 8 species</span></p>
+      </div>
+
+      <div class="view view-elevation">
+      <svg class="scene" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#dfeaf2"/>
+            <stop offset="100%" stop-color="#f4efdb"/>
+          </linearGradient>
+          <linearGradient id="ground1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c7b98a"/>
+            <stop offset="100%" stop-color="#8a7a4f"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Sky -->
+        <rect x="0" y="0" width="1000" height="350" fill="url(#sky1)"/>
+        <!-- Ground -->
+        <rect x="0" y="350" width="1000" height="50" fill="url(#ground1)"/>
+        <!-- Ground line -->
+        <line x1="0" y1="350" x2="1000" y2="350" stroke="#5d5232" stroke-width="1"/>
+
+        <!-- Plants, base-aligned to y=350 via preserveAspectRatio="xMidYMax meet" -->
+        <image href="/icons/plants/watercolor-front/golden-star-sedge.svg"   x="50"  y="235" width="115" height="115" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/long-beaked-sedge.svg"   x="160" y="220" width="130" height="130" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/wild-violet.svg"         x="290" y="255" width="95"  height="95"  preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/wild-violet.svg"         x="340" y="255" width="95"  height="95"  preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/columbine.svg"           x="430" y="220" width="130" height="130" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/golden-ragwort.svg"      x="560" y="230" width="120" height="120" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/moss-phlox.svg"          x="680" y="270" width="80"  height="80"  preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/moss-phlox.svg"          x="720" y="270" width="80"  height="80"  preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/wild-strawberry.svg"     x="790" y="260" width="90"  height="90"  preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/woodland-stonecrop.svg"  x="880" y="250" width="100" height="100" preserveAspectRatio="xMidYMax meet"/>
+
+        <!-- Title -->
+        <text x="500" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#2b2617" font-weight="700">Spring Woodland Edge</text>
+        <text x="500" y="46" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#7a6f57" font-style="italic">native shade pollinator border · bloom: April–June</text>
+      </svg>
+      </div><!-- /.view-elevation -->
+
+      <div class="view view-aerial">
+        <svg class="scene scene-aerial" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" data-scene-id="spring-woodland"></svg>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/golden-star-sedge.svg" alt=""/><span>Golden Star Sedge <span class="dot">· Carex rosea</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/long-beaked-sedge.svg" alt=""/><span>Long Beaked Sedge <span class="dot">· Carex sprengelii</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/wild-violet.svg" alt=""/><span>Wild Violet <span class="dot">· Viola sororia</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/columbine.svg" alt=""/><span>Wild Columbine <span class="dot">· Aquilegia canadensis</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/golden-ragwort.svg" alt=""/><span>Golden Ragwort <span class="dot">· Packera aurea</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/moss-phlox.svg" alt=""/><span>Moss Phlox <span class="dot">· Phlox subulata</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/wild-strawberry.svg" alt=""/><span>Wild Strawberry <span class="dot">· Fragaria virginiana</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/woodland-stonecrop.svg" alt=""/><span>Woodland Stonecrop <span class="dot">· Sedum ternatum</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- SCENE 2 — Summer Pollinator Meadow                                  -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Example 2 — Summer Pollinator Meadow</h2>
+    <p class="lede">Peak-summer nectar buffet: bee balm and anise hyssop for bumblebees, butterfly milkweed and coreopsis for butterflies, liatris and nepeta for everything with wings.</p>
+
+    <div class="diagram-card" data-scene="summer-meadow">
+      <div class="diagram-title">
+        <h3>Summer Pollinator Meadow</h3>
+        <p class="meta"><span class="meta-elevation">Elevation — 1000×400 · ground line y=350 · 8 species</span><span class="meta-aerial">Plan view — 1000×400 · curved bed border · 8 species</span></p>
+      </div>
+
+      <div class="view view-elevation">
+      <svg class="scene" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e9efe0"/>
+            <stop offset="100%" stop-color="#f7f1d9"/>
+          </linearGradient>
+          <linearGradient id="ground2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#b9a868"/>
+            <stop offset="100%" stop-color="#7c6936"/>
+          </linearGradient>
+        </defs>
+
+        <rect x="0" y="0" width="1000" height="350" fill="url(#sky2)"/>
+        <rect x="0" y="350" width="1000" height="50" fill="url(#ground2)"/>
+        <line x1="0" y1="350" x2="1000" y2="350" stroke="#5d5232" stroke-width="1"/>
+
+        <!-- front → back ordering: tallest plants first so shorter ones layer in front -->
+        <image href="/icons/plants/watercolor-front/threadleaf-coreopsis.svg" x="40"  y="230" width="120" height="120" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/anise-hyssop.svg"         x="160" y="200" width="150" height="150" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/liatris-purple.svg"       x="300" y="180" width="170" height="170" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/liatris-white.svg"        x="430" y="180" width="170" height="170" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/bee-balm.svg"             x="560" y="195" width="155" height="155" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/butterfly-milkweed.svg"   x="680" y="215" width="135" height="135" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/nepeta-jr-walker.svg"     x="790" y="240" width="110" height="110" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/partridgeberry.svg"       x="890" y="260" width="90"  height="90"  preserveAspectRatio="xMidYMax meet"/>
+
+        <text x="500" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#2b2617" font-weight="700">Summer Pollinator Meadow</text>
+        <text x="500" y="46" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#7a6f57" font-style="italic">warm-season nectar corridor · bloom: June–August</text>
+      </svg>
+      </div><!-- /.view-elevation -->
+
+      <div class="view view-aerial">
+        <svg class="scene scene-aerial" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" data-scene-id="summer-meadow"></svg>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/threadleaf-coreopsis.svg" alt=""/><span>Threadleaf Coreopsis <span class="dot">· Coreopsis verticillata</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/anise-hyssop.svg" alt=""/><span>Anise Hyssop <span class="dot">· Agastache foeniculum</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/liatris-purple.svg" alt=""/><span>Purple Liatris <span class="dot">· Liatris spicata</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/liatris-white.svg" alt=""/><span>White Liatris <span class="dot">· L. spicata 'Alba'</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/bee-balm.svg" alt=""/><span>Bee Balm <span class="dot">· Monarda didyma</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/butterfly-milkweed.svg" alt=""/><span>Butterfly Milkweed <span class="dot">· Asclepias tuberosa</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/nepeta-jr-walker.svg" alt=""/><span>Jr. Walker Nepeta <span class="dot">· Nepeta 'Junior Walker'</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/partridgeberry.svg" alt=""/><span>Partridgeberry <span class="dot">· Mitchella repens</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- SCENE 3 — Late-Season Border                                        -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Example 3 — Late-Season Accent Border</h2>
+    <p class="lede">Stretches the bloom season into fall: zigzag goldenrod for migrating monarchs, white liatris and threadleaf coreopsis holding late color, with groundcovers filling in the front.</p>
+
+    <div class="diagram-card" data-scene="late-season">
+      <div class="diagram-title">
+        <h3>Late-Season Accent Border</h3>
+        <p class="meta"><span class="meta-elevation">Elevation — 1000×400 · ground line y=350 · 8 species</span><span class="meta-aerial">Plan view — 1000×400 · curved bed border · 8 species</span></p>
+      </div>
+
+      <div class="view view-elevation">
+      <svg class="scene" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#efe3d1"/>
+            <stop offset="100%" stop-color="#f7ecc7"/>
+          </linearGradient>
+          <linearGradient id="ground3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#b89a56"/>
+            <stop offset="100%" stop-color="#6e5a2c"/>
+          </linearGradient>
+        </defs>
+
+        <rect x="0" y="0" width="1000" height="350" fill="url(#sky3)"/>
+        <rect x="0" y="350" width="1000" height="50" fill="url(#ground3)"/>
+        <line x1="0" y1="350" x2="1000" y2="350" stroke="#5d5232" stroke-width="1"/>
+
+        <image href="/icons/plants/watercolor-front/zigzag-goldenrod.svg"    x="40"  y="190" width="160" height="160" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/zigzag-goldenrod.svg"    x="120" y="190" width="160" height="160" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/liatris-white.svg"       x="260" y="180" width="170" height="170" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/threadleaf-coreopsis.svg" x="390" y="230" width="120" height="120" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/erigeron-lynnhaven.svg"  x="510" y="265" width="85"  height="85"  preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/woodland-stonecrop.svg"  x="620" y="250" width="100" height="100" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/moss-phlox.svg"          x="720" y="270" width="80"  height="80"  preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/golden-ragwort.svg"      x="810" y="230" width="120" height="120" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/wild-strawberry.svg"     x="905" y="260" width="90"  height="90"  preserveAspectRatio="xMidYMax meet"/>
+
+        <text x="500" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#2b2617" font-weight="700">Late-Season Accent Border</text>
+        <text x="500" y="46" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#7a6f57" font-style="italic">fall migration fuel · bloom: August–October</text>
+      </svg>
+      </div><!-- /.view-elevation -->
+
+      <div class="view view-aerial">
+        <svg class="scene scene-aerial" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" data-scene-id="late-season"></svg>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/zigzag-goldenrod.svg" alt=""/><span>Zigzag Goldenrod <span class="dot">· Solidago flexicaulis</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/liatris-white.svg" alt=""/><span>White Liatris <span class="dot">· L. spicata 'Alba'</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/threadleaf-coreopsis.svg" alt=""/><span>Threadleaf Coreopsis <span class="dot">· Coreopsis verticillata</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/erigeron-lynnhaven.svg" alt=""/><span>Erigeron Lynnhaven <span class="dot">· Erigeron pulchellus</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/woodland-stonecrop.svg" alt=""/><span>Woodland Stonecrop <span class="dot">· Sedum ternatum</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/moss-phlox.svg" alt=""/><span>Moss Phlox <span class="dot">· Phlox subulata</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/golden-ragwort.svg" alt=""/><span>Golden Ragwort <span class="dot">· Packera aurea</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/wild-strawberry.svg" alt=""/><span>Wild Strawberry <span class="dot">· Fragaria virginiana</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- LIBRARY                                                              -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>The Full Library (30 plants)</h2>
+    <p class="lede">Every asset below is addressable from a Claude-generated diagram as <code style="font-family:ui-monospace,Menlo,monospace">/icons/plants/watercolor-front/{slug}.svg</code>. Click any card to open the raw file.</p>
+    <div class="library" id="library"></div>
+  </section>
+
+  <!-- ================================================================== -->
+  <!-- USAGE                                                                -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Usage in a Claude-generated SVG</h2>
+    <p class="lede">The chat agent's system prompt tells it to emit <code>&lt;image&gt;</code> tags referencing these files, sized to the suggested height, with <code>preserveAspectRatio="xMidYMax meet"</code> so the plant base stays anchored to the ground line.</p>
+    <pre class="usage">&lt;svg viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;rect y="350" width="1000" height="50" fill="#8a7a4f"/&gt;
+
+  &lt;!-- Bee Balm, 155px tall, base on ground line --&gt;
+  &lt;image href="/icons/plants/watercolor-front/bee-balm.svg"
+         x="240" y="195" width="155" height="155"
+         preserveAspectRatio="xMidYMax meet"/&gt;
+
+  &lt;!-- A drift of Butterfly Milkweed --&gt;
+  &lt;image href="/icons/plants/watercolor-front/butterfly-milkweed.svg"
+         x="400" y="215" width="135" height="135"
+         preserveAspectRatio="xMidYMax meet"/&gt;
+  &lt;image href="/icons/plants/watercolor-front/butterfly-milkweed.svg"
+         x="450" y="215" width="135" height="135"
+         preserveAspectRatio="xMidYMax meet"/&gt;
+&lt;/svg&gt;</pre>
+  </section>
+
+</main>
+
+<footer>
+  Asset library lives at <code>public/icons/plants/watercolor-front/</code> · manifest at <code>manifest.json</code> · gallery view at <a href="/watercolor-demo/">/watercolor-demo/</a>
+</footer>
+
+<script>
+  // ====================================================================
+  // Plant metadata — single source of truth.
+  //
+  // planLight / planMid / planDark are the three watercolor washes used
+  // in the bird's-eye plan view. They're sampled to roughly match what
+  // the plant looks like from directly above when in bloom (the leaves
+  // peeking out and the dominant flower color). planRadius is the half-
+  // size of one drift-cluster ellipse in the 1000x400 viewBox.
+  // ====================================================================
+  const PLANTS = {
+    "anise-hyssop":        { name: "Anise Hyssop",         latin: "Agastache foeniculum",        planLight: "#b8a4d4", planMid: "#7d62a8", planDark: "#3f2c63", planRadius: 38 },
+    "bee-balm":            { name: "Bee Balm",             latin: "Monarda didyma",              planLight: "#e88aa6", planMid: "#cc4870", planDark: "#7a1f3a", planRadius: 40 },
+    "blanket-flower":      { name: "Blanket Flower",       latin: "Gaillardia aristata",         planLight: "#f6c970", planMid: "#e9712e", planDark: "#8a1c1c", planRadius: 36 },
+    "blazing-star":        { name: "Blazing Star",         latin: "Liatris ligulistylis",        planLight: "#d3a3db", planMid: "#a264b8", planDark: "#5a2a74", planRadius: 38 },
+    "butterfly-milkweed":  { name: "Butterfly Milkweed",   latin: "Asclepias tuberosa",          planLight: "#f5b270", planMid: "#e8832b", planDark: "#9a4408", planRadius: 36 },
+    "canada-ginger":       { name: "Canada Ginger",        latin: "Asarum canadense",            planLight: "#c9d9a3", planMid: "#7d9a53", planDark: "#41571c", planRadius: 32 },
+    "columbine":           { name: "Wild Columbine",       latin: "Aquilegia canadensis",        planLight: "#ecc06a", planMid: "#c44a40", planDark: "#6f1f1c", planRadius: 32 },
+    "creeping-thyme":      { name: "Creeping Thyme",       latin: "Thymus serpyllum",            planLight: "#d9b6d1", planMid: "#b46fa2", planDark: "#6b3560", planRadius: 34 },
+    "erigeron-lynnhaven":  { name: "Erigeron Lynnhaven",   latin: "Erigeron pulchellus",         planLight: "#f0d4dc", planMid: "#cda3b6", planDark: "#7d5a6e", planRadius: 30 },
+    "golden-alexanders":   { name: "Golden Alexanders",    latin: "Zizia aurea",                 planLight: "#f3e18a", planMid: "#dcb82c", planDark: "#7f5a00", planRadius: 36 },
+    "golden-ragwort":      { name: "Golden Ragwort",       latin: "Packera aurea",               planLight: "#f8df72", planMid: "#e8be20", planDark: "#9a7a08", planRadius: 40 },
+    "golden-star-sedge":   { name: "Golden Star Sedge",    latin: "Carex rosea",                 planLight: "#d6d790", planMid: "#a4a648", planDark: "#5e6018", planRadius: 34 },
+    "joe-pye-weed":        { name: "Joe Pye Weed",         latin: "Eutrochium purpureum",        planLight: "#e0b9c5", planMid: "#b2728d", planDark: "#5c2d48", planRadius: 42 },
+    "nepeta-jr-walker":    { name: "Jr. Walker Nepeta",    latin: "Nepeta 'Junior Walker'",      planLight: "#bbc6e0", planMid: "#7f8bc2", planDark: "#3e4774", planRadius: 34 },
+    "liatris-purple":      { name: "Purple Liatris",       latin: "Liatris spicata",             planLight: "#c89be0", planMid: "#915cbe", planDark: "#4a236f", planRadius: 38 },
+    "liatris-white":       { name: "White Liatris",        latin: "Liatris spicata 'Alba'",      planLight: "#f3ecd6", planMid: "#cabf98", planDark: "#807458", planRadius: 38 },
+    "long-beaked-sedge":   { name: "Long Beaked Sedge",    latin: "Carex sprengelii",            planLight: "#bcce80", planMid: "#7d9a3e", planDark: "#3a5410", planRadius: 36 },
+    "moss-phlox":          { name: "Moss Phlox",           latin: "Phlox subulata",              planLight: "#f3c6da", planMid: "#d585a8", planDark: "#85416a", planRadius: 34 },
+    "orange-coneflower":   { name: "Orange Coneflower",    latin: "Rudbeckia fulgida",           planLight: "#f5cf5a", planMid: "#e69a1e", planDark: "#8a4e06", planRadius: 36 },
+    "ox-eye-sunflower":    { name: "Ox Eye Sunflower",     latin: "Heliopsis helianthoides",     planLight: "#fae582", planMid: "#e8c224", planDark: "#8a6408", planRadius: 40 },
+    "partridgeberry":      { name: "Partridgeberry",       latin: "Mitchella repens",            planLight: "#a5c476", planMid: "#5d7e2a", planDark: "#2a4010", planRadius: 28 },
+    "purple-coneflower":   { name: "Purple Coneflower",    latin: "Echinacea purpurea",          planLight: "#e0a8c0", planMid: "#b65c8a", planDark: "#6a2852", planRadius: 38 },
+    "pussytoes":           { name: "Pussytoes",            latin: "Antennaria plantaginifolia",  planLight: "#efe9d8", planMid: "#c6bfa4", planDark: "#7a7258", planRadius: 26 },
+    "self-heal":           { name: "Self Heal",            latin: "Prunella vulgaris",           planLight: "#b9a3d2", planMid: "#7958a5", planDark: "#3c2564", planRadius: 30 },
+    "smooth-blue-aster":   { name: "Smooth Blue Aster",    latin: "Symphyotrichum laeve",        planLight: "#bfc6e6", planMid: "#7888c0", planDark: "#384680", planRadius: 36 },
+    "threadleaf-coreopsis":{ name: "Threadleaf Coreopsis", latin: "Coreopsis verticillata",      planLight: "#fae57a", planMid: "#f4cf2e", planDark: "#9c7a00", planRadius: 36 },
+    "wild-strawberry":     { name: "Wild Strawberry",      latin: "Fragaria virginiana",         planLight: "#cce29a", planMid: "#7da840", planDark: "#3e5418", planRadius: 28 },
+    "wild-violet":         { name: "Wild Violet",          latin: "Viola sororia",               planLight: "#b8a3da", planMid: "#7558ad", planDark: "#3a2470", planRadius: 30 },
+    "woodland-stonecrop":  { name: "Woodland Stonecrop",   latin: "Sedum ternatum",              planLight: "#dfeec0", planMid: "#a3c060", planDark: "#5a7530", planRadius: 30 },
+    "zigzag-goldenrod":    { name: "Zigzag Goldenrod",     latin: "Solidago flexicaulis",        planLight: "#f5db5e", planMid: "#d8b520", planDark: "#7a5e00", planRadius: 40 },
+  };
+
+  // ====================================================================
+  // Scene definitions for the AERIAL view.
+  //
+  // Each entry positions a plant drift in the 1000x400 plan-view viewBox.
+  // Convention: x is left-right along the bed, y is front-back depth (small
+  // y = back of bed, large y = front edge). Tall plants belong toward the
+  // back so they don't hide shorter ones.
+  //
+  // bed: SVG path string for the organic bed shape (closed).
+  // mulch / mulchAccent: soil colors inside the bed.
+  // ====================================================================
+  const SCENES = {
+    "spring-woodland": {
+      title: "Spring Woodland Edge",
+      subtitle: "shaded plan view · April–June",
+      mulch: "#7c5f37", mulchAccent: "#4a3920", paperTint: "#f1ead2",
+      bed: "M 60,140 C 80,90 220,80 360,100 C 480,118 600,84 740,96 C 860,108 940,128 950,170 C 970,230 940,295 900,330 C 760,360 560,355 380,340 C 240,330 100,335 70,290 C 50,240 50,180 60,140 Z",
+      plants: [
+        { slug: "golden-star-sedge",  x: 130, y: 165, drift: 1, label: "Golden Star Sedge" },
+        { slug: "long-beaked-sedge",  x: 240, y: 155, drift: 1, label: "Long Beaked Sedge" },
+        { slug: "wild-violet",        x: 340, y: 230, drift: 2, label: "Wild Violet ×2" },
+        { slug: "columbine",          x: 460, y: 180, drift: 1, label: "Wild Columbine" },
+        { slug: "golden-ragwort",     x: 580, y: 200, drift: 1, label: "Golden Ragwort" },
+        { slug: "moss-phlox",         x: 700, y: 270, drift: 2, label: "Moss Phlox ×2" },
+        { slug: "wild-strawberry",    x: 805, y: 250, drift: 1, label: "Wild Strawberry" },
+        { slug: "woodland-stonecrop", x: 890, y: 220, drift: 1, label: "Woodland Stonecrop" },
+      ],
+    },
+    "summer-meadow": {
+      title: "Summer Pollinator Meadow",
+      subtitle: "warm-season plan view · June–August",
+      mulch: "#7a5a2c", mulchAccent: "#4a3618", paperTint: "#f3ecc8",
+      bed: "M 50,150 C 90,100 240,80 380,110 C 510,135 650,90 790,110 C 900,128 960,150 960,200 C 970,265 925,310 880,335 C 740,360 540,360 360,340 C 220,325 80,330 60,290 C 40,240 30,190 50,150 Z",
+      plants: [
+        { slug: "threadleaf-coreopsis", x: 130, y: 220, drift: 1, label: "Threadleaf Coreopsis" },
+        { slug: "anise-hyssop",         x: 245, y: 175, drift: 1, label: "Anise Hyssop" },
+        { slug: "liatris-purple",       x: 360, y: 145, drift: 1, label: "Purple Liatris" },
+        { slug: "liatris-white",        x: 475, y: 150, drift: 1, label: "White Liatris" },
+        { slug: "bee-balm",             x: 590, y: 185, drift: 1, label: "Bee Balm" },
+        { slug: "butterfly-milkweed",   x: 700, y: 215, drift: 1, label: "Butterfly Milkweed" },
+        { slug: "nepeta-jr-walker",     x: 805, y: 250, drift: 1, label: "Jr. Walker Nepeta" },
+        { slug: "partridgeberry",       x: 905, y: 285, drift: 1, label: "Partridgeberry" },
+      ],
+    },
+    "late-season": {
+      title: "Late-Season Accent Border",
+      subtitle: "fall plan view · August–October",
+      mulch: "#6e4e22", mulchAccent: "#3e2c10", paperTint: "#f3e6b8",
+      bed: "M 60,135 C 100,90 250,80 400,105 C 540,128 680,95 820,108 C 920,118 960,140 960,180 C 970,250 935,300 890,330 C 750,360 550,360 380,345 C 230,330 90,330 60,290 C 40,240 30,180 60,135 Z",
+      plants: [
+        { slug: "zigzag-goldenrod",     x: 140, y: 170, drift: 2, label: "Zigzag Goldenrod ×2" },
+        { slug: "liatris-white",        x: 280, y: 150, drift: 1, label: "White Liatris" },
+        { slug: "threadleaf-coreopsis", x: 405, y: 200, drift: 1, label: "Threadleaf Coreopsis" },
+        { slug: "erigeron-lynnhaven",   x: 510, y: 270, drift: 1, label: "Erigeron Lynnhaven" },
+        { slug: "woodland-stonecrop",   x: 605, y: 240, drift: 1, label: "Woodland Stonecrop" },
+        { slug: "moss-phlox",           x: 700, y: 280, drift: 1, label: "Moss Phlox" },
+        { slug: "golden-ragwort",       x: 805, y: 215, drift: 1, label: "Golden Ragwort" },
+        { slug: "wild-strawberry",      x: 905, y: 260, drift: 1, label: "Wild Strawberry" },
+      ],
+    },
+  };
+
+  // ====================================================================
+  // SVG namespace helper
+  // ====================================================================
+  const SVG_NS = "http://www.w3.org/2000/svg";
+  function svg(name, attrs = {}, parent = null) {
+    const el = document.createElementNS(SVG_NS, name);
+    for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+    if (parent) parent.appendChild(el);
+    return el;
+  }
+
+  // Deterministic pseudo-random — same scene always renders identically
+  function mulberry32(seed) {
+    return function () {
+      let t = (seed += 0x6d2b79f5);
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  // ====================================================================
+  // Render one watercolor "blob" cluster (a single drift, plan view) at
+  // (cx, cy) using a stack of 6 transparent ellipses in light → mid → dark
+  // washes. Adds a small core dot in the dark color.
+  // ====================================================================
+  function paintDrift(parent, cx, cy, plant, rng) {
+    const r = plant.planRadius;
+    const layers = [
+      { color: plant.planLight, op: 0.55, scale: 1.15 },
+      { color: plant.planLight, op: 0.50, scale: 0.95 },
+      { color: plant.planMid,   op: 0.65, scale: 0.85 },
+      { color: plant.planMid,   op: 0.55, scale: 0.70 },
+      { color: plant.planDark,  op: 0.75, scale: 0.45 },
+      { color: plant.planDark,  op: 0.55, scale: 0.30 },
+    ];
+    for (const layer of layers) {
+      // Random jitter so each layer is offset/distorted slightly — gives
+      // the painted, organic feel of overlapping watercolor washes.
+      const jx = (rng() - 0.5) * r * 0.4;
+      const jy = (rng() - 0.5) * r * 0.4;
+      const rx = r * layer.scale * (0.85 + rng() * 0.3);
+      const ry = r * layer.scale * (0.85 + rng() * 0.3);
+      const rot = (rng() - 0.5) * 30;
+      svg("ellipse", {
+        cx: cx + jx,
+        cy: cy + jy,
+        rx,
+        ry,
+        fill: layer.color,
+        "fill-opacity": layer.op,
+        transform: `rotate(${rot} ${cx + jx} ${cy + jy})`,
+      }, parent);
+    }
+  }
+
+  // Sprinkle a few mulch grains across the bed for paper-grain feel
+  function paintMulchGrains(parent, bedPath, rng, accentColor) {
+    // Use the bed bbox as a coarse area; enough samples to feel textured.
+    for (let i = 0; i < 240; i++) {
+      const x = 50 + rng() * 900;
+      const y = 80 + rng() * 280;
+      svg("circle", {
+        cx: x, cy: y,
+        r: 0.6 + rng() * 1.1,
+        fill: accentColor,
+        "fill-opacity": 0.25 + rng() * 0.25,
+        "clip-path": "url(#bed-clip-" + bedPath.id + ")",
+      }, parent);
+    }
+  }
+
+  // ====================================================================
+  // Build the aerial scene SVG content (idempotent — clears the SVG first).
+  // ====================================================================
+  function buildAerial(svgEl, scene, sceneId) {
+    // Wipe any existing content
+    while (svgEl.firstChild) svgEl.removeChild(svgEl.firstChild);
+
+    const rng = mulberry32(sceneId.split("").reduce((a, c) => a + c.charCodeAt(0), 0));
+
+    // <defs>: paper-tint gradient + clip path so mulch grains stay inside bed
+    const defs = svg("defs", {}, svgEl);
+    const grad = svg("linearGradient", { id: "paper-" + sceneId, x1: "0", y1: "0", x2: "0", y2: "1" }, defs);
+    svg("stop", { offset: "0%",   "stop-color": "#fbf3d8" }, grad);
+    svg("stop", { offset: "100%", "stop-color": scene.paperTint }, grad);
+
+    const clip = svg("clipPath", { id: "bed-clip-" + sceneId }, defs);
+    svg("path", { d: scene.bed }, clip);
+
+    // Background paper
+    svg("rect", { x: 0, y: 0, width: 1000, height: 400, fill: "url(#paper-" + sceneId + ")" }, svgEl);
+
+    // Mulch / soil bed (filled twice — base color, then a slightly darker
+    // ring around the perimeter for depth)
+    svg("path", {
+      d: scene.bed,
+      fill: scene.mulch,
+      "fill-opacity": 0.85,
+      stroke: scene.mulchAccent,
+      "stroke-width": 1.4,
+      "stroke-opacity": 0.7,
+    }, svgEl);
+
+    // Mulch grain texture clipped to bed
+    const grainGroup = svg("g", { "clip-path": "url(#bed-clip-" + sceneId + ")" }, svgEl);
+    for (let i = 0; i < 320; i++) {
+      const x = 50 + rng() * 900;
+      const y = 70 + rng() * 290;
+      svg("circle", {
+        cx: x, cy: y,
+        r: 0.5 + rng() * 1.3,
+        fill: scene.mulchAccent,
+        "fill-opacity": 0.18 + rng() * 0.32,
+      }, grainGroup);
+    }
+
+    // Plant drifts
+    for (const entry of scene.plants) {
+      const plant = PLANTS[entry.slug];
+      if (!plant) {
+        console.warn("Unknown plant slug:", entry.slug);
+        continue;
+      }
+      const driftGroup = svg("g", {}, svgEl);
+      // For drift > 1, paint multiple offset clusters
+      for (let i = 0; i < entry.drift; i++) {
+        const offsetX = i * (plant.planRadius * 0.9) - (entry.drift - 1) * (plant.planRadius * 0.45);
+        const offsetY = (i % 2 === 0 ? -1 : 1) * (plant.planRadius * 0.15);
+        paintDrift(driftGroup, entry.x + offsetX, entry.y + offsetY, plant, rng);
+      }
+
+      // Tiny label below the cluster
+      svg("text", {
+        x: entry.x,
+        y: entry.y + plant.planRadius + 18,
+        "text-anchor": "middle",
+        "font-family": "Georgia, serif",
+        "font-size": "10",
+        fill: "#2b2617",
+      }, svgEl).textContent = entry.label;
+    }
+
+    // Title block (matches the elevation styling)
+    const t1 = svg("text", {
+      x: 500, y: 28,
+      "text-anchor": "middle",
+      "font-family": "Georgia, serif",
+      "font-size": "18",
+      "font-weight": "700",
+      fill: "#2b2617",
+    }, svgEl);
+    t1.textContent = scene.title;
+    const t2 = svg("text", {
+      x: 500, y: 46,
+      "text-anchor": "middle",
+      "font-family": "Georgia, serif",
+      "font-size": "11",
+      "font-style": "italic",
+      fill: "#7a6f57",
+    }, svgEl);
+    t2.textContent = scene.subtitle;
+
+    // North arrow in the top-right corner — the universal sign of plan view
+    const compassG = svg("g", { transform: "translate(940, 60)" }, svgEl);
+    svg("circle", { cx: 0, cy: 0, r: 16, fill: "#fffaf0", stroke: "#7a6f57", "stroke-width": 0.8, "fill-opacity": 0.85 }, compassG);
+    svg("path", { d: "M 0,-12 L 4,0 L 0,-3 L -4,0 Z", fill: "#cc4870" }, compassG);
+    svg("path", { d: "M 0,12 L 4,0 L 0,3 L -4,0 Z", fill: "#5d5232" }, compassG);
+    const nLabel = svg("text", { x: 0, y: -18, "text-anchor": "middle", "font-family": "Georgia, serif", "font-size": "9", "font-weight": "700", fill: "#2b2617" }, compassG);
+    nLabel.textContent = "N";
+  }
+
+  // Build all aerial scenes on page load
+  for (const svgEl of document.querySelectorAll("svg.scene-aerial")) {
+    const sceneId = svgEl.dataset.sceneId;
+    const scene = SCENES[sceneId];
+    if (scene) buildAerial(svgEl, scene, sceneId);
+  }
+
+  // ====================================================================
+  // View toggle wiring
+  // ====================================================================
+  const elevBtn = document.getElementById("btn-elevation");
+  const aerialBtn = document.getElementById("btn-aerial");
+  function setView(mode) {
+    document.body.dataset.view = mode;
+    elevBtn.classList.toggle("active", mode === "elevation");
+    aerialBtn.classList.toggle("active", mode === "aerial");
+    elevBtn.setAttribute("aria-pressed", mode === "elevation");
+    aerialBtn.setAttribute("aria-pressed", mode === "aerial");
+  }
+  elevBtn.addEventListener("click", () => setView("elevation"));
+  aerialBtn.addEventListener("click", () => setView("aerial"));
+
+  // ====================================================================
+  // Library cards (unchanged behavior — uses PLANTS dict alphabetized)
+  // ====================================================================
+  const libraryOrder = [
+    "anise-hyssop", "bee-balm", "blanket-flower", "blazing-star",
+    "butterfly-milkweed", "canada-ginger", "columbine", "creeping-thyme",
+    "erigeron-lynnhaven", "golden-alexanders", "golden-ragwort",
+    "golden-star-sedge", "joe-pye-weed", "nepeta-jr-walker",
+    "liatris-purple", "liatris-white", "long-beaked-sedge", "moss-phlox",
+    "orange-coneflower", "ox-eye-sunflower", "partridgeberry",
+    "purple-coneflower", "pussytoes", "self-heal", "smooth-blue-aster",
+    "threadleaf-coreopsis", "wild-strawberry", "wild-violet",
+    "woodland-stonecrop", "zigzag-goldenrod",
+  ];
+  const lib = document.getElementById("library");
+  for (const slug of libraryOrder) {
+    const p = PLANTS[slug];
+    const url = "/icons/plants/watercolor-front/" + slug + ".svg";
+    const card = document.createElement("a");
+    card.className = "plant-card";
+    card.href = url;
+    card.target = "_blank";
+    card.rel = "noopener";
+    card.style.textDecoration = "none";
+    card.style.color = "inherit";
+    card.innerHTML =
+      '<div class="thumb"><img src="' + url + '" alt="" loading="lazy"/></div>' +
+      '<div class="name">' + p.name + '</div>' +
+      '<div class="latin">' + p.latin + '</div>' +
+      '<div class="slug">' + slug + '</div>';
+    lib.appendChild(card);
+  }
+</script>
+
+</body>
+</html>
