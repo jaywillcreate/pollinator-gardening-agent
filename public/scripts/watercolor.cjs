@@ -11,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 
 const SRC_DIR = '/Users/jasonwilliams/Desktop/Plant SVGs';
-const DEMO_OUT = path.join(__dirname, '..', 'public', 'watercolor-demo', 'svg');
+// Single source of truth — every demo page and the chat agent read from here.
 const ICON_OUT = path.join(__dirname, '..', 'public', 'icons', 'plants', 'watercolor-front');
 
 // One row per plant. `slug` becomes the filename in /icons/plants/watercolor-front/.
@@ -84,7 +84,6 @@ function applyWatercolor(svg) {
   return out;
 }
 
-fs.mkdirSync(DEMO_OUT, { recursive: true });
 fs.mkdirSync(ICON_OUT, { recursive: true });
 
 const manifest = [];
@@ -93,15 +92,10 @@ for (const plant of PLANTS) {
   // (trailing spaces, "Flower" suffix on Columbine, etc.).
   const srcName = plant.srcName ?? plant.name;
   const srcFile = path.join(SRC_DIR, `diagram_${srcName}.svg`);
-  const safeName = srcName.trim().replace(/\./g, '_').replace(/ /g, '_');
 
   const srcSvg = fs.readFileSync(srcFile, 'utf8');
   const outSvg = applyWatercolor(srcSvg);
 
-  // 1. Copy #1: side-by-side demo gallery
-  fs.writeFileSync(path.join(DEMO_OUT, `${safeName}.svg`), outSvg);
-
-  // 2. Copy #2: real asset library, addressable by Claude-generated diagrams
   fs.writeFileSync(path.join(ICON_OUT, `${plant.slug}.svg`), outSvg);
 
   manifest.push({
@@ -110,15 +104,11 @@ for (const plant of PLANTS) {
     latin: plant.latin,
     height: plant.height,
     bloom: plant.bloom,
-    demoFile: `${safeName}.svg`,
-    iconFile: `${plant.slug}.svg`,
+    file: `${plant.slug}.svg`,
     bytes: outSvg.length,
   });
   console.log(`${plant.name.padEnd(26)}  ${plant.slug.padEnd(22)}  ${outSvg.length.toString().padStart(7)} bytes`);
 }
 
-fs.writeFileSync(path.join(DEMO_OUT, '..', 'manifest.json'), JSON.stringify(manifest, null, 2));
 fs.writeFileSync(path.join(ICON_OUT, 'manifest.json'), JSON.stringify(manifest, null, 2));
-console.log(`\nwrote ${manifest.length} watercolor SVGs to:`);
-console.log(`  ${DEMO_OUT}`);
-console.log(`  ${ICON_OUT}`);
+console.log(`\nwrote ${manifest.length} watercolor SVGs to ${ICON_OUT}`);
