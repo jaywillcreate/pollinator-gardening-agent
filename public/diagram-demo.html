@@ -261,8 +261,9 @@
     library at <code style="font-family:ui-monospace,Menlo,monospace">/icons/plants/watercolor-front/</code>
     and referenced directly from SVG garden diagrams. The chat agent's system prompt
     now knows about them, so elevation views can be painted with real species instead
-    of flat shapes. Toggle below switches every scene between side profile and a
-    bird's-eye plan view.
+    of flat shapes. Four example scenes below — including a classic prairie meadow
+    built entirely from recently-added species — and the toggle switches every scene
+    between side profile and a bird's-eye plan view.
   </p>
 </header>
 
@@ -474,6 +475,71 @@
   </section>
 
   <!-- ================================================================== -->
+  <!-- SCENE 4 — Classic Prairie Pollinator Garden                        -->
+  <!-- Showcases the 12 newly-added species: purple coneflower, orange    -->
+  <!-- coneflower, ox eye sunflower, joe pye weed, blazing star, blanket  -->
+  <!-- flower, smooth blue aster, self heal.                               -->
+  <!-- ================================================================== -->
+  <section>
+    <h2>Example 4 — Classic Prairie Pollinator Garden</h2>
+    <p class="lede">A textbook native-meadow palette built from the newly-added species: coneflowers and ox eye sunflower for monarchs, blazing star and joe pye weed for big bumblebees, smooth blue aster extending the bloom into fall.</p>
+
+    <div class="diagram-card" data-scene="classic-prairie">
+      <div class="diagram-title">
+        <h3>Classic Prairie Pollinator Garden</h3>
+        <p class="meta"><span class="meta-elevation">Elevation — 1000×400 · ground line y=350 · 8 species</span><span class="meta-aerial">Plan view — 1000×400 · curved bed border · 8 species</span></p>
+      </div>
+
+      <div class="view view-elevation">
+      <svg class="scene" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky4" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f4e5c3"/>
+            <stop offset="100%" stop-color="#ffebc0"/>
+          </linearGradient>
+          <linearGradient id="ground4" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#b8954c"/>
+            <stop offset="100%" stop-color="#75562a"/>
+          </linearGradient>
+        </defs>
+
+        <rect x="0" y="0" width="1000" height="350" fill="url(#sky4)"/>
+        <rect x="0" y="350" width="1000" height="50" fill="url(#ground4)"/>
+        <line x1="0" y1="350" x2="1000" y2="350" stroke="#5d5232" stroke-width="1"/>
+
+        <!-- Tallest-to-shortest, L→R. Plant base anchored to ground via preserveAspectRatio. -->
+        <image href="/icons/plants/watercolor-front/joe-pye-weed.svg"      x="30"  y="160" width="190" height="190" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/ox-eye-sunflower.svg"  x="200" y="175" width="175" height="175" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/blazing-star.svg"      x="340" y="185" width="165" height="165" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/purple-coneflower.svg" x="460" y="195" width="155" height="155" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/smooth-blue-aster.svg" x="580" y="195" width="155" height="155" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/orange-coneflower.svg" x="700" y="210" width="140" height="140" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/blanket-flower.svg"    x="820" y="235" width="115" height="115" preserveAspectRatio="xMidYMax meet"/>
+        <image href="/icons/plants/watercolor-front/self-heal.svg"         x="910" y="260" width="90"  height="90"  preserveAspectRatio="xMidYMax meet"/>
+
+        <text x="500" y="28" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#2b2617" font-weight="700">Classic Prairie Pollinator Garden</text>
+        <text x="500" y="46" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#7a6f57" font-style="italic">summer-long nectar corridor · bloom: June–October</text>
+      </svg>
+      </div><!-- /.view-elevation -->
+
+      <div class="view view-aerial">
+        <svg class="scene scene-aerial" viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" data-scene-id="classic-prairie"></svg>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/joe-pye-weed.svg" alt=""/><span>Joe Pye Weed <span class="dot">· Eutrochium purpureum</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/ox-eye-sunflower.svg" alt=""/><span>Ox Eye Sunflower <span class="dot">· Heliopsis helianthoides</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/blazing-star.svg" alt=""/><span>Blazing Star <span class="dot">· Liatris ligulistylis</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/purple-coneflower.svg" alt=""/><span>Purple Coneflower <span class="dot">· Echinacea purpurea</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/smooth-blue-aster.svg" alt=""/><span>Smooth Blue Aster <span class="dot">· Symphyotrichum laeve</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/orange-coneflower.svg" alt=""/><span>Orange Coneflower <span class="dot">· Rudbeckia fulgida</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/blanket-flower.svg" alt=""/><span>Blanket Flower <span class="dot">· Gaillardia aristata</span></span></div>
+        <div class="legend-item"><img src="/icons/plants/watercolor-front/self-heal.svg" alt=""/><span>Self Heal <span class="dot">· Prunella vulgaris</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
   <!-- LIBRARY                                                              -->
   <!-- ================================================================== -->
   <section>
@@ -615,6 +681,22 @@
         { slug: "wild-strawberry",      x: 905, y: 260, drift: 1, label: "Wild Strawberry" },
       ],
     },
+    "classic-prairie": {
+      title: "Classic Prairie Pollinator Garden",
+      subtitle: "native meadow plan view · June–October",
+      mulch: "#826030", mulchAccent: "#523918", paperTint: "#f5e8bc",
+      bed: "M 50,140 C 100,90 260,80 400,105 C 540,128 680,95 820,108 C 910,120 960,145 960,195 C 970,260 925,310 880,335 C 740,360 540,360 360,340 C 220,325 80,330 60,290 C 40,240 30,180 50,140 Z",
+      plants: [
+        { slug: "joe-pye-weed",      x: 130, y: 145, drift: 1, label: "Joe Pye Weed" },
+        { slug: "ox-eye-sunflower",  x: 245, y: 160, drift: 1, label: "Ox Eye Sunflower" },
+        { slug: "blazing-star",      x: 355, y: 170, drift: 1, label: "Blazing Star" },
+        { slug: "purple-coneflower", x: 465, y: 190, drift: 1, label: "Purple Coneflower" },
+        { slug: "smooth-blue-aster", x: 580, y: 195, drift: 1, label: "Smooth Blue Aster" },
+        { slug: "orange-coneflower", x: 695, y: 225, drift: 1, label: "Orange Coneflower" },
+        { slug: "blanket-flower",    x: 805, y: 255, drift: 1, label: "Blanket Flower" },
+        { slug: "self-heal",         x: 905, y: 285, drift: 1, label: "Self Heal" },
+      ],
+    },
   };
 
   // ====================================================================
@@ -639,38 +721,41 @@
   }
 
   // ====================================================================
-  // Render one watercolor "blob" cluster (a single drift, plan view) at
-  // (cx, cy) using a stack of 6 transparent ellipses in light → mid → dark
-  // washes. Adds a small core dot in the dark color.
+  // Render one drift (single plant cluster, plan view) at (cx, cy) as an
+  // SVG <image> reference to the real watercolor illustration. The file
+  // lives at /icons/plants/watercolor-front/{slug}.svg. Size is driven by
+  // `planRadius * 2` so taller/bigger species render larger in plan view
+  // — same convention as the elevation sizing.
+  //
+  // A soft pigment halo is drawn behind the illustration so the plant
+  // reads clearly against the mulch and groups with nearby drifts visually.
   // ====================================================================
-  function paintDrift(parent, cx, cy, plant, rng) {
-    const r = plant.planRadius;
-    const layers = [
-      { color: plant.planLight, op: 0.55, scale: 1.15 },
-      { color: plant.planLight, op: 0.50, scale: 0.95 },
-      { color: plant.planMid,   op: 0.65, scale: 0.85 },
-      { color: plant.planMid,   op: 0.55, scale: 0.70 },
-      { color: plant.planDark,  op: 0.75, scale: 0.45 },
-      { color: plant.planDark,  op: 0.55, scale: 0.30 },
-    ];
-    for (const layer of layers) {
-      // Random jitter so each layer is offset/distorted slightly — gives
-      // the painted, organic feel of overlapping watercolor washes.
-      const jx = (rng() - 0.5) * r * 0.4;
-      const jy = (rng() - 0.5) * r * 0.4;
-      const rx = r * layer.scale * (0.85 + rng() * 0.3);
-      const ry = r * layer.scale * (0.85 + rng() * 0.3);
-      const rot = (rng() - 0.5) * 30;
-      svg("ellipse", {
-        cx: cx + jx,
-        cy: cy + jy,
-        rx,
-        ry,
-        fill: layer.color,
-        "fill-opacity": layer.op,
-        transform: `rotate(${rot} ${cx + jx} ${cy + jy})`,
-      }, parent);
-    }
+  function paintDrift(parent, cx, cy, plant, slug) {
+    const size = plant.planRadius * 2.1;  // slight over-size so the painted
+                                           // illustration fills its plan footprint
+    const halfW = size / 2;
+
+    // Halo — a single soft ellipse in the plant's light wash, sized a bit
+    // larger than the illustration. Keeps drifts from looking like floating
+    // cutouts on the mulch.
+    svg("ellipse", {
+      cx: cx,
+      cy: cy,
+      rx: halfW * 0.95,
+      ry: halfW * 0.85,
+      fill: plant.planLight,
+      "fill-opacity": 0.45,
+    }, parent);
+
+    // The actual watercolor illustration, centered at (cx, cy)
+    svg("image", {
+      href: "/icons/plants/watercolor-front/" + slug + ".svg",
+      x: cx - halfW,
+      y: cy - halfW,
+      width: size,
+      height: size,
+      preserveAspectRatio: "xMidYMid meet",
+    }, parent);
   }
 
   // Sprinkle a few mulch grains across the bed for paper-grain feel
@@ -734,7 +819,8 @@
       }, grainGroup);
     }
 
-    // Plant drifts
+    // Plant drifts — each plant is drawn as an SVG <image> referencing the
+    // real watercolor illustration, not as an abstract blob.
     for (const entry of scene.plants) {
       const plant = PLANTS[entry.slug];
       if (!plant) {
@@ -742,21 +828,29 @@
         continue;
       }
       const driftGroup = svg("g", {}, svgEl);
-      // For drift > 1, paint multiple offset clusters
+      // For drift > 1, place multiple illustrations side-by-side with a
+      // small vertical stagger so they read as a cluster, not a single plant.
       for (let i = 0; i < entry.drift; i++) {
-        const offsetX = i * (plant.planRadius * 0.9) - (entry.drift - 1) * (plant.planRadius * 0.45);
-        const offsetY = (i % 2 === 0 ? -1 : 1) * (plant.planRadius * 0.15);
-        paintDrift(driftGroup, entry.x + offsetX, entry.y + offsetY, plant, rng);
+        const offsetX = i * (plant.planRadius * 1.25) - (entry.drift - 1) * (plant.planRadius * 0.625);
+        const offsetY = (i % 2 === 0 ? -1 : 1) * (plant.planRadius * 0.18);
+        paintDrift(driftGroup, entry.x + offsetX, entry.y + offsetY, plant, entry.slug);
       }
 
-      // Tiny label below the cluster
+      // Tiny label below the cluster. Position further below for drifts
+      // so the label clears the wider footprint.
+      const labelY = entry.y + plant.planRadius + 20;
       svg("text", {
         x: entry.x,
-        y: entry.y + plant.planRadius + 18,
+        y: labelY,
         "text-anchor": "middle",
         "font-family": "Georgia, serif",
         "font-size": "10",
+        "font-weight": "600",
         fill: "#2b2617",
+        stroke: "#fffaf0",
+        "stroke-width": "3",
+        "stroke-opacity": "0.6",
+        "paint-order": "stroke",
       }, svgEl).textContent = entry.label;
     }
 
