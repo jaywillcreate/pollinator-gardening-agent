@@ -1,1 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Native Plants — Watercolor Gallery</title>
+<style>
+  :root {
+    --bg: #f5efe4;
+    --bg-card: #fffaf0;
+    --ink: #2b2617;
+    --muted: #7a6f57;
+    --line: #d8cdb4;
+    --accent: #6b8a3a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  }
+  header {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 24px 16px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: clamp(28px, 4vw, 44px);
+    margin: 0 0 8px;
+    letter-spacing: 0.5px;
+  }
+  header p {
+    margin: 0 auto;
+    max-width: 62ch;
+    color: var(--muted);
+    line-height: 1.55;
+    font-size: 16px;
+  }
+  header p code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 13px;
+  }
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 14px 16px;
+    box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 14px 28px -22px rgba(60,45,15,.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 1px 0 rgba(0,0,0,.02), 0 24px 36px -22px rgba(60,45,15,.32);
+  }
+  .stage {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: radial-gradient(ellipse at center, #fffdf5 0%, #f3ead3 100%);
+    overflow: hidden;
+  }
+  .stage img {
+    width: 92%;
+    height: 92%;
+    display: block;
+  }
+  .name {
+    margin: 12px 0 0;
+    font-size: 15px;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+  .latin {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    text-align: center;
+  }
+  .slug {
+    margin: 8px 0 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10px;
+    color: var(--accent);
+    background: #f4efdb;
+    border-radius: 3px;
+    padding: 2px 6px;
+  }
+  footer {
+    max-width: 1100px;
+    margin: 40px auto 60px;
+    padding: 0 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 1px 6px;
+  }
+</style>
+</head>
+<body>
 
+<header>
+  <h1>Native Plants — Watercolor Gallery</h1>
+  <p>
+    Thirty full-color botanical watercolor illustrations, installed as the shared
+    plant-asset library at <code>/icons/plants/watercolor-front/</code>. These are
+    the same SVGs referenced by the chat agent's elevation and plan-view diagrams,
+    shown here in alphabetical order. Click any card to open the raw file.
+  </p>
+</header>
+
+<main>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>
+  Single source of truth — every demo page and chat diagram reads from <code>/icons/plants/watercolor-front/</code>. Back to <a href="/diagram-demo.html">diagram showcase</a> or <a href="/">the chat</a>.
+</footer>
+
+<script>
+  // Sourced from the manifest written by scripts/watercolor.cjs. Order is
+  // alphabetical by common name so Wild Columbine lives under "C", etc.
+  const plants = [
+    { name: "Anise Hyssop",         latin: "Agastache foeniculum",        slug: "anise-hyssop" },
+    { name: "Bee Balm",             latin: "Monarda didyma",              slug: "bee-balm" },
+    { name: "Blanket Flower",       latin: "Gaillardia aristata",         slug: "blanket-flower" },
+    { name: "Blazing Star",         latin: "Liatris ligulistylis",        slug: "blazing-star" },
+    { name: "Butterfly Milkweed",   latin: "Asclepias tuberosa",          slug: "butterfly-milkweed" },
+    { name: "Canada Ginger",        latin: "Asarum canadense",            slug: "canada-ginger" },
+    { name: "Creeping Thyme",       latin: "Thymus serpyllum",            slug: "creeping-thyme" },
+    { name: "Erigeron Lynnhaven",   latin: "Erigeron pulchellus",         slug: "erigeron-lynnhaven" },
+    { name: "Golden Alexanders",    latin: "Zizia aurea",                 slug: "golden-alexanders" },
+    { name: "Golden Ragwort",       latin: "Packera aurea",               slug: "golden-ragwort" },
+    { name: "Golden Star Sedge",    latin: "Carex rosea",                 slug: "golden-star-sedge" },
+    { name: "Joe Pye Weed",         latin: "Eutrochium purpureum",        slug: "joe-pye-weed" },
+    { name: "Jr. Walker Nepeta",    latin: "Nepeta 'Junior Walker'",      slug: "nepeta-jr-walker" },
+    { name: "Long Beaked Sedge",    latin: "Carex sprengelii",            slug: "long-beaked-sedge" },
+    { name: "Moss Phlox",           latin: "Phlox subulata",              slug: "moss-phlox" },
+    { name: "Orange Coneflower",    latin: "Rudbeckia fulgida",           slug: "orange-coneflower" },
+    { name: "Ox Eye Sunflower",     latin: "Heliopsis helianthoides",     slug: "ox-eye-sunflower" },
+    { name: "Partridgeberry",       latin: "Mitchella repens",            slug: "partridgeberry" },
+    { name: "Purple Coneflower",    latin: "Echinacea purpurea",          slug: "purple-coneflower" },
+    { name: "Purple Liatris",       latin: "Liatris spicata",             slug: "liatris-purple" },
+    { name: "Pussytoes",            latin: "Antennaria plantaginifolia",  slug: "pussytoes" },
+    { name: "Self Heal",            latin: "Prunella vulgaris",           slug: "self-heal" },
+    { name: "Smooth Blue Aster",    latin: "Symphyotrichum laeve",        slug: "smooth-blue-aster" },
+    { name: "Threadleaf Coreopsis", latin: "Coreopsis verticillata",      slug: "threadleaf-coreopsis" },
+    { name: "White Liatris",        latin: "Liatris spicata 'Alba'",      slug: "liatris-white" },
+    { name: "Wild Columbine",       latin: "Aquilegia canadensis",        slug: "columbine" },
+    { name: "Wild Strawberry",      latin: "Fragaria virginiana",         slug: "wild-strawberry" },
+    { name: "Wild Violet",          latin: "Viola sororia",               slug: "wild-violet" },
+    { name: "Woodland Stonecrop",   latin: "Sedum ternatum",              slug: "woodland-stonecrop" },
+    { name: "Zigzag Goldenrod",     latin: "Solidago flexicaulis",        slug: "zigzag-goldenrod" },
+  ];
+
+  const grid = document.getElementById("grid");
+  for (const p of plants) {
+    const url = "/icons/plants/watercolor-front/" + p.slug + ".svg";
+    const card = document.createElement("a");
+    card.className = "card";
+    card.href = url;
+    card.target = "_blank";
+    card.rel = "noopener";
+    card.innerHTML =
+      '<div class="stage"><img src="' + url + '" alt="' + p.name + '" loading="lazy"/></div>' +
+      '<p class="name">' + p.name + '</p>' +
+      '<p class="latin">' + p.latin + '</p>' +
+      '<span class="slug">' + p.slug + '</span>';
+    grid.appendChild(card);
+  }
+</script>
+
+</body>
+</html>
