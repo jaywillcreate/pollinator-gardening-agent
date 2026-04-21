@@ -1,0 +1,302 @@
+[
+  {
+    "name": "Anise Hyssop",
+    "slug": "anise-hyssop",
+    "latin": "Agastache foeniculum",
+    "height": 150,
+    "bloom": "Summer",
+    "demoFile": "Anise_Hyssop.svg",
+    "iconFile": "anise-hyssop.svg",
+    "bytes": 123201
+  },
+  {
+    "name": "Bee Balm",
+    "slug": "bee-balm",
+    "latin": "Monarda didyma",
+    "height": 155,
+    "bloom": "Summer",
+    "demoFile": "Bee_Balm.svg",
+    "iconFile": "bee-balm.svg",
+    "bytes": 231907
+  },
+  {
+    "name": "Blanket Flower",
+    "slug": "blanket-flower",
+    "latin": "Gaillardia aristata",
+    "height": 115,
+    "bloom": "Summer",
+    "demoFile": "Blanket_Flower.svg",
+    "iconFile": "blanket-flower.svg",
+    "bytes": 357785
+  },
+  {
+    "name": "Blazing Star",
+    "slug": "blazing-star",
+    "latin": "Liatris ligulistylis",
+    "height": 165,
+    "bloom": "Summer",
+    "demoFile": "Blazing_Star.svg",
+    "iconFile": "blazing-star.svg",
+    "bytes": 309007
+  },
+  {
+    "name": "Butterfly Milkweed",
+    "slug": "butterfly-milkweed",
+    "latin": "Asclepias tuberosa",
+    "height": 135,
+    "bloom": "Summer",
+    "demoFile": "Butterfly_Milkweed.svg",
+    "iconFile": "butterfly-milkweed.svg",
+    "bytes": 291281
+  },
+  {
+    "name": "Canada Ginger",
+    "slug": "canada-ginger",
+    "latin": "Asarum canadense",
+    "height": 70,
+    "bloom": "Spring",
+    "demoFile": "Canada_Ginger.svg",
+    "iconFile": "canada-ginger.svg",
+    "bytes": 438845
+  },
+  {
+    "name": "Columbine",
+    "slug": "columbine",
+    "latin": "Aquilegia canadensis",
+    "height": 130,
+    "bloom": "Spring",
+    "demoFile": "Columbine_Flower.svg",
+    "iconFile": "columbine.svg",
+    "bytes": 193742
+  },
+  {
+    "name": "Creeping Thyme",
+    "slug": "creeping-thyme",
+    "latin": "Thymus serpyllum",
+    "height": 55,
+    "bloom": "Summer",
+    "demoFile": "Creeping_Thyme.svg",
+    "iconFile": "creeping-thyme.svg",
+    "bytes": 709064
+  },
+  {
+    "name": "Erigeron Lynnhaven Carpet",
+    "slug": "erigeron-lynnhaven",
+    "latin": "Erigeron pulchellus",
+    "height": 85,
+    "bloom": "Spring",
+    "demoFile": "Erigeron_Lynnhaven_Carpet.svg",
+    "iconFile": "erigeron-lynnhaven.svg",
+    "bytes": 326776
+  },
+  {
+    "name": "Golden Alexanders",
+    "slug": "golden-alexanders",
+    "latin": "Zizia aurea",
+    "height": 130,
+    "bloom": "Spring",
+    "demoFile": "Golden_Alexanders.svg",
+    "iconFile": "golden-alexanders.svg",
+    "bytes": 124988
+  },
+  {
+    "name": "Golden Ragwort",
+    "slug": "golden-ragwort",
+    "latin": "Packera aurea",
+    "height": 120,
+    "bloom": "Spring",
+    "demoFile": "Golden_Ragwort.svg",
+    "iconFile": "golden-ragwort.svg",
+    "bytes": 118756
+  },
+  {
+    "name": "Golden Star Sedge",
+    "slug": "golden-star-sedge",
+    "latin": "Carex rosea",
+    "height": 115,
+    "bloom": "Spring",
+    "demoFile": "Golden_Star_Sedge.svg",
+    "iconFile": "golden-star-sedge.svg",
+    "bytes": 438920
+  },
+  {
+    "name": "Joe Pye Weed",
+    "slug": "joe-pye-weed",
+    "latin": "Eutrochium purpureum",
+    "height": 190,
+    "bloom": "Summer",
+    "demoFile": "Joe_Pye_Weed.svg",
+    "iconFile": "joe-pye-weed.svg",
+    "bytes": 261509
+  },
+  {
+    "name": "Jr. Walker Nepeta",
+    "slug": "nepeta-jr-walker",
+    "latin": "Nepeta 'Junior Walker'",
+    "height": 110,
+    "bloom": "Summer",
+    "demoFile": "Jr__Walker_Nepeta.svg",
+    "iconFile": "nepeta-jr-walker.svg",
+    "bytes": 306824
+  },
+  {
+    "name": "Liatris Purple",
+    "slug": "liatris-purple",
+    "latin": "Liatris spicata",
+    "height": 170,
+    "bloom": "Summer",
+    "demoFile": "Liatris_Purple.svg",
+    "iconFile": "liatris-purple.svg",
+    "bytes": 218026
+  },
+  {
+    "name": "Liatris White",
+    "slug": "liatris-white",
+    "latin": "Liatris spicata 'Alba'",
+    "height": 170,
+    "bloom": "Summer",
+    "demoFile": "Liatris_White.svg",
+    "iconFile": "liatris-white.svg",
+    "bytes": 164193
+  },
+  {
+    "name": "Long Beaked Sedge",
+    "slug": "long-beaked-sedge",
+    "latin": "Carex sprengelii",
+    "height": 130,
+    "bloom": "Spring",
+    "demoFile": "Long_Beaked_Sedge.svg",
+    "iconFile": "long-beaked-sedge.svg",
+    "bytes": 111651
+  },
+  {
+    "name": "Moss Phlox",
+    "slug": "moss-phlox",
+    "latin": "Phlox subulata",
+    "height": 80,
+    "bloom": "Spring",
+    "demoFile": "Moss_Phlox.svg",
+    "iconFile": "moss-phlox.svg",
+    "bytes": 532360
+  },
+  {
+    "name": "Orange Coneflower",
+    "slug": "orange-coneflower",
+    "latin": "Rudbeckia fulgida",
+    "height": 140,
+    "bloom": "Summer",
+    "demoFile": "Orange_Coneflower.svg",
+    "iconFile": "orange-coneflower.svg",
+    "bytes": 198098
+  },
+  {
+    "name": "Ox Eye Sunflower",
+    "slug": "ox-eye-sunflower",
+    "latin": "Heliopsis helianthoides",
+    "height": 175,
+    "bloom": "Summer",
+    "demoFile": "Ox_Eye_Sunflower.svg",
+    "iconFile": "ox-eye-sunflower.svg",
+    "bytes": 365213
+  },
+  {
+    "name": "Patridgeberry",
+    "slug": "partridgeberry",
+    "latin": "Mitchella repens",
+    "height": 90,
+    "bloom": "Summer",
+    "demoFile": "Patridgeberry.svg",
+    "iconFile": "partridgeberry.svg",
+    "bytes": 198587
+  },
+  {
+    "name": "Purple Coneflower",
+    "slug": "purple-coneflower",
+    "latin": "Echinacea purpurea",
+    "height": 155,
+    "bloom": "Summer",
+    "demoFile": "Purple_Coneflower.svg",
+    "iconFile": "purple-coneflower.svg",
+    "bytes": 221369
+  },
+  {
+    "name": "Pussytoes",
+    "slug": "pussytoes",
+    "latin": "Antennaria plantaginifolia",
+    "height": 65,
+    "bloom": "Spring",
+    "demoFile": "Pussytoes.svg",
+    "iconFile": "pussytoes.svg",
+    "bytes": 1072476
+  },
+  {
+    "name": "Self Heal Plant",
+    "slug": "self-heal",
+    "latin": "Prunella vulgaris",
+    "height": 90,
+    "bloom": "Summer",
+    "demoFile": "Self_Heal_Plant.svg",
+    "iconFile": "self-heal.svg",
+    "bytes": 77986
+  },
+  {
+    "name": "Smooth Blue Aster",
+    "slug": "smooth-blue-aster",
+    "latin": "Symphyotrichum laeve",
+    "height": 155,
+    "bloom": "Fall",
+    "demoFile": "Smooth_Blue_Aster.svg",
+    "iconFile": "smooth-blue-aster.svg",
+    "bytes": 209331
+  },
+  {
+    "name": "Threadleaf Coreopsis",
+    "slug": "threadleaf-coreopsis",
+    "latin": "Coreopsis verticillata",
+    "height": 120,
+    "bloom": "Summer",
+    "demoFile": "Threadleaf_Coreopsis.svg",
+    "iconFile": "threadleaf-coreopsis.svg",
+    "bytes": 246716
+  },
+  {
+    "name": "Wild Strawberry",
+    "slug": "wild-strawberry",
+    "latin": "Fragaria virginiana",
+    "height": 90,
+    "bloom": "Spring",
+    "demoFile": "Wild_Strawberry.svg",
+    "iconFile": "wild-strawberry.svg",
+    "bytes": 72928
+  },
+  {
+    "name": "Wild Violet",
+    "slug": "wild-violet",
+    "latin": "Viola sororia",
+    "height": 95,
+    "bloom": "Spring",
+    "demoFile": "Wild_Violet.svg",
+    "iconFile": "wild-violet.svg",
+    "bytes": 410383
+  },
+  {
+    "name": "Woodland Stonecrop",
+    "slug": "woodland-stonecrop",
+    "latin": "Sedum ternatum",
+    "height": 100,
+    "bloom": "Spring",
+    "demoFile": "Woodland_Stonecrop.svg",
+    "iconFile": "woodland-stonecrop.svg",
+    "bytes": 163195
+  },
+  {
+    "name": "Zigzag Goldenrod",
+    "slug": "zigzag-goldenrod",
+    "latin": "Solidago flexicaulis",
+    "height": 160,
+    "bloom": "Fall",
+    "demoFile": "Zigzag_Goldenrod.svg",
+    "iconFile": "zigzag-goldenrod.svg",
+    "bytes": 282229
+  }
+]
