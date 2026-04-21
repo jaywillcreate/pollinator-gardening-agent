@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watercolor Edge Techniques SVG Demo</title>
+<style>
+  body { font-family: Helvetica, Arial, sans-serif; background: #f8f6f2; color: #2c2416; margin: 40px; }
+  h1 { font-size: 1.3rem; color: #3d3229; }
+  h2 { font-size: 1rem; color: #4a6741; margin-top: 36px; border-bottom: 1px solid #e5ddd0; padding-bottom: 6px; }
+  p { font-size: 0.82rem; color: #6b5d4f; max-width: 700px; line-height: 1.6; }
+  .row { display: flex; gap: 24px; flex-wrap: wrap; margin: 20px 0; align-items: flex-start; }
+  .card { text-align: center; background: white; padding: 14px; border-radius: 8px; border: 1px solid #e5ddd0; }
+  .card span { display: block; font-size: 0.7rem; color: #9a8d7f; margin-top: 6px; max-width: 240px; }
+  .card b { display: block; font-size: 0.82rem; color: #3d3229; margin-top: 4px; }
+  pre { background: #2c2416; color: #d8e8c0; padding: 14px; border-radius: 8px; overflow-x: auto; font-size: 0.72rem; max-width: 800px; margin: 16px 0; }
+  .tech { background: #eee8dc; padding: 10px 14px; border-radius: 6px; font-size: 0.78rem; max-width: 700px; color: #4a3a2a; }
+</style>
+</head>
+<body>
+
+<h1>Watercolor Edge Techniques in SVG</h1>
+<p>Replicating four classical watercolor edge effects programmatically: <b>Hard Edges</b> (wet-on-dry), <b>Soft Edges</b> (wet-on-wet), <b>Lost Edges</b> (boundary disappears), and <b>Broken/Dry Edges</b> (dry brush skipping).</p>
+
+<!-- ============================================================ -->
+<h2>1. Hard Edges — Wet-on-Dry</h2>
+<div class="tech"><b>Technique:</b> Solid fill with NO filter or mask. Sharp crisp boundary, high contrast. Optional subtle inset stroke in a darker shade of the same color for definition. Used for foreground objects that need to stand out.</div>
+
+<div class="row">
+  <div class="card">
+    <svg width="200" height="140" viewBox="0 0 200 140">
+      <!-- Hard edge - solid ellipse, no filter -->
+      <ellipse cx="100" cy="70" rx="70" ry="45" fill="#7848a0" opacity="0.75"/>
+      <text x="100" y="130" font-size="8" fill="#888" text-anchor="middle">Pure fill — crisp edge</text>
+    </svg>
+    <b>Basic hard edge</b>
+    <span>Opacity 0.75 for paint-like appearance but still crisp boundary</span>
+  </div>
+
+  <div class="card">
+    <svg width="200" height="140" viewBox="0 0 200 140">
+      <!-- Hard edge with inset line -->
+      <ellipse cx="100" cy="70" rx="70" ry="45" fill="#7848a0" opacity="0.7"/>
+      <ellipse cx="100" cy="70" rx="68" ry="43" fill="none" stroke="#4a1868" stroke-width="0.8" opacity="0.6"/>
+      <text x="100" y="130" font-size="8" fill="#888" text-anchor="middle">Fill + inset darker edge</text>
+    </svg>
+    <b>Hard edge with definition</b>
+    <span>Thin darker-shade inset stroke emphasizes the boundary like wet paint on dry paper</span>
+  </div>
+
+  <div class="card">
+    <svg width="200" height="140" viewBox="0 0 200 140">
+      <!-- Multiple hard-edge washes stacking -->
+      <ellipse cx="100" cy="70" rx="70" ry="45" fill="#9a68c0" opacity="0.65"/>
+      <ellipse cx="95" cy="65" rx="55" ry="35" fill="#7848a0" opacity="0.55"/>
+      <ellipse cx="92" cy="62" rx="40" ry="25" fill="#5a2878" opacity="0.5"/>
+      <text x="100" y="130" font-size="8" fill="#888" text-anchor="middle">Layered hard edges</text>
+    </svg>
+    <b>Stacked hard washes</b>
+    <span>Each layer has a crisp edge but they create depth together</span>
+  </div>
+</div>
+
+<pre>&lt;!-- HARD EDGE: solid fill, no filter, no mask --&gt;
+&lt;ellipse cx="100" cy="70" rx="70" ry="45" fill="#7848a0" opacity="0.75"/&gt;</pre>
+
+<!-- ============================================================ -->
+<h2>2. Soft Edges — Wet-on-Wet</h2>
+<div class="tech"><b>Technique:</b> Radial gradient mask fading from opaque center to transparent edge, combined with Gaussian blur. Creates a diffused, feathered boundary — the pigment "bleeding" into damp paper. Perfect for background elements that should recede.</div>
+
+<div class="row">
+  <div class="card">
+    <svg width="200" height="140" viewBox="0 0 200 140">
+      <defs>
+        <radialGradient id="softFade1" cx="50%" cy="50%" rx="50%" ry="50%">
+          <stop offset="0%" stop-color="white"/>
+          <stop offset="50%" stop-color="white"/>
+          <stop offset="100%" stop-color="black"/>
+        </radialGradient>
+        <mask id="softMask1">
+          <ellipse cx="100" cy="70" rx="75" ry="48" fill="url(#softFade1)"/>
+        </mask>
+      </defs>
+      <ellipse cx="100" cy="70" rx="75" ry="48" fill="#7848a0" opacity="0.7" mask="url(#softMask1)"/>
+      <text x="100" y="130" font-size="8" fill="#888" text-anchor="middle">Gradient mask only</text>
+    </svg>
+    <b>Basic soft edge</b>
+    <span>Opaque center fading to transparent at boundary — classic wet-on-wet</span>
+  </div>
+
+  <div class="card">
+    <svg width="200" height="140" viewBox="0 0 200 140">
+      <defs>
+        <filter id="softBlur2" x="-15%" y="-15%" width="130%" height="130%">
+          <feGaussianBlur stdDeviation="2.5"/>
+        </filter>
+        <radialGradient id="softFade2">
+          <stop offset="0%" stop-color="white"/>
+          <stop offset="40%" stop-color="white"/>
+          <stop offset="100%" stop-color="black"/>
+        </radialGradient>
+        <mask id="softMask2">
+          <ellipse cx="100" cy="70" rx="72" ry="45" fill="url(#softFade2)"/>
+        </mask>
+      </defs>
+      <ellipse cx="100" cy="70" rx="72" ry="45" fill="#7848a0" opacity="0.7" mask="url(#softMask2)" filter="url(#softBlur2)"/>
+      <text x="100" y="130" font-size="8" fill="#888" text-anchor="middle">Gradient mask + blur</text>
+    </svg>
+    <b>Double soft — mask + blur</b>
+    <span>Even more diffused — pigment bleeding heavily into wet paper</span>
+  </div>
+
+  <div class="card">
+    <svg width="200" height="140" viewBox="0 0 200 140">
+      <defs>
+        <filter id="softDisplaced" x="-15%" y="-15%" width="130%" height="130%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="5" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="8"/>
+          <feGaussianBlur stdDeviation="1.5"/>
+        </filter>
+        <radialGradient id="softFade3">
+          <stop offset="0%" stop-color="white"/>
+          <stop offset="45%" stop-color="white"/>
+          <stop offset="100%" stop-color="black"/>
+        </radialGradient>
+        <mask id="softMask3">
+          <ellipse cx="100" cy="70" rx="72" ry="45" fill="url(#softFade3)"/>
+        </mask>
+      </defs>
+      <ellipse cx="100" cy="70" rx="72" ry="45" fill="#7848a0" opacity="0.7" mask="url(#softMask3)" filter="url(#softDisplaced)"/>
+      <text x="100" y="130" font-size="8" fill="#888" text-anchor="middle">Soft + organic wobble</text>
+    </svg>
+    <b>Soft edge with paint bleed</b>
+    <span>Adds turbulence displacement for natural organic wet paint irregularity</span>
+  </div>
+</div>
+
+<pre>&lt;defs&gt;
+  &lt;radialGradient id="softFade"&gt;
+    &lt;stop offset="0%" stop-color="white"/&gt;
+    &lt;stop offset="50%" stop-color="white"/&gt;
+    &lt;stop offset="100%" stop-color="black"/&gt;
+  &lt;/radialGradient&gt;
+  &lt;mask id="softMask"&gt;&lt;ellipse fill="url(#softFade)"/&gt;&lt;/mask&gt;
+&lt;/defs&gt;
+&lt;ellipse fill="#7848a0" opacity="0.7" mask="url(#softMask)"/&gt;</pre>
+
+<!-- ============================================================ -->
+<h2>3. Lost Edges — Boundary Disappears</h2>
+<div class="tech"><b>Technique:</b> Linear gradient mask that fades to transparent on ONE side only — so where two shapes meet, the boundary dissolves completely. The viewer's eye "fills in" the missing edge. Often used where foreground object merges into background.</div>
+
+<div class="row">
+  <div class="card">
+    <svg width="260" height="140" viewBox="0 0 260 140">
+      <defs>
+        <linearGradient id="lostFadeR" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="white"/>
+          <stop offset="60%" stop-color="white"/>
+          <stop offset="100%" stop-color="black"/>
+        </linearGradient>
+        <linearGradient id="lostFadeL" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="black"/>
+          <stop offset="40%" stop-color="white"/>
+          <stop offset="100%" stop-color="white"/>
+        </linearGradient>
+        <mask id="lostMaskR"><rect x="20" y="30" width="120" height="80" fill="url(#lostFadeR)"/></mask>
+        <mask id="lostMaskL"><rect x="120" y="30" width="120" height="80" fill="url(#lostFadeL)"/></mask>
+      </defs>
+      <!-- Two shapes that merge on the right/left edges -->
+      <ellipse cx="80" cy="70" rx="60" ry="38" fill="#7848a0" opacity="0.75" mask="url(#lostMaskR)"/>
+      <ellipse cx="180" cy="70" rx="60" ry="38" fill="#7848a0" opacity="0.75" mask="url(#lostMaskL)"/>
+      <text x="130" y="130" font-size="8" fill="#888" text-anchor="middle">Two shapes merge into one</text>
+    </svg>
+    <b>Horizontal lost edge</b>
+    <span>Two ellipses whose inner boundaries fade — appears as one continuous shape</span>
+  </div>
+
+  <div class="card">
+    <svg width="200" height="200" viewBox="0 0 200 200">
+      <defs>
+        <linearGradient id="lostFadeT" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="white"/>
+          <stop offset="60%" stop-color="white"/>
+          <stop offset="100%" stop-color="black"/>
+        </linearGradient>
+        <linearGradient id="lostFadeB" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="black"/>
+          <stop offset="40%" stop-color="white"/>
+          <stop offset="100%" stop-color="white"/>
+        </linearGradient>
+        <mask id="lostMaskT"><rect x="20" y="20" width="160" height="90" fill="url(#lostFadeT)"/></mask>
+        <mask id="lostMaskB"><rect x="20" y="90" width="160" height="90" fill="url(#lostFadeB)"/></mask>
+      </defs>
+      <!-- Foliage green on top merges into soil brown below -->
+      <ellipse cx="100" cy="65" rx="70" ry="40" fill="#3a7a32" opacity="0.7" mask="url(#lostMaskT)"/>
+      <ellipse cx="100" cy="135" rx="70" ry="40" fill="#8a6a40" opacity="0.7" mask="url(#lostMaskB)"/>
+      <text x="100" y="195" font-size="8" fill="#888" text-anchor="middle">Foliage fades into soil</text>
+    </svg>
+    <b>Vertical lost edge</b>
+    <span>Green foliage blends into brown soil — no visible boundary between them</span>
+  </div>
+
+  <div class="card">
+    <svg width="200" height="180" viewBox="0 0 200 180">
+      <defs>
+        <radialGradient id="lostRadial" cx="50%" cy="50%" rx="60%" ry="60%">
+          <stop offset="0%" stop-color="white"/>
+          <stop offset="40%" stop-color="white"/>
+          <stop offset="80%" stop-color="#888"/>
+          <stop offset="100%" stop-color="black"/>
+        </radialGradient>
+        <mask id="lostMaskR2"><ellipse cx="100" cy="90" rx="90" ry="60" fill="url(#lostRadial)"/></mask>
+      </defs>
+      <!-- Background wash -->
+      <ellipse cx="100" cy="90" rx="95" ry="65" fill="#c8a060" opacity="0.4"/>
+      <!-- Foreground that dissolves into background -->
+      <ellipse cx="100" cy="90" rx="90" ry="60" fill="#7848a0" opacity="0.7" mask="url(#lostMaskR2)"/>
+      <text x="100" y="170" font-size="8" fill="#888" text-anchor="middle">Purple dissolves into tan</text>
+    </svg>
+    <b>Radial lost edge</b>
+    <span>Purple flower mass fades into a tan soil background — edge "lost and found"</span>
+  </div>
+</div>
+
+<pre>&lt;!-- LOST EDGE: linear gradient fading on the side where shapes meet --&gt;
+&lt;linearGradient id="lostFade" x1="0%" y1="0%" x2="100%" y2="0%"&gt;
+  &lt;stop offset="0%" stop-color="white"/&gt;       &lt;!-- visible side --&gt;
+  &lt;stop offset="60%" stop-color="white"/&gt;
+  &lt;stop offset="100%" stop-color="black"/&gt;     &lt;!-- disappearing side --&gt;
+&lt;/linearGradient&gt;</pre>
+
+<!-- ============================================================ -->
+<h2>4. Broken/Dry Edges — Dry Brush Technique</h2>
+<div class="tech"><b>Technique:</b> High-frequency feTurbulence + feColorMatrix threshold creates a "holes" mask that reveals gaps in the paint, mimicking a dry brush skipping over textured paper. Perfect for rough tree bark, stone texture, weathered surfaces.</div>
+
+<div class="row">
+  <div class="card">
+    <svg width="200" height="140" viewBox="0 0 200 140">
+      <defs>
+        <filter id="dryBrush1" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.25" numOctaves="2" seed="3" result="noise"/>
+          <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -2.5 1.6" result="mask"/>
+          <feComposite in="SourceGraphic" in2="mask" operator="in"/>
+        </filter>
+      </defs>
+      <ellipse cx="100" cy="70" rx="75" ry="45" fill="#7848a0" opacity="0.8" filter="url(#dryBrush1)"/>
+      <text x="100" y="130" font-size="8" fill="#888" text-anchor="middle">High frequency noise holes</text>
+    </svg>
+    <b>Basic dry brush</b>
+    <span>feTurbulence at 0.25 creates fine paint gaps — like bristles skipping</span>
+  </div>
+
+  <div class="card">
+    <svg width="200" height="140" viewBox="0 0 200 140">
+      <defs>
+        <filter id="dryBrush2" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.15 0.08" numOctaves="3" seed="7" result="noise"/>
+          <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -3 1.8" result="mask"/>
+          <feComposite in="SourceGraphic" in2="mask" operator="in"/>
+        </filter>
+      </defs>
+      <ellipse cx="100" cy="70" rx="75" ry="45" fill="#7848a0" opacity="0.8" filter="url(#dryBrush2)"/>
+      <text x="100" y="130" font-size="8" fill="#888" text-anchor="middle">Directional noise (horizontal)</text>
+    </svg>
+    <b>Directional dry brush</b>
+    <span>baseFrequency "0.15 0.08" makes horizontal-streaked skipping — like a brush drag</span>
+  </div>
+
+  <div class="card">
+    <svg width="200" height="140" viewBox="0 0 200 140">
+      <defs>
+        <filter id="dryBrush3" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="turbulence" baseFrequency="0.5" numOctaves="1" seed="11" result="noise"/>
+          <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -4 2" result="mask"/>
+          <feComposite in="SourceGraphic" in2="mask" operator="in"/>
+        </filter>
+      </defs>
+      <ellipse cx="100" cy="70" rx="75" ry="45" fill="#7848a0" opacity="0.85" filter="url(#dryBrush3)"/>
+      <text x="100" y="130" font-size="8" fill="#888" text-anchor="middle">Coarse speckle texture</text>
+    </svg>
+    <b>Speckle/grit dry brush</b>
+    <span>type="turbulence" (not fractalNoise) + high threshold = coarse scattered paint</span>
+  </div>
+</div>
+
+<pre>&lt;!-- DRY BRUSH: high-frequency noise + extreme threshold creates gaps --&gt;
+&lt;filter id="dryBrush"&gt;
+  &lt;feTurbulence type="fractalNoise" baseFrequency="0.25" numOctaves="2"/&gt;
+  &lt;feColorMatrix type="matrix"
+    values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.5 1.6"/&gt;
+  &lt;feComposite in="SourceGraphic" in2="mask" operator="in"/&gt;
+&lt;/filter&gt;</pre>
+
+<!-- ============================================================ -->
+<h2>5. All Four Techniques Combined — Full Botanical</h2>
+<p>A single flower painting using every edge type: hard edges for foreground bloom, soft edges for background foliage, lost edges where flower meets soil, dry brush for rough stem texture.</p>
+
+<div class="row">
+  <div class="card">
+    <svg width="280" height="320" viewBox="0 0 280 320">
+      <defs>
+        <!-- Soft edge mask -->
+        <radialGradient id="softFull">
+          <stop offset="0%" stop-color="white"/>
+          <stop offset="55%" stop-color="white"/>
+          <stop offset="100%" stop-color="black"/>
+        </radialGradient>
+        <!-- Soft edge filters -->
+        <filter id="softBleed" x="-15%" y="-15%" width="130%" height="130%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="20"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="6"/>
+          <feGaussianBlur stdDeviation="1.5"/>
+        </filter>
+        <!-- Lost edge gradient -->
+        <linearGradient id="lostBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="white"/>
+          <stop offset="55%" stop-color="white"/>
+          <stop offset="100%" stop-color="black"/>
+        </linearGradient>
+        <mask id="lostBottomMask"><rect x="0" y="0" width="280" height="320" fill="url(#lostBottom)"/></mask>
+        <mask id="softFullMask"><ellipse cx="140" cy="140" rx="90" ry="70" fill="url(#softFull)"/></mask>
+        <mask id="softFullMask2"><ellipse cx="140" cy="110" rx="80" ry="70" fill="url(#softFull)"/></mask>
+        <!-- Dry brush filter -->
+        <filter id="dryFull" x="-10%" y="-10%" width="120%" height="120%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.2" numOctaves="2" seed="15" result="n"/>
+          <feColorMatrix in="n" type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -2.2 1.5" result="m"/>
+          <feComposite in="SourceGraphic" in2="m" operator="in"/>
+        </filter>
+      </defs>
+
+      <!-- LAYER 1: SOFT EDGE background foliage wash (wet-on-wet, recedes) -->
+      <ellipse cx="140" cy="140" rx="90" ry="70" fill="#3a7a28" opacity="0.5" mask="url(#softFullMask)"/>
+      <ellipse cx="145" cy="135" rx="75" ry="58" fill="#4a8a38" opacity="0.45" mask="url(#softFullMask)"/>
+      <ellipse cx="135" cy="130" rx="60" ry="48" fill="#5a9a48" opacity="0.4" mask="url(#softFullMask)"/>
+
+      <!-- LAYER 2: LOST EDGE — purple flower mass fading into soil -->
+      <ellipse cx="140" cy="120" rx="70" ry="55" fill="#7848a0" opacity="0.55" mask="url(#lostBottomMask)"/>
+      <ellipse cx="135" cy="115" rx="58" ry="45" fill="#8a58b0" opacity="0.5" mask="url(#lostBottomMask)"/>
+      <ellipse cx="145" cy="110" rx="45" ry="35" fill="#9a68c0" opacity="0.45" mask="url(#lostBottomMask)"/>
+
+      <!-- LAYER 3: HARD EDGE — individual petal strokes (wet-on-dry, crisp) -->
+      <g>
+        <!-- 12 tapered petal shapes radiating from center, each with crisp hard edge -->
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.75"/>
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.7" transform="rotate(30,140,120)"/>
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.7" transform="rotate(60,140,120)"/>
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.7" transform="rotate(90,140,120)"/>
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.7" transform="rotate(120,140,120)"/>
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.7" transform="rotate(150,140,120)"/>
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.7" transform="rotate(180,140,120)"/>
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.7" transform="rotate(210,140,120)"/>
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.7" transform="rotate(240,140,120)"/>
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.7" transform="rotate(270,140,120)"/>
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.7" transform="rotate(300,140,120)"/>
+        <path d="M140,120 C134,104 130,88 132,66 L140,62 L148,66 C150,88 146,104 140,120Z" fill="#5a2878" opacity="0.7" transform="rotate(330,140,120)"/>
+      </g>
+
+      <!-- HARD EDGE cone center — crisp and opaque -->
+      <circle cx="140" cy="120" r="12" fill="#8a6a18" opacity="0.85"/>
+      <circle cx="140" cy="120" r="8" fill="#6a4a10" opacity="0.8"/>
+
+      <!-- LAYER 4: DRY BRUSH stem — rough bark texture -->
+      <rect x="136" y="160" width="8" height="100" fill="#3a5a18" opacity="0.9" filter="url(#dryFull)"/>
+      <!-- Dry brush leaves at base -->
+      <ellipse cx="110" cy="240" rx="25" ry="10" fill="#2a5a18" opacity="0.8" filter="url(#dryFull)"/>
+      <ellipse cx="170" cy="240" rx="25" ry="10" fill="#2a5a18" opacity="0.8" filter="url(#dryFull)"/>
+
+      <!-- Soil wash at bottom -->
+      <ellipse cx="140" cy="270" rx="120" ry="25" fill="#8a6a40" opacity="0.5"/>
+      <ellipse cx="140" cy="275" rx="100" ry="18" fill="#6a4a20" opacity="0.4"/>
+
+      <!-- Labels -->
+      <text x="18" y="110" font-size="8" fill="#4a6741">SOFT (foliage)</text>
+      <text x="10" y="170" font-size="8" fill="#7848a0">LOST (bloom→soil)</text>
+      <text x="190" y="100" font-size="8" fill="#5a2878">HARD (petals)</text>
+      <text x="180" y="250" font-size="8" fill="#3a5a18">DRY (stem/leaves)</text>
+    </svg>
+    <b>All Four Techniques — Coneflower</b>
+    <span>Soft edge foliage wash, lost edge purple mass fading into soil, hard edge petals + cone, dry brush stem and base leaves</span>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<h2>6. Technique Reference Table</h2>
+<table style="border-collapse:collapse; font-size:0.82rem; max-width:800px; width:100%;">
+<tr style="background:#eee8dc;"><th style="padding:8px; text-align:left;">Edge Type</th><th style="padding:8px;">SVG Method</th><th style="padding:8px;">Best For</th></tr>
+<tr><td style="padding:8px; border-bottom:1px solid #ddd;"><b>Hard</b> (wet-on-dry)</td><td style="padding:8px; border-bottom:1px solid #ddd;">Solid fill, no filter/mask. Optional darker inset stroke.</td><td style="padding:8px; border-bottom:1px solid #ddd;">Foreground flowers, crisp petals, focal points</td></tr>
+<tr><td style="padding:8px; border-bottom:1px solid #ddd;"><b>Soft</b> (wet-on-wet)</td><td style="padding:8px; border-bottom:1px solid #ddd;"><code>radialGradient</code> mask white→black + <code>feGaussianBlur</code></td><td style="padding:8px; border-bottom:1px solid #ddd;">Background foliage, distant elements, atmospheric depth</td></tr>
+<tr><td style="padding:8px; border-bottom:1px solid #ddd;"><b>Lost</b> (boundary fades)</td><td style="padding:8px; border-bottom:1px solid #ddd;"><code>linearGradient</code> mask fading on one side → merges shapes</td><td style="padding:8px; border-bottom:1px solid #ddd;">Flower meeting foliage, tree meeting sky, gradual transitions</td></tr>
+<tr><td style="padding:8px;"><b>Broken/Dry</b> (rough brush)</td><td style="padding:8px;"><code>feTurbulence</code> high freq + <code>feColorMatrix</code> threshold + <code>feComposite in</code></td><td style="padding:8px;">Tree bark, rocks, weathered wood, dry grass, textured surfaces</td></tr>
+</table>
+
+</body>
+</html>
