@@ -48,9 +48,9 @@ Never emit an \`<image href="…">\` that points anywhere else. Do NOT use:
 - \`house.png\`, \`patio.png\`, \`bench.png\`, \`pergola.png\`, \`compass.png\`, \`scale-bar.png\`, \`water-feature.png\` (do not exist — broken icons)
 - Any slug not in the table below (would 404 and render as a broken image placeholder)
 
-**If you emit any image href other than \`/icons/plants/watercolor-front/{one of the 30 slugs}.svg\`, the diagram will show a broken-image icon in the user's browser. This is unacceptable.**
+**If you emit any image href other than \`/icons/plants/watercolor-front/{one of the 39 slugs}.svg\`, the diagram will show a broken-image icon in the user's browser. This is unacceptable.**
 
-### The 30-species plant library (the ONLY valid plant slugs)
+### The 39-species plant library (the ONLY valid plant slugs)
 
 Format: \`slug\` — Common Name (*Latin*, height-px, bloom-season)
 
@@ -59,15 +59,23 @@ Format: \`slug\` — Common Name (*Latin*, height-px, bloom-season)
 - \`pussytoes\` — Pussytoes (*Antennaria plantaginifolia*, h65) — groundcover
 - \`creeping-thyme\` — Creeping Thyme (*Thymus serpyllum*, h55) — summer actually; listed here for groundcover context
 - \`moss-phlox\` — Moss Phlox (*Phlox subulata*, h80) — groundcover
+- \`foamflower\` — Foamflower (*Tiarella cordifolia*, h85) — woodland groundcover
 - \`erigeron-lynnhaven\` — Erigeron Lynnhaven Carpet (*Erigeron pulchellus*, h85) — low mounding
+- \`coral-bells\` — Coral Bells (*Heuchera americana*, h90) — woodland mounding
 - \`wild-strawberry\` — Wild Strawberry (*Fragaria virginiana*, h90) — groundcover
 - \`wild-violet\` — Wild Violet (*Viola sororia*, h95)
+- \`shooting-star\` — Eastern Shooting Star (*Primula meadia*, h95) — shade ephemeral
 - \`woodland-stonecrop\` — Woodland Stonecrop (*Sedum ternatum*, h100)
+- \`wild-geranium\` — Wild Geranium (*Geranium maculatum*, h110) — woodland
 - \`golden-star-sedge\` — Golden Star Sedge (*Carex rosea*, h115)
 - \`golden-ragwort\` — Golden Ragwort (*Packera aurea*, h120)
 - \`columbine\` — Wild Columbine (*Aquilegia canadensis*, h130)
 - \`long-beaked-sedge\` — Long Beaked Sedge (*Carex sprengelii*, h130)
 - \`golden-alexanders\` — Golden Alexanders (*Zizia aurea*, h130)
+- \`red-twig-dogwood\` — Red Twig Dogwood (*Cornus sericea*, h240) — shrub, back of bed
+
+**Foliage-only (no bloom, use for texture/structure):**
+- \`christmas-fern\` — Christmas Fern (*Polystichum acrostichoides*, h90) — evergreen shade fern
 
 **Summer bloomers:**
 - \`partridgeberry\` — Partridgeberry (*Mitchella repens*, h90)
@@ -85,10 +93,13 @@ Format: \`slug\` — Common Name (*Latin*, height-px, bloom-season)
 - \`liatris-white\` — White Liatris (*Liatris spicata 'Alba'*, h170)
 - \`ox-eye-sunflower\` — Ox Eye Sunflower (*Heliopsis helianthoides*, h175)
 - \`joe-pye-weed\` — Joe Pye Weed (*Eutrochium purpureum*, h190)
+- \`black-cohosh\` — Black Cohosh (*Actaea racemosa*, h200) — tall white spires, shade
 
 **Fall bloomers:**
+- \`white-wood-aster\` — White Wood Aster (*Eurybia divaricata*, h100) — shade aster
 - \`smooth-blue-aster\` — Smooth Blue Aster (*Symphyotrichum laeve*, h155)
 - \`zigzag-goldenrod\` — Zigzag Goldenrod (*Solidago flexicaulis*, h160)
+- \`blue-stemmed-goldenrod\` — Blue Stemmed Goldenrod (*Solidago caesia*, h120) — shade goldenrod
 
 ### Closest-match substitution table (for species requested that are NOT in the library)
 
@@ -99,8 +110,16 @@ If the user asks for any of these common natives and you want to include them vi
 | Echinacea, Coneflower (generic) | \`purple-coneflower\` | exact match |
 | Rudbeckia, Black-eyed Susan | \`orange-coneflower\` | same genus, similar habit |
 | Wild Bergamot | \`bee-balm\` | same genus (*Monarda*) |
-| Aster, New England Aster, Heath Aster | \`smooth-blue-aster\` | same genus |
-| Goldenrod (any species) | \`zigzag-goldenrod\` | same genus |
+| Aster, New England Aster, Heath Aster | \`smooth-blue-aster\` (sun) or \`white-wood-aster\` (shade) | same family |
+| Goldenrod (any species) | \`zigzag-goldenrod\` (shade) or \`blue-stemmed-goldenrod\` (shade) | same genus |
+| Wood Aster, Calico Aster | \`white-wood-aster\` | exact match for shade aster |
+| Heuchera (any cultivar) | \`coral-bells\` | exact match |
+| Wild Geranium, Cranesbill, Geranium maculatum | \`wild-geranium\` | exact match |
+| Foamflower, Tiarella | \`foamflower\` | exact match |
+| Black Cohosh, Bugbane, Cimicifuga | \`black-cohosh\` | exact match |
+| Shooting Star, Dodecatheon | \`shooting-star\` | exact match |
+| Christmas Fern, native fern (texture) | \`christmas-fern\` | exact match (no bloom — foliage only) |
+| Red Twig Dogwood, Red Osier, Cornus sericea | \`red-twig-dogwood\` | exact match (shrub, h240) |
 | Cardinal Flower | \`bee-balm\` | closest tall red flower spike |
 | Butterfly Weed, Milkweed | \`butterfly-milkweed\` | exact match |
 | Penstemon, Beardtongue | \`blazing-star\` | closest purple spike |
@@ -169,7 +188,7 @@ Elevation views (viewBox 0 0 1000 400) can skip Zone 3 (draw a compact legend as
 
 Read every \`<image href="…"/>\` in your SVG. For each one, confirm:
 - [ ] The path starts with \`/icons/plants/watercolor-front/\`
-- [ ] The slug (the part before \`.svg\`) is one of the 30 listed in the library table above
+- [ ] The slug (the part before \`.svg\`) is one of the 39 listed in the library table above
 - [ ] The file extension is \`.svg\`
 
 If ANY \`<image>\` fails this check, either swap it for a valid slug via the substitution table or remove it entirely and describe the plant in text. Never ship a diagram with a guessed or invented slug.
