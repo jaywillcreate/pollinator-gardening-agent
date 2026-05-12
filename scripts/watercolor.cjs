@@ -10,7 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SRC_DIR = '/Users/jasonwilliams/Desktop/Plant SVGs';
+const SRC_DIR = '/Users/jasonwilliams/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Garden Advisor Agent/Plant SVGs';
 // Single source of truth — every demo page and the chat agent read from here.
 const ICON_OUT = path.join(__dirname, '..', 'public', 'icons', 'plants', 'watercolor-front');
 
@@ -24,11 +24,16 @@ const PLANTS = [
   { name: 'Bee Balm',                  slug: 'bee-balm',            latin: "Monarda didyma",         height: 155, bloom: 'Summer' },
   { name: 'Blanket Flower',            slug: 'blanket-flower',      latin: "Gaillardia aristata",    height: 115, bloom: 'Summer', srcName: 'Blanket Flower ' /* file has trailing space */ },
   { name: 'Blazing Star',              slug: 'blazing-star',        latin: "Liatris ligulistylis",   height: 165, bloom: 'Summer' },
+  { name: 'Black Cohosh',              slug: 'black-cohosh',        latin: "Actaea racemosa",        height: 200, bloom: 'Summer', srcName: 'Black Cohash' /* source spelling */ },
+  { name: 'Blue Stemmed Goldenrod',    slug: 'blue-stemmed-goldenrod', latin: "Solidago caesia",     height: 120, bloom: 'Fall'   },
   { name: 'Butterfly Milkweed',        slug: 'butterfly-milkweed',  latin: "Asclepias tuberosa",     height: 135, bloom: 'Summer' },
   { name: 'Canada Ginger',             slug: 'canada-ginger',       latin: "Asarum canadense",       height:  70, bloom: 'Spring' },
+  { name: 'Christmas Fern',            slug: 'christmas-fern',      latin: "Polystichum acrostichoides", height: 90, bloom: 'None' },
   { name: 'Columbine',                 slug: 'columbine',           latin: "Aquilegia canadensis",   height: 130, bloom: 'Spring', srcName: 'Columbine Flower' },
+  { name: 'Coral Bells',               slug: 'coral-bells',         latin: "Heuchera americana",     height:  90, bloom: 'Spring' },
   { name: 'Creeping Thyme',            slug: 'creeping-thyme',      latin: "Thymus serpyllum",       height:  55, bloom: 'Summer' },
   { name: 'Erigeron Lynnhaven Carpet', slug: 'erigeron-lynnhaven',  latin: "Erigeron pulchellus",    height:  85, bloom: 'Spring' },
+  { name: 'Foamflower',                slug: 'foamflower',          latin: "Tiarella cordifolia",    height:  85, bloom: 'Spring' },
   { name: 'Golden Alexanders',         slug: 'golden-alexanders',   latin: "Zizia aurea",            height: 130, bloom: 'Spring' },
   { name: 'Golden Ragwort',            slug: 'golden-ragwort',      latin: "Packera aurea",          height: 120, bloom: 'Spring' },
   { name: 'Golden Star Sedge',         slug: 'golden-star-sedge',   latin: "Carex rosea",            height: 115, bloom: 'Spring' },
@@ -43,9 +48,13 @@ const PLANTS = [
   { name: 'Patridgeberry',             slug: 'partridgeberry',      latin: "Mitchella repens",       height:  90, bloom: 'Summer' },
   { name: 'Purple Coneflower',         slug: 'purple-coneflower',   latin: "Echinacea purpurea",     height: 155, bloom: 'Summer' },
   { name: 'Pussytoes',                 slug: 'pussytoes',           latin: "Antennaria plantaginifolia", height: 65, bloom: 'Spring' },
+  { name: 'Red Twig Dogwood',          slug: 'red-twig-dogwood',    latin: "Cornus sericea",         height: 240, bloom: 'Spring' },
   { name: 'Self Heal Plant',           slug: 'self-heal',           latin: "Prunella vulgaris",      height:  90, bloom: 'Summer' },
+  { name: 'Shooting Star',             slug: 'shooting-star',       latin: "Primula meadia",         height:  95, bloom: 'Spring', srcName: 'E. Shooting Star' },
   { name: 'Smooth Blue Aster',         slug: 'smooth-blue-aster',   latin: "Symphyotrichum laeve",   height: 155, bloom: 'Fall',   srcName: 'Smooth Blue Aster ' /* file has trailing space */ },
   { name: 'Threadleaf Coreopsis',      slug: 'threadleaf-coreopsis',latin: "Coreopsis verticillata", height: 120, bloom: 'Summer' },
+  { name: 'White Wood Aster',          slug: 'white-wood-aster',    latin: "Eurybia divaricata",     height: 100, bloom: 'Fall'   },
+  { name: 'Wild Geranium',             slug: 'wild-geranium',       latin: "Geranium maculatum",     height: 110, bloom: 'Spring' },
   { name: 'Wild Strawberry',           slug: 'wild-strawberry',     latin: "Fragaria virginiana",    height:  90, bloom: 'Spring' },
   { name: 'Wild Violet',               slug: 'wild-violet',         latin: "Viola sororia",          height:  95, bloom: 'Spring' },
   { name: 'Woodland Stonecrop',        slug: 'woodland-stonecrop',  latin: "Sedum ternatum",         height: 100, bloom: 'Spring' },
