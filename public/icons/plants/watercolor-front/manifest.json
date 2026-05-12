@@ -6,7 +6,7 @@
     "height": 150,
     "bloom": "Summer",
     "file": "anise-hyssop.svg",
-    "bytes": 123201
+    "bytes": 124257
   },
   {
     "name": "Bee Balm",
@@ -15,7 +15,7 @@
     "height": 155,
     "bloom": "Summer",
     "file": "bee-balm.svg",
-    "bytes": 231907
+    "bytes": 234043
   },
   {
     "name": "Blanket Flower",
@@ -24,7 +24,7 @@
     "height": 115,
     "bloom": "Summer",
     "file": "blanket-flower.svg",
-    "bytes": 357785
+    "bytes": 357889
   },
   {
     "name": "Blazing Star",
@@ -33,7 +33,25 @@
     "height": 165,
     "bloom": "Summer",
     "file": "blazing-star.svg",
-    "bytes": 309007
+    "bytes": 309082
+  },
+  {
+    "name": "Black Cohosh",
+    "slug": "black-cohosh",
+    "latin": "Actaea racemosa",
+    "height": 200,
+    "bloom": "Summer",
+    "file": "black-cohosh.svg",
+    "bytes": 474794
+  },
+  {
+    "name": "Blue Stemmed Goldenrod",
+    "slug": "blue-stemmed-goldenrod",
+    "latin": "Solidago caesia",
+    "height": 120,
+    "bloom": "Fall",
+    "file": "blue-stemmed-goldenrod.svg",
+    "bytes": 624253
   },
   {
     "name": "Butterfly Milkweed",
@@ -42,7 +60,7 @@
     "height": 135,
     "bloom": "Summer",
     "file": "butterfly-milkweed.svg",
-    "bytes": 291281
+    "bytes": 292170
   },
   {
     "name": "Canada Ginger",
@@ -51,7 +69,16 @@
     "height": 70,
     "bloom": "Spring",
     "file": "canada-ginger.svg",
-    "bytes": 438845
+    "bytes": 439030
+  },
+  {
+    "name": "Christmas Fern",
+    "slug": "christmas-fern",
+    "latin": "Polystichum acrostichoides",
+    "height": 90,
+    "bloom": "None",
+    "file": "christmas-fern.svg",
+    "bytes": 797696
   },
   {
     "name": "Columbine",
@@ -60,7 +87,16 @@
     "height": 130,
     "bloom": "Spring",
     "file": "columbine.svg",
-    "bytes": 193742
+    "bytes": 194597
+  },
+  {
+    "name": "Coral Bells",
+    "slug": "coral-bells",
+    "latin": "Heuchera americana",
+    "height": 90,
+    "bloom": "Spring",
+    "file": "coral-bells.svg",
+    "bytes": 526088
   },
   {
     "name": "Creeping Thyme",
@@ -69,7 +105,7 @@
     "height": 55,
     "bloom": "Summer",
     "file": "creeping-thyme.svg",
-    "bytes": 709064
+    "bytes": 721956
   },
   {
     "name": "Erigeron Lynnhaven Carpet",
@@ -78,7 +114,16 @@
     "height": 85,
     "bloom": "Spring",
     "file": "erigeron-lynnhaven.svg",
-    "bytes": 326776
+    "bytes": 326859
+  },
+  {
+    "name": "Foamflower",
+    "slug": "foamflower",
+    "latin": "Tiarella cordifolia",
+    "height": 85,
+    "bloom": "Spring",
+    "file": "foamflower.svg",
+    "bytes": 830517
   },
   {
     "name": "Golden Alexanders",
@@ -87,7 +132,7 @@
     "height": 130,
     "bloom": "Spring",
     "file": "golden-alexanders.svg",
-    "bytes": 124988
+    "bytes": 125020
   },
   {
     "name": "Golden Ragwort",
@@ -96,7 +141,7 @@
     "height": 120,
     "bloom": "Spring",
     "file": "golden-ragwort.svg",
-    "bytes": 118756
+    "bytes": 120042
   },
   {
     "name": "Golden Star Sedge",
@@ -114,7 +159,7 @@
     "height": 190,
     "bloom": "Summer",
     "file": "joe-pye-weed.svg",
-    "bytes": 261509
+    "bytes": 246941
   },
   {
     "name": "Jr. Walker Nepeta",
@@ -132,7 +177,7 @@
     "height": 170,
     "bloom": "Summer",
     "file": "liatris-purple.svg",
-    "bytes": 218026
+    "bytes": 223825
   },
   {
     "name": "Liatris White",
@@ -141,7 +186,7 @@
     "height": 170,
     "bloom": "Summer",
     "file": "liatris-white.svg",
-    "bytes": 164193
+    "bytes": 161460
   },
   {
     "name": "Long Beaked Sedge",
@@ -150,7 +195,7 @@
     "height": 130,
     "bloom": "Spring",
     "file": "long-beaked-sedge.svg",
-    "bytes": 111651
+    "bytes": 111765
   },
   {
     "name": "Moss Phlox",
@@ -168,7 +213,7 @@
     "height": 140,
     "bloom": "Summer",
     "file": "orange-coneflower.svg",
-    "bytes": 198098
+    "bytes": 198185
   },
   {
     "name": "Ox Eye Sunflower",
@@ -177,7 +222,7 @@
     "height": 175,
     "bloom": "Summer",
     "file": "ox-eye-sunflower.svg",
-    "bytes": 365213
+    "bytes": 368263
   },
   {
     "name": "Patridgeberry",
@@ -186,7 +231,7 @@
     "height": 90,
     "bloom": "Summer",
     "file": "partridgeberry.svg",
-    "bytes": 198587
+    "bytes": 201649
   },
   {
     "name": "Purple Coneflower",
@@ -195,7 +240,7 @@
     "height": 155,
     "bloom": "Summer",
     "file": "purple-coneflower.svg",
-    "bytes": 221369
+    "bytes": 221472
   },
   {
     "name": "Pussytoes",
@@ -204,7 +249,16 @@
     "height": 65,
     "bloom": "Spring",
     "file": "pussytoes.svg",
-    "bytes": 1072476
+    "bytes": 1072586
+  },
+  {
+    "name": "Red Twig Dogwood",
+    "slug": "red-twig-dogwood",
+    "latin": "Cornus sericea",
+    "height": 240,
+    "bloom": "Spring",
+    "file": "red-twig-dogwood.svg",
+    "bytes": 1359196
   },
   {
     "name": "Self Heal Plant",
@@ -213,7 +267,16 @@
     "height": 90,
     "bloom": "Summer",
     "file": "self-heal.svg",
-    "bytes": 77986
+    "bytes": 78031
+  },
+  {
+    "name": "Shooting Star",
+    "slug": "shooting-star",
+    "latin": "Primula meadia",
+    "height": 95,
+    "bloom": "Spring",
+    "file": "shooting-star.svg",
+    "bytes": 363069
   },
   {
     "name": "Smooth Blue Aster",
@@ -222,7 +285,7 @@
     "height": 155,
     "bloom": "Fall",
     "file": "smooth-blue-aster.svg",
-    "bytes": 209331
+    "bytes": 209743
   },
   {
     "name": "Threadleaf Coreopsis",
@@ -231,7 +294,25 @@
     "height": 120,
     "bloom": "Summer",
     "file": "threadleaf-coreopsis.svg",
-    "bytes": 246716
+    "bytes": 249737
+  },
+  {
+    "name": "White Wood Aster",
+    "slug": "white-wood-aster",
+    "latin": "Eurybia divaricata",
+    "height": 100,
+    "bloom": "Fall",
+    "file": "white-wood-aster.svg",
+    "bytes": 980561
+  },
+  {
+    "name": "Wild Geranium",
+    "slug": "wild-geranium",
+    "latin": "Geranium maculatum",
+    "height": 110,
+    "bloom": "Spring",
+    "file": "wild-geranium.svg",
+    "bytes": 746071
   },
   {
     "name": "Wild Strawberry",
@@ -240,7 +321,7 @@
     "height": 90,
     "bloom": "Spring",
     "file": "wild-strawberry.svg",
-    "bytes": 72928
+    "bytes": 73465
   },
   {
     "name": "Wild Violet",
@@ -258,7 +339,7 @@
     "height": 100,
     "bloom": "Spring",
     "file": "woodland-stonecrop.svg",
-    "bytes": 163195
+    "bytes": 163896
   },
   {
     "name": "Zigzag Goldenrod",
@@ -267,6 +348,6 @@
     "height": 160,
     "bloom": "Fall",
     "file": "zigzag-goldenrod.svg",
-    "bytes": 282229
+    "bytes": 283932
   }
 ]
