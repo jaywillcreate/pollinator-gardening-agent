@@ -8,4 +8,11 @@ import react from "@vitejs/plugin-react";
 export default defineConfig(({ command }) => ({
   plugins: [react()],
   base: process.env.VITE_BASE || (command === "build" ? "/admin/" : "/"),
+  // In production the built bundle needs to sit inside the agent server's
+  // static root so both Express (local) and Vercel (public/) serve it at
+  // /admin. Keep the dev command untouched — dev writes nothing to disk.
+  build: {
+    outDir: "../public/admin",
+    emptyOutDir: true,
+  },
 }));

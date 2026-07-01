@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Wild Bergamot (Monarda fistulosa) - Front View -->
+  <g fill="none" stroke="#2d3a2e" stroke-linecap="round">
+    <!-- Square stem (finer than bee-balm) -->
+    <path d="M49,85 L49,28" stroke-width="2.0"/>
+    <path d="M51,85 L51,28" stroke-width="2.0"/>
+    <!-- Opposite leaves - lower pair (finer, more pointed than bee-balm) -->
+    <path d="M49,70 C42,65 34,62 26,63" stroke-width="1.7"/>
+    <path d="M26,63 C29,60 30,57 28,55" stroke-width="1.1"/>
+    <path d="M51,70 C58,65 66,62 74,63" stroke-width="1.7"/>
+    <path d="M74,63 C71,60 70,57 72,55" stroke-width="1.1"/>
+    <!-- Opposite leaves - upper pair (smaller) -->
+    <path d="M49,52 C43,49 37,47 32,48" stroke-width="1.4"/>
+    <path d="M32,48 C34,45 35,43 33,41" stroke-width="1.0"/>
+    <path d="M51,52 C57,49 63,47 68,48" stroke-width="1.4"/>
+    <path d="M68,48 C66,45 65,43 67,41" stroke-width="1.0"/>
+    <!-- Delicate flower cluster - softer lavender-like whorl -->
+    <ellipse cx="50" cy="28" rx="8" ry="2.5" stroke-width="1.4"/>
+    <!-- Many fine tubular flowers rising from whorl -->
+    <path d="M44,27 C42,22 40,17 38,13" stroke-width="1.0"/>
+    <path d="M38,13 C37,11 36,10 34,10" stroke-width="0.8"/>
+    <path d="M46,27 C45,21 44,15 43,10" stroke-width="1.0"/>
+    <path d="M43,10 C42,8 41,6 40,5" stroke-width="0.8"/>
+    <path d="M48,27 C47,21 46,14 46,8" stroke-width="1.1"/>
+    <path d="M46,8 C46,6 45,4 45,3" stroke-width="0.8"/>
+    <path d="M50,26 C50,20 50,14 50,8" stroke-width="1.2"/>
+    <path d="M50,8 C50,5 50,3 50,2" stroke-width="0.8"/>
+    <path d="M52,27 C53,21 54,14 54,8" stroke-width="1.1"/>
+    <path d="M54,8 C54,6 55,4 55,3" stroke-width="0.8"/>
+    <path d="M54,27 C55,21 56,15 57,10" stroke-width="1.0"/>
+    <path d="M57,10 C58,8 59,6 60,5" stroke-width="0.8"/>
+    <path d="M56,27 C58,22 60,17 62,13" stroke-width="1.0"/>
+    <path d="M62,13 C63,11 64,10 66,10" stroke-width="0.8"/>
+    <!-- Side-arching delicate tubes -->
+    <path d="M43,28 C39,24 35,21 31,19" stroke-width="1.0"/>
+    <path d="M31,19 C29,18 27,17 25,17" stroke-width="0.8"/>
+    <path d="M57,28 C61,24 65,21 69,19" stroke-width="1.0"/>
+    <path d="M69,19 C71,18 73,17 75,17" stroke-width="0.8"/>
+    <!-- Extra fine tubes for density -->
+    <path d="M45,27 C43,22 41,17 39,12" stroke-width="0.8"/>
+    <path d="M47,27 C46,21 45,15 44,9" stroke-width="0.8"/>
+    <path d="M53,27 C54,21 55,15 56,9" stroke-width="0.8"/>
+    <path d="M55,27 C57,22 59,17 61,12" stroke-width="0.8"/>
+  </g>
+  <!-- Stippling for whorl base shadow -->
+  <g fill="#2d3a2e" stroke="none">
+    <circle cx="46" cy="28" r="0.7"/><circle cx="48" cy="28" r="0.7"/>
+    <circle cx="50" cy="28" r="0.7"/><circle cx="52" cy="28" r="0.7"/>
+    <circle cx="54" cy="28" r="0.7"/><circle cx="47" cy="30" r="0.7"/>
+    <circle cx="50" cy="30" r="0.7"/><circle cx="53" cy="30" r="0.7"/>
+    <!-- Light stem shadow -->
+    <circle cx="50" cy="38" r="0.7"/><circle cx="50" cy="58" r="0.7"/>
+    <circle cx="50" cy="76" r="0.7"/>
+  </g>
+</svg>

@@ -1,8 +1,11 @@
 {
   "framework": null,
   "outputDirectory": "public",
+  "buildCommand": "npm run build",
   "rewrites": [
-    { "source": "/api/chat", "destination": "/api/chat" }
+    { "source": "/api/chat", "destination": "/api/chat" },
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/", "destination": "/admin/index.html" }
   ],
   "headers": [
     {

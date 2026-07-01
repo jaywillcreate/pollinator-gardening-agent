@@ -22,23 +22,22 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// Public chatbot — the front door. Any visitor hitting / gets the advisor.
+// Public chatbot lives at / (public/index.html). The Verdant CMS builds into
+// public/admin/ (see cms/vite.config.js), so a single static handler serves
+// both — no separate mount needed. This mirrors what Vercel does: everything
+// in public/ becomes a static asset at the same URL, and the CMS ends up at
+// /admin with asset paths prefixed via Vite's base config.
 app.use(express.static(join(__dirname, "public")));
 
-// Admin dashboard — the Verdant CMS, served from its production build at /admin.
-// Build it with `npm --prefix cms run build`; the compiled bundle lives at
-// cms/dist/ with asset URLs prefixed by /admin/ (set via vite.config.js base).
-// Falls through gracefully if the build hasn't been created yet — hitting
-// /admin without a build returns a small hint instead of a 500.
-const cmsDist = join(__dirname, "cms", "dist");
-if (existsSync(cmsDist)) {
-  app.use("/admin", express.static(cmsDist));
-  // SPA fallback so a page reload on /admin/anything still boots the CMS.
-  app.get("/admin/*", (_req, res) => res.sendFile(join(cmsDist, "index.html")));
+// SPA fallback so `/admin/anything` still boots the CMS. The check keeps the
+// old "not yet built" hint for developers who haven't run the CMS build yet.
+const adminIndex = join(__dirname, "public", "admin", "index.html");
+if (existsSync(adminIndex)) {
+  app.get("/admin/*", (_req, res) => res.sendFile(adminIndex));
 } else {
   app.get("/admin*", (_req, res) => res.status(503).type("text/plain").send(
     "The Verdant CMS bundle hasn't been built yet.\n\n" +
-    "Run: npm --prefix cms run build\n" +
+    "Run: npm run build\n" +
     "Then reload this page."
   ));
 }
@@ -53,5 +52,5 @@ app.options("/api/chat", (req, res) => handler(req, res));
 
 app.listen(port, () => {
   console.log(`Pollinator Garden Chat running at http://localhost:${port}`);
-  if (existsSync(cmsDist)) console.log(`Verdant CMS admin at http://localhost:${port}/admin`);
+  if (existsSync(adminIndex)) console.log(`Verdant CMS admin at http://localhost:${port}/admin`);
 });

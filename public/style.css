@@ -1,3 +1,7 @@
+/* Shared type stack with the Verdant CMS so both surfaces feel like one app.
+   Fraunces for display, DM Sans for body, JetBrains Mono for code. */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 *,
 *::before,
 *::after {
@@ -7,29 +11,61 @@
 }
 
 :root {
-  /* Earthy, nature-inspired palette matching pollinators.tarrytownenviro.org */
-  --cream: #fdfcf8;
-  --cream-warm: #faf8f2;
-  --sand: #f5f0e8;
-  --sand-dark: #e8e0d0;
-  --bark: #3d3229;
-  --bark-light: #5c4a3a;
-  --moss: #4a6741;
-  --moss-light: #5e8352;
-  --moss-pale: #e8f0e4;
-  --moss-faint: #f2f7f0;
-  --leaf: #6b8f5e;
-  --goldenrod: #c8952e;
-  --goldenrod-light: #e8c46a;
-  --goldenrod-pale: #fdf6e3;
-  --text-primary: #2c2416;
-  --text-secondary: #6b5d4f;
-  --text-muted: #9a8d7f;
-  --border: #e5ddd0;
-  --border-light: #eee8dc;
-  --radius: 8px;
-  --shadow-sm: 0 1px 3px rgba(60, 50, 40, 0.06);
-  --shadow-md: 0 4px 12px rgba(60, 50, 40, 0.08);
+  /* Unified palette shared with the Verdant CMS (see cms/src/VerdantDashboard.jsx).
+     The chatbot's original variable NAMES are preserved so downstream rules keep
+     working; the VALUES are aligned to Verdant so both surfaces share a language.
+
+     Canonical tokens (mirrors --canvas/--paper/--moss/--ink/--bloom in the CMS): */
+  --canvas: #e9eedf;   /* page bg — matches CMS --canvas */
+  --paper:  #fafbf6;   /* card/surface — matches CMS --paper */
+  --moss:   #356b41;   /* primary green — matches CMS --moss */
+  --leaf:   #5b9b5f;   /* accent green — matches CMS --leaf */
+  --ink:    #1a271c;   /* body text — matches CMS --ink */
+  --muted:  #5e6b57;   /* secondary text — matches CMS --muted */
+  --bloom:  #e0a52e;   /* gold accent — matches CMS --bloom */
+  --berry:  #9b3d6e;   /* magenta accent — matches CMS --berry */
+  --mist:   #d6e0c8;   /* border — matches CMS --mist */
+  --mist-2: #c4d2b3;   /* border strong — matches CMS --mist-2 */
+  --sage:   #cfe0c2;   /* soft green surface — matches CMS --sage */
+
+  /* Back-compat aliases — every rule in this stylesheet already resolves through
+     these names. New rules should prefer the canonical tokens above. */
+  --cream:            var(--canvas);
+  --cream-warm:       var(--paper);
+  --sand:             var(--paper);
+  --sand-dark:        var(--mist);
+  --bark:             var(--ink);
+  --bark-light:       var(--muted);
+  --moss-light:       var(--leaf);
+  --moss-pale:        var(--sage);
+  --moss-faint:       #eef3e6;                 /* soft green tint (matches CMS hover surface) */
+  --goldenrod:        var(--bloom);
+  --goldenrod-light:  #f0c46a;
+  --goldenrod-pale:   #fdf6e3;
+  --text-primary:     var(--ink);
+  --text-secondary:   var(--muted);
+  --text-muted:       #8a9182;
+  --border:           var(--mist);
+  --border-light:     #eef2e6;
+
+  --radius: 12px;                                                      /* was 8 — matches CMS card feel */
+  --radius-sm: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(22, 36, 27, 0.05);
+  --shadow-md: 0 12px 32px -18px rgba(22, 36, 27, 0.28);
+
+  /* Type tokens borrowed straight from the CMS (see .vd { --fs-* } in
+     VerdantDashboard.jsx). Fluid — the whole scale grows with the viewport. */
+  --font-display: 'Fraunces', Georgia, 'Iowan Old Style', serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --fs-caption:   clamp(11px, 0.69rem + 0.1vw, 12px);
+  --fs-label:     clamp(12px, 0.75rem + 0.1vw, 13px);
+  --fs-body:      clamp(13.5px, 0.82rem + 0.15vw, 14.5px);
+  --fs-h4:        clamp(15px, 0.9rem + 0.35vw, 18px);
+  --fs-h3:        clamp(17px, 1rem + 0.4vw, 20px);
+  --fs-h2:        clamp(20px, 1.15rem + 0.7vw, 26px);
+  --fs-h1:        clamp(23px, 1.35rem + 0.9vw, 32px);
 }
 
 html, body {
@@ -37,10 +73,12 @@ html, body {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: var(--cream);
-  color: var(--text-primary);
-  line-height: 1.7;
+  font-family: var(--font-body);
+  background: var(--canvas);
+  color: var(--ink);
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  font-size: var(--fs-body);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -372,10 +410,12 @@ body {
 }
 
 .logo h1 {
-  font-size: 1.1rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
   font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--bark);
+  letter-spacing: 0;
+  color: var(--ink);
+  line-height: 1.15;
 }
 
 .tagline {
@@ -404,6 +444,67 @@ body {
   background: var(--moss-faint);
   border-color: var(--moss);
   color: var(--moss);
+}
+
+/* Header actions cluster — keeps the admin sign-in link and New Chat button
+   grouped together in the header. */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Discoverable but understated route into the CMS. Mirrors the New Chat
+   button's height so they line up, but stays visually secondary. */
+.header-admin-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.header-admin-link:hover {
+  background: var(--moss-faint);
+  border-color: var(--border);
+  color: var(--moss);
+}
+.header-admin-link .icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* Sidebar Admin sign-in link — sits below the demos, uses the same padded
+   link style, but the lock icon distinguishes it from the demo dots. */
+.sidebar-admin-group {
+  margin-top: 4px;
+}
+.sidebar-admin-link {
+  gap: 10px;
+}
+.sidebar-admin-link .icon {
+  width: 14px;
+  height: 14px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+.sidebar-admin-link:hover .icon {
+  color: var(--moss);
+}
+
+/* Collapse the header label at narrow widths — keep the icon so the entry
+   point is still there, just tighter. */
+@media (max-width: 640px) {
+  .header-admin-label { display: none; }
+  .header-admin-link { padding: 7px 9px; }
 }
 
 /* Chat Container */
@@ -436,11 +537,13 @@ body {
 }
 
 .welcome h2 {
-  font-size: 1.6rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
   font-weight: 600;
-  color: var(--bark);
+  color: var(--ink);
   margin-bottom: 10px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
+  line-height: 1.15;
 }
 
 .welcome > p {
@@ -577,9 +680,9 @@ body {
   margin-top: 0;
 }
 
-.message.assistant .message-content h1 { font-size: 1.2rem; font-weight: 600; }
-.message.assistant .message-content h2 { font-size: 1.08rem; font-weight: 600; }
-.message.assistant .message-content h3 { font-size: 0.96rem; font-weight: 600; }
+.message.assistant .message-content h1 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 600; }
+.message.assistant .message-content h2 { font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 600; }
+.message.assistant .message-content h3 { font-family: var(--font-display); font-size: var(--fs-h4); font-weight: 600; }
 
 .message.assistant .message-content p {
   margin-bottom: 14px;

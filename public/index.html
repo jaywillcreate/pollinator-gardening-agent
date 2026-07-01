@@ -34,6 +34,13 @@
             Plant Gallery (30 species)
           </a>
         </div>
+        <div class="sidebar-footer-group sidebar-admin-group">
+          <div class="sidebar-group-label">Team</div>
+          <a class="sidebar-link sidebar-admin-link" href="/admin">
+            <svg class="icon icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            Admin sign-in
+          </a>
+        </div>
       </nav>
     </aside>
 
@@ -56,10 +63,16 @@
               </div>
             </a>
           </div>
-          <button class="new-chat-btn" id="newChatBtn" title="New conversation">
-            <svg class="icon icon-sm"><use href="icons.svg#icon-plus"/></svg>
-            New Chat
-          </button>
+          <div class="header-actions">
+            <a class="header-admin-link" href="/admin" title="Admin sign-in — CMS dashboard" aria-label="Admin sign-in">
+              <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+              <span class="header-admin-label">Sign in</span>
+            </a>
+            <button class="new-chat-btn" id="newChatBtn" title="New conversation">
+              <svg class="icon icon-sm"><use href="icons.svg#icon-plus"/></svg>
+              New Chat
+            </button>
+          </div>
         </div>
       </header>
 
