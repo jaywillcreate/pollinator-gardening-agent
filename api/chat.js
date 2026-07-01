@@ -2,6 +2,12 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic();
 
+// Only forward the CMS's `model` when it looks like a real id — the Verdant
+// dashboard has demo placeholders that Anthropic will reject. Accept either
+// dated (…-YYYYMMDD) or the current alias family (…-N, …-N-M).
+const REAL_MODEL = /^claude-[a-z]+-\d+(?:-\d+)?(?:-\d{8})?$/i;
+const DEFAULT_MODEL = "claude-sonnet-5";
+
 const SYSTEM_PROMPT = `You are a knowledgeable and enthusiastic pollinator gardening advisor. Your role is to help users research, brainstorm, and plan pollinator-friendly gardens. You have deep expertise in:
 
 - **Native plants**: Region-specific native wildflowers, shrubs, and trees that support local pollinators
@@ -207,11 +213,20 @@ When users ask for help with blog posts, content creation, or writing about poll
 6. **Engagement hooks**: Include ideas for reader interaction — polls, "show your garden" prompts, before/after photo encouragement.`;
 
 export default async function handler(req, res) {
+  // CORS — the Verdant CMS dev server (usually :5173) calls this from a different
+  // origin. Lock ALLOWED_ORIGIN to the dashboard's URL in production.
+  res.setHeader("Access-Control-Allow-Origin", process.env.ALLOWED_ORIGIN || "*");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  if (req.method === "OPTIONS") return res.status(204).end();
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { messages } = req.body;
+  // Optional overrides from the Verdant Prompt Studio. Any missing field falls
+  // back to the built-in pollinator SYSTEM_PROMPT — that's the shape the main
+  // /index.html chatbot sends and it must keep working unchanged.
+  const { messages, system, model, max_tokens, temperature, top_p, thinking } = req.body || {};
 
   if (!messages || !Array.isArray(messages)) {
     return res.status(400).json({ error: "Messages array is required" });
@@ -221,14 +236,25 @@ export default async function handler(req, res) {
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");
 
+  const useThinking = thinking !== false; // on by default, matches original agent
+  const params = {
+    model: (typeof model === "string" && REAL_MODEL.test(model)) ? model : DEFAULT_MODEL,
+    max_tokens: Number.isFinite(max_tokens) ? Math.min(Math.max(max_tokens, 256), 64000) : 64000,
+    system: (typeof system === "string" && system.trim()) ? system : SYSTEM_PROMPT,
+    messages,
+  };
+  if (useThinking) {
+    // Sonnet 5 / Opus 4.8 use adaptive thinking + effort. When thinking is on,
+    // sampling params are ignored — don't forward temperature/top_p.
+    params.thinking = { type: "adaptive" };
+    params.output_config = { effort: "medium" };
+  } else {
+    if (Number.isFinite(temperature)) params.temperature = temperature;
+    if (Number.isFinite(top_p)) params.top_p = top_p;
+  }
+
   try {
-    const stream = client.messages.stream({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 64000,
-      system: SYSTEM_PROMPT,
-      thinking: { type: "enabled", budget_tokens: 16000 },
-      messages,
-    });
+    const stream = client.messages.stream(params);
 
     for await (const event of stream) {
       if (
@@ -242,6 +268,7 @@ export default async function handler(req, res) {
     res.write("data: [DONE]\n\n");
     res.end();
   } catch (error) {
+    console.error("[/api/chat] stream error:", error?.status, error?.message, error?.error?.error?.message || "");
     if (error instanceof Anthropic.RateLimitError) {
       res.write(
         `data: ${JSON.stringify({ error: "Rate limited. Please wait a moment and try again." })}\n\n`

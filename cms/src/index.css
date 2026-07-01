@@ -1,0 +1,5 @@
+/* The dashboard ships its own scoped styles and font imports inside the
+   component. This file only resets the page so the app fills the viewport. */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body { margin: 0; background: #e9eedf; }
