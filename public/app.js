@@ -1,3 +1,39 @@
+/* -----------------------------------------------------------------------
+   Shared login profile — the chatbot and the CMS live on the same origin,
+   so the CMS's localStorage session is readable here. If we find a Verdant
+   user, swap the "Sign in" link for a profile pill so it's obvious the
+   user is signed in across the whole app ecosystem.
+   ----------------------------------------------------------------------- */
+function readVerdantSession() {
+  try {
+    const sessionRaw = localStorage.getItem("verdant:v2:session");
+    if (!sessionRaw) return null;
+    const session = JSON.parse(sessionRaw);
+    const userId = session?.userId ?? session;
+    if (!userId) return null;
+    const users = JSON.parse(localStorage.getItem("verdant:v2:users") || "[]");
+    const user = users.find(u => u.id === userId);
+    return user || null;
+  } catch { return null; }
+}
+function hydrateProfilePill() {
+  const user = readVerdantSession();
+  const signInLink = document.getElementById("headerSignInLink");
+  const pill = document.getElementById("headerProfilePill");
+  if (!signInLink || !pill) return;
+  if (!user) { signInLink.hidden = false; pill.hidden = true; return; }
+  const initials = (user.name || "?").split(/\s+/).map(w => w[0]).slice(0, 2).join("").toUpperCase();
+  document.getElementById("headerProfileAvatar").textContent = initials;
+  document.getElementById("headerProfileName").textContent = user.name || "Signed in";
+  document.getElementById("headerProfileRole").textContent = user.role || "";
+  signInLink.hidden = true;
+  pill.hidden = false;
+}
+hydrateProfilePill();
+// Rehydrate when the user returns from the CMS tab — session might have changed.
+window.addEventListener("focus", hydrateProfilePill);
+window.addEventListener("storage", (e) => { if (String(e.key || "").startsWith("verdant:v2:")) hydrateProfilePill(); });
+
 // DOM elements
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
@@ -460,6 +496,11 @@ chatForm.addEventListener("submit", async (e) => {
     if (fullText) {
       conversationHistory.push({ role: "assistant", content: fullText });
       saveCurrentSession();
+      // Attach thumbs-up/down feedback controls to the message we just finished.
+      // Uses the streaming target's parent .message-body so the rating sits
+      // beneath the content but inside the bubble frame.
+      const currentAssistantMsg = messagesEl.querySelector(".message.assistant:last-child");
+      if (currentAssistantMsg) attachFeedbackControls(currentAssistantMsg, fullText);
     }
   } catch (err) {
     if (typingEl) typingEl.remove();
@@ -470,6 +511,83 @@ chatForm.addEventListener("submit", async (e) => {
   sendBtn.disabled = !userInput.value.trim();
   userInput.focus();
 });
+
+/* -----------------------------------------------------------------------
+   Feedback (thumbs up/down) — persists to localStorage per browser AND
+   POSTs to /api/feedback so a future backend can aggregate. The endpoint
+   is intentionally best-effort: a network failure never breaks the chat.
+   ----------------------------------------------------------------------- */
+const FEEDBACK_KEY = "chat:feedback:v1";
+function loadFeedbackStore() { try { return JSON.parse(localStorage.getItem(FEEDBACK_KEY) || "{}"); } catch { return {}; } }
+function saveFeedbackStore(store) { try { localStorage.setItem(FEEDBACK_KEY, JSON.stringify(store)); } catch {} }
+function hashResponse(text) {
+  // Tiny hash so we can key feedback by response content without storing the
+  // full message. djb2 — fine for uniqueness within one browser's session.
+  let h = 5381;
+  for (let i = 0; i < text.length; i++) h = ((h << 5) + h + text.charCodeAt(i)) | 0;
+  return "r" + (h >>> 0).toString(36);
+}
+function reportFeedback(vote, responseText) {
+  const user = readVerdantSession?.();
+  const payload = {
+    vote,
+    responseHash: hashResponse(responseText),
+    responseLength: responseText.length,
+    userName: user?.name || null,
+    userRole: user?.role || null,
+    ts: new Date().toISOString(),
+  };
+  // Best-effort. Never awaits, never surfaces errors — the vote is already
+  // reflected in the UI and persisted locally the moment the user clicks.
+  fetch("/api/feedback", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    keepalive: true,
+  }).catch(() => {});
+}
+function attachFeedbackControls(messageEl, responseText) {
+  if (messageEl.querySelector(".feedback-row")) return; // already attached
+  const body = messageEl.querySelector(".message-body");
+  if (!body) return;
+  const key = hashResponse(responseText);
+  const store = loadFeedbackStore();
+  const existing = store[key];
+
+  const row = document.createElement("div");
+  row.className = "feedback-row";
+  row.innerHTML = `
+    <span class="feedback-prompt">Was this helpful?</span>
+    <button type="button" class="feedback-btn feedback-up" title="Helpful — I want more like this" aria-label="Thumbs up">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M7 22V10"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L15 2h0a3.13 3.13 0 0 1 0 3.88Z"/></svg>
+    </button>
+    <button type="button" class="feedback-btn feedback-down" title="Not helpful — steer me elsewhere" aria-label="Thumbs down">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M17 2v12"/><path d="m9 18.12 1-4.12H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 4H17a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L9 22h0a3.13 3.13 0 0 1 0-3.88Z"/></svg>
+    </button>
+  `;
+  const up = row.querySelector(".feedback-up");
+  const down = row.querySelector(".feedback-down");
+  const paint = (vote) => {
+    up.classList.toggle("chosen", vote === "up");
+    down.classList.toggle("chosen", vote === "down");
+    up.setAttribute("aria-pressed", vote === "up" ? "true" : "false");
+    down.setAttribute("aria-pressed", vote === "down" ? "true" : "false");
+  };
+  const vote = (v) => {
+    const s = loadFeedbackStore();
+    const prev = s[key]?.vote;
+    const next = prev === v ? null : v; // click same again to unvote
+    if (next) s[key] = { vote: next, ts: Date.now() };
+    else delete s[key];
+    saveFeedbackStore(s);
+    paint(next);
+    if (next) reportFeedback(next, responseText);
+  };
+  up.addEventListener("click", () => vote("up"));
+  down.addEventListener("click", () => vote("down"));
+  paint(existing?.vote);
+  body.appendChild(row);
+}
 
 // ── Message Rendering ──
 
@@ -499,6 +617,9 @@ function appendMessage(role, text) {
   wrapper.appendChild(avatar);
   wrapper.appendChild(body);
   messagesEl.appendChild(wrapper);
+  // Historical assistant messages also get thumbs — so a rating persists visually
+  // across page reloads and shows the user's prior votes on this conversation.
+  if (role === "assistant") attachFeedbackControls(wrapper, text);
   scrollToBottom();
 }
 

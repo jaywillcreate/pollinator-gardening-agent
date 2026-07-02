@@ -298,6 +298,11 @@ const DEFAULT_THEME = {
   primary: "#2f6b3e", bg: "#f3f8ee", surface: "#ffffff", user: "#2f6b3e", bot: "#eef3e6",
   text: "#1c2a1f", accent: "#e0a52e", radius: 18, btnRadius: 24, gradient: true,
   fdisp: "'Fraunces',serif", fbody: "'DM Sans',sans-serif", size: 14, lh: 1.5, ls: 0, hw: 600, logoSVG: null,
+  /* Editable brand identity — surfaces in the sidebar header and the terrarium.
+     Admins can rename the CMS entirely (e.g. brand it for their org) from
+     Theme Studio without touching source. */
+  brandName: "Verdant",
+  brandTagline: "Advisor CMS",
 };
 const DEFAULT_PALETTE = [
   { name: "Moss", hex: "#356b41" }, { name: "Leaf", hex: "#5b9b5f" }, { name: "Goldenrod", hex: "#e0a52e" },
@@ -678,6 +683,10 @@ export default function VerdantDashboard() {
         store.get("collapsed", window.matchMedia("(max-width:920px)").matches),
       ]);
       setUsers(u); setPrompts(p); setMedia(m); setCollections(c); setTheme({ ...DEFAULT_THEME, ...t });
+      // Persist the seed users list on first mount so the chatbot at / can
+      // read the signed-in user's name/role from localStorage. Without this
+      // the users list stays in-memory only until an admin edits it.
+      if (!localStorage.getItem("verdant:v2:users")) { try { localStorage.setItem("verdant:v2:users", JSON.stringify(u)); } catch {} }
       setPalette(pal); setPresets(pr); setCustomCSS(css); setCustomJS(js); setCustomHTML(html);
       setActivity(act); setCurrentUserId(cu); setCollapsed(col);
       setPosts(await store.get("posts", SEED_POSTS));
@@ -760,8 +769,8 @@ export default function VerdantDashboard() {
 
       <aside className={`vd-side ${collapsed ? "col" : ""}`}>
         <div className="vd-brand">
-          <div className="vd-brand-mark"><Sprout size={20} /></div>
-          <div><h1>Verdant</h1><small>Advisor CMS</small></div>
+          <div className="vd-brand-mark">{theme.logoSVG ? <span style={{ display: "grid", placeItems: "center" }} dangerouslySetInnerHTML={{ __html: theme.logoSVG }} /> : <Sprout size={20} />}</div>
+          <div><h1>{theme.brandName || "Verdant"}</h1><small>{theme.brandTagline || "Advisor CMS"}</small></div>
         </div>
         {NAV.map(g => (
           <div className="vd-navgroup" key={g.group}>
@@ -778,7 +787,10 @@ export default function VerdantDashboard() {
             })}
           </div>
         ))}
-        <div style={{ marginTop: "auto", padding: 12 }}>
+        <div style={{ marginTop: "auto", padding: 12, display: "flex", flexDirection: "column", gap: 4 }}>
+          <a className="vd-nav" href="/" title="Return to the Pollinator Garden Advisor chatbot" style={{ textDecoration: "none" }}>
+            <Sprout size={17} /><span>Pollinator Garden Advisor</span>
+          </a>
           <button className="vd-nav" onClick={() => setCollapsed(true)} title="Hide sidebar (reopen from the hamburger menu)">
             <PanelLeftClose size={17} /><span>Hide sidebar</span>
           </button>
@@ -1090,14 +1102,26 @@ function ThemeStudio({ theme, setTheme, palette, setPalette, presets, setPresets
         </div>
 
         <div className="card">
-          <div className="card-h"><div className="ico"><FileCode2 size={17} /></div><h3>Logo & SVG upload</h3></div>
-          <p className="card-desc">Drop in an SVG mark for the chat header. Scripts are stripped on upload.</p>
+          <div className="card-h"><div className="ico"><FileCode2 size={17} /></div><h3>Brand identity</h3></div>
+          <p className="card-desc">Rename the dashboard, edit the tagline, and swap the logo mark. Changes show in the sidebar header and the chat terrarium's brand pill.</p>
+          <div className="two" style={{ marginBottom: 14 }}>
+            <div className="field">
+              <label>Dashboard name</label>
+              <input className="inp" value={theme.brandName ?? "Verdant"} onChange={e => set("brandName", e.target.value)} placeholder="Verdant" maxLength={40} />
+              <div className="hint">Shown as the H1 in the sidebar header.</div>
+            </div>
+            <div className="field">
+              <label>Tagline</label>
+              <input className="inp" value={theme.brandTagline ?? "Advisor CMS"} onChange={e => set("brandTagline", e.target.value)} placeholder="Advisor CMS" maxLength={60} />
+              <div className="hint">Small eyebrow text below the name.</div>
+            </div>
+          </div>
           <div style={{ display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
             <div style={{ width: 64, height: 64, borderRadius: 14, background: theme.primary, display: "grid", placeItems: "center", color: "#fff", overflow: "hidden" }}>
               {theme.logoSVG ? <span style={{ width: 40, height: 40, display: "grid", placeItems: "center" }} dangerouslySetInnerHTML={{ __html: theme.logoSVG }} /> : <Sprout size={30} />}
             </div>
             <button className="btn btn-ghost" onClick={() => svgRef.current.click()}><Upload size={15} /> Upload SVG</button>
-            {theme.logoSVG && <button className="btn btn-danger" onClick={() => set("logoSVG", null)}><RotateCcw size={15} /> Reset</button>}
+            {theme.logoSVG && <button className="btn btn-danger" onClick={() => set("logoSVG", null)}><RotateCcw size={15} /> Reset logo</button>}
             <input ref={svgRef} type="file" accept=".svg,image/svg+xml" hidden onChange={onSVG} />
           </div>
         </div>
@@ -1883,7 +1907,7 @@ function Login({ users, onLogin }) {
     if (pw !== DEMO_PASSWORD) return setErr("Incorrect password. (Demo password: garden)");
     onLogin(u.id);
   };
-  const ssoNote = () => setInfo("Single sign-on connects to a configured OAuth provider (Google / GitHub) in production. This prototype signs you in locally.");
+  const ssoNote = (provider) => setInfo(`Real ${provider} OAuth needs an OAuth app credential pair (client id + secret) provisioned in the ${provider} console and set as VITE_${provider.toUpperCase()}_CLIENT_ID + a matching backend callback route on the agent server. Once those exist, wiring this button to redirect to the provider's authorize URL is a ~50-line change. For now this is a prototype — pick a demo account below to sign in locally.`);
   return (
     <div className="vd"><style>{CSS}</style>
       <div className="login-wrap">
@@ -1896,8 +1920,8 @@ function Login({ users, onLogin }) {
           <p className="login-sub">Manage the Gardening Advisor — prompts, content, media, and team.</p>
 
           <div className="sso-row">
-            <button className="sso-btn" onClick={ssoNote}><GoogleMark /> Continue with Google</button>
-            <button className="sso-btn" onClick={ssoNote}><GithubMark /> Continue with GitHub</button>
+            <button className="sso-btn" onClick={() => ssoNote("Google")}><GoogleMark /> Continue with Google</button>
+            <button className="sso-btn" onClick={() => ssoNote("GitHub")}><GithubMark /> Continue with GitHub</button>
           </div>
           <div className="or"><span>or sign in with email</span></div>
 

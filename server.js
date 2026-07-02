@@ -15,6 +15,7 @@ try {
 
 // Dynamic import after env is loaded
 const { default: handler } = await import("./api/chat.js");
+const { default: feedbackHandler } = await import("./api/feedback.js");
 const { default: express } = await import("express");
 
 const app = express();
@@ -49,6 +50,10 @@ if (existsSync(adminIndex)) {
 // Express answers OPTIONS on its own with no Access-Control-Allow-Origin.
 app.post("/api/chat", (req, res) => handler(req, res));
 app.options("/api/chat", (req, res) => handler(req, res));
+
+// Thumbs-up/down feedback ingest (see api/feedback.js).
+app.post("/api/feedback", (req, res) => feedbackHandler(req, res));
+app.options("/api/feedback", (req, res) => feedbackHandler(req, res));
 
 app.listen(port, () => {
   console.log(`Pollinator Garden Chat running at http://localhost:${port}`);

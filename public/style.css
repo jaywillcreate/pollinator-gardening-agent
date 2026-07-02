@@ -453,6 +453,10 @@ body {
   align-items: center;
   gap: 8px;
 }
+/* Explicit display: flex/inline-flex on the auth affordances overrides the
+   browser's `[hidden] { display: none }` default. Restore it. */
+.header-admin-link[hidden],
+.header-profile-pill[hidden] { display: none !important; }
 
 /* Discoverable but understated route into the CMS. Mirrors the New Chat
    button's height so they line up, but stays visually secondary. */
@@ -505,6 +509,99 @@ body {
 @media (max-width: 640px) {
   .header-admin-label { display: none; }
   .header-admin-link { padding: 7px 9px; }
+  .header-profile-pill .profile-role { display: none; }
+  .header-profile-pill .profile-name { max-width: 8ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+
+/* Signed-in profile pill (mirrors the CMS's .vd-profile). Only appears when
+   readVerdantSession() finds a live Verdant session in localStorage. */
+.header-profile-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px 4px 4px;
+  border: 1px solid var(--mist);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.header-profile-pill:hover {
+  border-color: var(--moss);
+}
+.header-profile-pill .profile-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--moss);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+.header-profile-pill .profile-meta {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.header-profile-pill .profile-name {
+  font-size: 12.5px;
+  font-weight: 600;
+}
+.header-profile-pill .profile-role {
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+/* Thumbs up/down on assistant messages. Muted by default, colored when the
+   user has cast a vote so the state is obvious across page reloads. */
+.feedback-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 11.5px;
+}
+.feedback-prompt {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-right: 2px;
+}
+.feedback-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.feedback-btn:hover {
+  background: var(--moss-faint);
+  color: var(--moss);
+}
+.feedback-btn.chosen.feedback-up {
+  background: #dcebe0;
+  color: #2c6b3a;
+  border-color: #bfd6b0;
+}
+.feedback-btn.chosen.feedback-down {
+  background: #f7ddd4;
+  color: #9b3a26;
+  border-color: #f0cdc2;
 }
 
 /* Chat Container */

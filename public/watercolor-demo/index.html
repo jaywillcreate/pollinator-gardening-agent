@@ -126,9 +126,40 @@
     border-radius: 4px;
     padding: 1px 6px;
   }
+  /* Shared site nav — same markup as diagram-demo & main chatbot. */
+  .site-nav{position:sticky;top:0;z-index:60;background:rgba(233,238,223,.92);backdrop-filter:blur(10px);border-bottom:1px solid #d6e0c8;padding:10px clamp(14px,2vw,26px);display:flex;align-items:center;gap:14px;font-family:'DM Sans',ui-sans-serif,system-ui,sans-serif;font-size:14px;}
+  .site-nav .brand{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:#16241b;font-weight:600;}
+  .site-nav .brand-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(150deg,#5b9b5f,#356b41);display:grid;place-items:center;color:#fff;font-family:'Fraunces',Georgia,serif;font-size:15px;}
+  .site-nav .brand-text{font-family:'Fraunces',Georgia,serif;font-size:15px;letter-spacing:.1px;}
+  .site-nav .spacer{flex:1;}
+  .site-nav a.nav-link{text-decoration:none;color:#5e6b57;padding:7px 11px;border-radius:9px;font-weight:500;display:inline-flex;align-items:center;gap:6px;transition:background .15s,color .15s;}
+  .site-nav a.nav-link:hover{background:#eef3e6;color:#356b41;}
+  .site-nav a.nav-link.on{background:#dfe9d0;color:#1a271c;}
+  .site-nav a.admin-link{border:1px solid #d6e0c8;color:#5e6b57;}
+  .site-nav a.admin-link:hover{border-color:#356b41;color:#356b41;background:#eef3e6;}
+  .site-nav .admin-link svg{width:14px;height:14px;}
+  @media(max-width:640px){
+    .site-nav .brand-text{display:none;}
+    .site-nav a.nav-link{padding:7px 8px;font-size:13px;}
+  }
 </style>
 </head>
 <body>
+
+<nav class="site-nav" aria-label="Site sections">
+  <a href="/" class="brand" title="Pollinator Garden Advisor">
+    <span class="brand-mark">✿</span>
+    <span class="brand-text">Pollinator Garden Advisor</span>
+  </a>
+  <span class="spacer"></span>
+  <a href="/" class="nav-link">Chat</a>
+  <a href="/diagram-demo.html" class="nav-link">Diagrams</a>
+  <a href="/watercolor-demo/" class="nav-link on">Plant gallery</a>
+  <a href="/admin" class="nav-link admin-link" title="Admin sign-in — CMS dashboard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+    Sign in
+  </a>
+</nav>
 
 <header>
   <h1>Native Plants — Watercolor Gallery</h1>

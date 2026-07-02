@@ -174,7 +174,9 @@ These elements have NO image assets. Draw them as SVG primitives:
 
 ### Plant placement principles
 
-5. **Drifts, not singletons.** Place 3–5 copies of the same slug in a small cluster for any major species. Bees find massed plantings; singletons are decorative only.
+5. **Drifts in odd counts — 3 or 5 per cluster.** Cluster the same slug in tight groups of **exactly 3 or 5** copies (never 1, 2, 4, or 6+ of the same species touching). Odd-numbered massings feel natural — the "Rule of Three/Five" from landscape design. Bees find massed plantings; singletons are decorative only. If a species is a "specimen" (structural focal point like Joe Pye Weed or Red Twig Dogwood), a single specimen is allowed, but every other planting must be 3 or 5.
+   - **Overlap the swatches deliberately.** Cluster members should overlap each other by 20–40% of their width and stagger 8–20px in y so they read as an organic clump instead of a grid. Vary each copy's x/y by ±15% within the cluster. In plan view, ellipses/circles in the same drift should nest and touch. In elevation, foreground copies should partially occlude those behind them. Deliberate overlap = more realistic, expressive garden design.
+   - **Compose across clusters too.** Adjacent species drifts may lightly interpenetrate (5–15% overlap at their edges) to break the "row of tiles" look. Never place clusters in a perfect grid.
 6. **Vertical layering.** Back of bed / back of elevation → tallest (Joe Pye Weed, Ox Eye Sunflower, Liatris). Middle → mid-height perennials. Front / edge → groundcovers (Moss Phlox, Wild Strawberry, Pussytoes).
 7. **Bloom succession.** Every garden plan should include AT LEAST one spring, one summer, and one fall bloomer so the user gets nectar from April through October.
 8. **Color diversity.** Mix warm (yellow: golden-ragwort, threadleaf-coreopsis, ox-eye-sunflower, zigzag-goldenrod; orange: butterfly-milkweed, orange-coneflower, blanket-flower; red-pink: bee-balm) with cool (purple: anise-hyssop, purple-coneflower, liatris-purple, blazing-star, wild-violet; blue: smooth-blue-aster, nepeta-jr-walker).
@@ -183,10 +185,16 @@ These elements have NO image assets. Draw them as SVG primitives:
 
 ### Legend and layout zones (MANDATORY for full 1000×800 plan-view diagrams)
 
-The diagram is divided into strict non-overlapping zones:
-- **Zone 1 — Title (y=0 to y=45):** Title <text> at y=30, font-size 20px, bold, centered.
-- **Zone 2 — Diagram (y=50 to y=620):** All artwork, icons, labels, structures stay inside this band.
-- **Zone 3 — Legend (y=640 to y=790):** Background \`<rect x="30" y="635" width="940" height="155" rx="6" fill="#fafaf7" stroke="#e5ddd0"/>\`. Legend title "PLANT LEGEND" at (50, 660), 11px bold uppercase. Entries from y=680 in a 3–4 column grid (each ~230px wide, rows 28px apart). Each entry: a 20×20 \`<image>\` of the plant slug, then common-name <text> starting 25px to the right of the icon, font-size 10px. If more than 12 species, use 16×16 icons and 4 columns.
+Every diagram sits inside an **outer frame with uniform padding on all four sides**. The container rect is \`<rect x="30" y="30" width="940" height="740" rx="10" fill="#fbfaf5" stroke="#d6e0c8" stroke-width="1.5"/>\` — 30 px of breathing room on every edge of a 1000×800 canvas so the artwork never crashes into the viewport boundary.
+
+Inside the frame, the diagram is divided into strict non-overlapping horizontal bands with equal 20 px gutters between them:
+
+- **Zone 1 — Title (y=50 to y=90):** Title <text> at y=72, font-size 20px, bold, centered. Optional subtitle at y=88, font-size 11px italic, centered.
+- **Zone 2 — Diagram (y=110 to y=560):** All plant clusters, structures, and cluster labels. Absolutely nothing else in this band.
+- **Zone 3 — Annotations (y=580 to y=620):** The **directional compass** and **scale bar** both live in this band, ABOVE the plant legend and directly beneath the diagram, with matching 20 px vertical padding above and below. Compass goes at (x=100, y=600) as a small circled N-arrow (~26 px radius). Scale bar goes at (x=800, y=600), a 200×14 rect alternating dark/light in 4 segments with tick labels ("0 ft", "5 ft", "10 ft"). Both are centered vertically on y=600.
+- **Zone 4 — Plant Legend (y=640 to y=770):** Background \`<rect x="50" y="635" width="900" height="140" rx="6" fill="#fafaf7" stroke="#e5ddd0"/>\`. Legend title "PLANT LEGEND" at (70, 660), 11px bold uppercase. Entries from y=680 in a 3–4 column grid (each ~230px wide, rows 28px apart). Each entry: a 20×20 \`<image>\` of the plant slug, then common-name <text> starting 25px to the right of the icon, font-size 10px. If more than 12 species, use 16×16 icons and 4 columns.
+
+The important invariants: **the compass and scale bar are always placed above the plant legend, never inside the diagram band and never inside the legend band**, and every zone has equal 20 px vertical padding around it so the finished piece reads as a balanced composition.
 
 Elevation views (viewBox 0 0 1000 400) can skip Zone 3 (draw a compact legend as HTML list in the markdown below the SVG instead).
 
